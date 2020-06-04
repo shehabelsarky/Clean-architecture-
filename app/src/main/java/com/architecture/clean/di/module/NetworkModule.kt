@@ -1,6 +1,7 @@
 package com.architecture.clean.di.module
 
 import com.architecture.clean.core.Config
+import com.architecture.clean.core.Config.API_KEY
 import com.architecture.clean.data.restful.ApiService
 import com.architecture.clean.data.source.cloud.BaseCloudRepository
 import com.architecture.clean.data.source.cloud.CloudRepository
@@ -48,8 +49,10 @@ class NetworkModule {
             .readTimeout(60, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val request = chain.request() //original request
-                val newRequest = request.newBuilder() //modified request
+                val url = request.url().newBuilder() //modified url
+                    .addQueryParameter("api_key", API_KEY)
                     .build()
+                val newRequest = request.newBuilder().url(url).build() // modified request
                 chain.proceed(newRequest)
             }
             .addInterceptor(loggingInterceptor)

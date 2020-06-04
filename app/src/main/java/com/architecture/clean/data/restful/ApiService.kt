@@ -13,5 +13,5 @@ interface ApiService {
     suspend fun getHome(): Deferred<FoodDto>
 
     @GET(Config.POPULAR_ACTORS)
-    fun getPopularPersons(@Query("api_key") apiKey: String,@Query("page") page: Int): Deferred<PopularPersonsResponse>
+    fun getPopularPersons(@Query("page") page: Int): Deferred<PopularPersonsResponse>
 }

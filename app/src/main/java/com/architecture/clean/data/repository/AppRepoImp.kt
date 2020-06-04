@@ -12,8 +12,8 @@ class AppRepoImp @Inject constructor(
     private val cloudRepository: BaseCloudRepository,
     private val foodDao: FoodDao
 ) : AppRepository {
-    override suspend fun getPopularPersons(page: Int,apiKey: String): PopularPersonsResponse {
-        return cloudRepository.getPopularPersons(page,apiKey)
+    override suspend fun getPopularPersons(page: Int): PopularPersonsResponse {
+        return cloudRepository.getPopularPersons(page)
     }
 
     override suspend fun selectAllFoods(): MutableList<Food> {

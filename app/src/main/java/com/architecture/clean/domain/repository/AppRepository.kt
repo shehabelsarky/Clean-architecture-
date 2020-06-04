@@ -8,5 +8,5 @@ interface AppRepository{
     suspend fun getHome(void: Unit): FoodDto
     suspend fun saveFoods(foodDto: FoodDto): Long
     suspend fun selectAllFoods() : MutableList<Food>
-    suspend fun getPopularPersons(page: Int,apiKey: String): PopularPersonsResponse
+    suspend fun getPopularPersons(page: Int): PopularPersonsResponse
 }

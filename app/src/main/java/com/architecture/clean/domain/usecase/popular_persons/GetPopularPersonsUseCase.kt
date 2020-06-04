@@ -22,6 +22,6 @@ class GetPopularPersonsUseCase @Inject constructor(
     }
 
     override suspend fun executeOnBackground(parameters: PopularPersonsRequest): PopularPersonsResponse {
-        return appRepository.getPopularPersons(parameters.page,parameters.apiKey)
+        return appRepository.getPopularPersons(parameters.page)
     }
 }

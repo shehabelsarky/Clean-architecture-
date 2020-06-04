@@ -5,5 +5,5 @@ import com.architecture.clean.domain.model.popular_person.remote.PopularPersonsR
 
 interface BaseCloudRepository {
    suspend fun getHome(void: Unit): FoodDto
-   suspend fun getPopularPersons(page: Int,apiKey: String): PopularPersonsResponse
+   suspend fun getPopularPersons(page: Int): PopularPersonsResponse
 }
