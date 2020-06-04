@@ -20,7 +20,7 @@
             android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.home.MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 

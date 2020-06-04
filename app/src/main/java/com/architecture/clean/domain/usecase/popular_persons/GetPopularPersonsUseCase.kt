@@ -2,7 +2,6 @@ package com.architecture.clean.domain.usecase.popular_persons
 
 import com.architecture.clean.data.mapper.CloudErrorMapper
 import com.architecture.clean.domain.mappers.popular_persons.PopularPersonsMapper
-import com.architecture.clean.domain.model.FoodBO
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
 import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
 import com.architecture.clean.domain.model.popular_person.remote.PopularPersonsResponse

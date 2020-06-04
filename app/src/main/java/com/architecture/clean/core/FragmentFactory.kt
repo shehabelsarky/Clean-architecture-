@@ -1,7 +1,7 @@
 package com.architecture.clean.core
 
 
-import com.architecture.clean.ui.home.HomeFragment
+import com.architecture.clean.ui.fragment.home.HomeFragment
 
 object FragmentFactory{
 

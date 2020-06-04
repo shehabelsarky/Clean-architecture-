@@ -1,6 +1,6 @@
 package com.architecture.clean.di.builder
 
-import com.architecture.clean.ui.home.HomeFragment
+import com.architecture.clean.ui.fragment.home.HomeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

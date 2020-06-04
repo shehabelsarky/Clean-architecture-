@@ -1,4 +1,4 @@
-package com.architecture.clean.ui.home
+package com.architecture.clean.ui.fragment.home
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,7 +12,7 @@ import com.architecture.clean.R
 import com.architecture.clean.core.Config
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
 import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
-import com.architecture.clean.ui.home.adapter.PopularPersonsAdapter
+import com.architecture.clean.ui.fragment.home.adapter.PopularPersonsAdapter
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject

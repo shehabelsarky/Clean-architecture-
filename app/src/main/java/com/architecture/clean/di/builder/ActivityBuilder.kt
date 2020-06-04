@@ -1,6 +1,6 @@
 package com.architecture.clean.di.builder
 
-import com.architecture.clean.ui.home.MainActivity
+import com.architecture.clean.ui.activity.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

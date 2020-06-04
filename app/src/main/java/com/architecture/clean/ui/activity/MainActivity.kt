@@ -1,10 +1,11 @@
-package com.architecture.clean.ui.home
+package com.architecture.clean.ui.activity
 
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.architecture.clean.R
 import com.architecture.clean.core.FragmentFactory
+import com.architecture.clean.ui.fragment.home.HomeFragment
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.toolbar_main.*
 
@@ -24,7 +25,8 @@ class MainActivity  : DaggerAppCompatActivity() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
                 .replace(R.id.container,
                         FragmentFactory.getHomeFragment(supportFragmentManager),
-                        HomeFragment.FRAGMENT_NAME)
+                    HomeFragment.FRAGMENT_NAME
+                )
         fragmentTransaction.addToBackStack(HomeFragment.FRAGMENT_NAME)
         fragmentTransaction.commit()
     }

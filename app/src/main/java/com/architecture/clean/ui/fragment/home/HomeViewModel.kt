@@ -1,4 +1,4 @@
-package com.architecture.clean.ui.home
+package com.architecture.clean.ui.fragment.home
 
 import androidx.lifecycle.MutableLiveData
 import android.util.Log

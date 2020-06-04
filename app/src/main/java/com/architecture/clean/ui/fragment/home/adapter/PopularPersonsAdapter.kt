@@ -1,4 +1,4 @@
-package com.architecture.clean.ui.home.adapter
+package com.architecture.clean.ui.fragment.home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
