@@ -29,7 +29,7 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:id="@+id/profile_pic"
+                    android:id="@+id/ivImage"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="true"
                     android:src="@drawable/ic_account_circle_black_24dp"/>
@@ -38,9 +38,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:textSize="14sp"
-                    android:id="@+id/name"
+                    android:id="@+id/tvName"
                     android:textColor="#424242"
-                    android:layout_toEndOf="@+id/profile_pic"
+                    android:layout_toEndOf="@+id/ivImage"
                     android:layout_marginStart="8dp"
                     android:text="@string/name"/>
                 <TextView
@@ -50,17 +50,17 @@
                     android:fontFamily="@font/robboto"
                     android:textColor="#4e4e4e"
                     android:textSize="10sp"
-                    android:layout_toEndOf="@+id/profile_pic"
+                    android:layout_toEndOf="@+id/ivImage"
                     android:layout_marginStart="8dp"
-                    android:layout_below="@+id/name"
-                    android:id="@+id/time"
+                    android:layout_below="@+id/tvName"
+                    android:id="@+id/tvTitle"
                     android:text="@string/date"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/like"
-                    android:layout_toEndOf="@+id/time"
-                    android:layout_below="@+id/name"
+                    android:id="@+id/tvPopularity"
+                    android:layout_toEndOf="@+id/tvTitle"
+                    android:layout_below="@+id/tvName"
                     android:fontFamily="@font/robboto"
                     android:textColor="#4e4e4e"
                     android:layout_marginStart="8dp"
@@ -77,7 +77,7 @@
                 />
 
             <TextView
-                android:id="@+id/overView"
+                android:id="@+id/tvOverview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"

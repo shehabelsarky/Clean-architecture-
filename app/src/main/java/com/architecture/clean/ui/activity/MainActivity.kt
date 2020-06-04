@@ -1,6 +1,5 @@
 package com.architecture.clean.ui.activity
 
-
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.architecture.clean.R
@@ -10,7 +9,6 @@ import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 class MainActivity  : DaggerAppCompatActivity() {
-    private val TAG = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +25,7 @@ class MainActivity  : DaggerAppCompatActivity() {
                         FragmentFactory.getHomeFragment(supportFragmentManager),
                     HomeFragment.FRAGMENT_NAME
                 )
-        fragmentTransaction.addToBackStack(HomeFragment.FRAGMENT_NAME)
+      //  fragmentTransaction.addToBackStack(HomeFragment.FRAGMENT_NAME)
         fragmentTransaction.commit()
     }
 }

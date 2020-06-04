@@ -10,6 +10,8 @@ import com.architecture.clean.domain.model.popular_person.local.PopularPersons
 import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
 import com.architecture.clean.ui.fragment.base.BaseFragment
 import com.architecture.clean.ui.fragment.home.adapter.PopularPersonsAdapter
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
@@ -22,19 +24,14 @@ class HomeFragment : BaseFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var viewModel: HomeViewModel
-
     private val popularPersonsList: ArrayList<PopularPersons> = arrayListOf()
-    private val popularPersonsAdapter: PopularPersonsAdapter by lazy {
-        PopularPersonsAdapter(
-            requireContext(),
-            popularPersonsList
-        )
-    }
+    private val popularPersonsGroupAdapter = GroupAdapter<ViewHolder>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         rvHome?.initPopularPersonsList(
-            popularPersonsAdapter,
+            popularPersonsGroupAdapter,
             getVerticalLayoutManager(requireContext())
         )
         with(viewModel) {
@@ -42,13 +39,20 @@ class HomeFragment : BaseFragment() {
 
             popularPersonsLiveData.observe(this@HomeFragment, Observer {
                 progressBar_home.visibility = View.GONE
-                popularPersonsList.addAll(it)
-                popularPersonsAdapter.notifyDataSetChanged()
+                setData(it)
             })
             error.observe(this@HomeFragment, Observer {
                 progressBar_home.visibility = View.GONE
                 Toast.makeText(context, "${it?.message}", Toast.LENGTH_LONG).show()
             })
+        }
+    }
+
+    private fun setData(data: ArrayList<PopularPersons>){
+        clearData(popularPersonsGroupAdapter,popularPersonsList)
+        popularPersonsList.addAll(data)
+        popularPersonsList.map {
+            popularPersonsGroupAdapter.add(PopularPersonsAdapter(requireContext(), it))
         }
     }
 }
