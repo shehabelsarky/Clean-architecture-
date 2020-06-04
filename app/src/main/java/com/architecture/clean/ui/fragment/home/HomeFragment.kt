@@ -33,8 +33,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initPopularPersonsList(
-            rvHome,
+        rvHome?.initPopularPersonsList(
             popularPersonsAdapter,
             getVerticalLayoutManager(requireContext())
         )
