@@ -24,7 +24,7 @@ class CloudErrorMapper @Inject constructor(private val gson: Gson) {
                 if (throwable.code() == 401) {
                     ErrorModel(ErrorStatus.UNAUTHORIZED)
                 } else {
-                    getHttpError(throwable.response().errorBody())
+                    getHttpError(throwable.response()?.errorBody())
                 }
             }
 
@@ -41,7 +41,8 @@ class CloudErrorMapper @Inject constructor(private val gson: Gson) {
             is UnknownHostException -> {
                 ErrorModel("CHECK CONNECTION",0,ErrorStatus.NO_CONNECTION)
             }
-            else -> ErrorModel("NOT DEFIEND",0,ErrorStatus.NOT_DEFINED)
+            else ->
+                ErrorModel("NOT DEFIEND",0,ErrorStatus.NOT_DEFINED)
         }
         return errorModel!!
     }
@@ -63,6 +64,5 @@ class CloudErrorMapper @Inject constructor(private val gson: Gson) {
             e.printStackTrace()
             ErrorModel(ErrorStatus.NOT_DEFINED)
         }
-
     }
 }

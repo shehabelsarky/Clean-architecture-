@@ -5,6 +5,6 @@ import com.architecture.clean.domain.model.popular_person.remote.PopularPersonsR
 
 class CloudRepository(private val apIs: ApiService) : BaseCloudRepository {
     override suspend fun getPopularPersons(page: Int): PopularPersonsResponse {
-        return apIs.getPopularPersons(page).await()
+        return apIs.getPopularPersons(page)
     }
 }

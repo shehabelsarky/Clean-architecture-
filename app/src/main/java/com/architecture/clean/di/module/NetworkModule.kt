@@ -6,7 +6,6 @@ import com.architecture.clean.data.restful.ApiService
 import com.architecture.clean.data.source.cloud.BaseCloudRepository
 import com.architecture.clean.data.source.cloud.CloudRepository
 import com.google.gson.Gson
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -27,7 +26,6 @@ class NetworkModule {
     ): Retrofit {
         return Retrofit.Builder().baseUrl(Config.BASE_URL)
             .addConverterFactory(gsonConverterFactory)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(okHttpClient)
             .build()
     }
@@ -72,18 +70,14 @@ class NetworkModule {
         return GsonConverterFactory.create()
     }
 
-
     @Singleton
     @Provides
     fun provideService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
-
     @Provides
     fun provideCloudRepository(apIs: ApiService): BaseCloudRepository {
         return CloudRepository(apIs)
     }
-
-
 }
