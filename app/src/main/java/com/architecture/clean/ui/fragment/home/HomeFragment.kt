@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.architecture.clean.R
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
 import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
+import com.architecture.clean.ui.activity.MainActivity
 import com.architecture.clean.ui.fragment.base.BaseFragment
 import com.architecture.clean.ui.fragment.home.adapter.PopularPersonsAdapter
 import com.xwray.groupie.GroupAdapter
@@ -29,11 +30,13 @@ class HomeFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as MainActivity).changeBackButtonVisibility(false)
 
         rvHome?.initPopularPersonsList(
             popularPersonsGroupAdapter,
             getVerticalLayoutManager(requireContext())
         )
+
         with(viewModel) {
             PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
 
