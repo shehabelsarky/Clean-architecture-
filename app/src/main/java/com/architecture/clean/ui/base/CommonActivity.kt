@@ -5,10 +5,11 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.architecture.clean.R
+import com.architecture.clean.ui.utils.LoadingListener
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_common.*
 
-abstract class CommonActivity : DaggerAppCompatActivity(), View.OnClickListener {
+abstract class CommonActivity : DaggerAppCompatActivity(), View.OnClickListener, LoadingListener {
 
     private lateinit var navFragment: NavHostFragment
     private lateinit var navController: NavController
@@ -23,12 +24,12 @@ abstract class CommonActivity : DaggerAppCompatActivity(), View.OnClickListener 
     }
 
     override fun onClick(view: View?) {
-        when(view){
+        when (view) {
             btnBack -> onBackPressed()
         }
     }
 
-    private fun setNavFragment(){
+    private fun setNavFragment() {
         navFragment =
             supportFragmentManager.findFragmentById(R.id.common_nav_fragment) as NavHostFragment
         navController = navFragment.navController
@@ -49,5 +50,9 @@ abstract class CommonActivity : DaggerAppCompatActivity(), View.OnClickListener 
             false ->
                 btnBack.visibility = View.GONE
         }
+    }
+
+    override fun showLoading(show: Boolean) {
+        progressBar.visibility = if (show) View.VISIBLE else View.GONE
     }
 }

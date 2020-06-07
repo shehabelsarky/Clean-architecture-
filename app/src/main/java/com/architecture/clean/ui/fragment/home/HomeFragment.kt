@@ -38,13 +38,6 @@ class HomeFragment : BaseFragment() {
         with(homeViewModel) {
             PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
             popularPersonsLiveData.observe(this@HomeFragment, Observer (::setData))
-
-            isLoadingLiveData.observe(this@HomeFragment, Observer {
-                if (it)
-                    progressBar_home.visibility = View.VISIBLE
-                else
-                    progressBar_home.visibility = View.GONE
-            })
         }
     }
 
