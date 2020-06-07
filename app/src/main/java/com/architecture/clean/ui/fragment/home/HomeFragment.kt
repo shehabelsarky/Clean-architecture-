@@ -19,12 +19,10 @@ import javax.inject.Inject
 class HomeFragment : BaseFragment() {
     override var layoutResourceId: Int = R.layout.fragment_home
 
-    companion object {
-        val FRAGMENT_NAME: String = HomeFragment::class.java.name
-    }
-
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    @Inject lateinit var viewModel: HomeViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModel: HomeViewModel
     private val popularPersonsList: ArrayList<PopularPersons> = arrayListOf()
     private val popularPersonsGroupAdapter = GroupAdapter<ViewHolder>()
 
@@ -39,20 +37,27 @@ class HomeFragment : BaseFragment() {
 
         with(viewModel) {
             PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
+            popularPersonsLiveData.observe(this@HomeFragment, Observer (::setData))
 
-            popularPersonsLiveData.observe(this@HomeFragment, Observer {
-                progressBar_home.visibility = View.GONE
-                setData(it)
+            isLoadingLiveData.observe(this@HomeFragment, Observer {
+                if (it)
+                    progressBar_home.visibility = View.VISIBLE
+                else
+                    progressBar_home.visibility = View.GONE
             })
-            error.observe(this@HomeFragment, Observer {
-                progressBar_home.visibility = View.GONE
+
+            errorLiveData.observe(this@HomeFragment, Observer {
                 Toast.makeText(context, "${it?.message}", Toast.LENGTH_LONG).show()
+            })
+
+            cancellationMsgLiveData.observe(this@HomeFragment, Observer {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             })
         }
     }
 
-    private fun setData(data: ArrayList<PopularPersons>){
-        clearData(popularPersonsGroupAdapter,popularPersonsList)
+    private fun setData(data: ArrayList<PopularPersons>) {
+        clearData(popularPersonsGroupAdapter, popularPersonsList)
         popularPersonsList.addAll(data)
         popularPersonsList.map {
             popularPersonsGroupAdapter.add(PopularPersonsAdapter(requireContext(), it))

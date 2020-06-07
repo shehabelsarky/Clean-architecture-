@@ -15,8 +15,8 @@ typealias CompletionBlock<T> = UseCase.Request<T>.() -> Unit
 abstract class UseCase<P, R, FR>(val errorUtil: CloudErrorMapper) {
 
     private var parentJob: Job = Job()
-    var backgroundContext: CoroutineContext = Dispatchers.IO
-    var foregroundContext: CoroutineContext = Dispatchers.Main
+    private var backgroundContext: CoroutineContext = Dispatchers.IO
+    private var foregroundContext: CoroutineContext = Dispatchers.Main
 
     protected abstract suspend fun executeOnBackground(parameters: P): R
     protected abstract suspend fun convert(dto: R): FR
@@ -26,16 +26,20 @@ abstract class UseCase<P, R, FR>(val errorUtil: CloudErrorMapper) {
         unsubscribe()
         parentJob = Job()
         CoroutineScope(foregroundContext + parentJob).launch {
+            response(true)
             try {
                 val result = withContext(backgroundContext) {
                     executeOnBackground(parameters)
                 }
                 response(convert(result))
+                response(false)
             } catch (cancellationException: CancellationException) {
                 response(cancellationException)
+                response(false)
             } catch (e: Exception) {
                 val error = errorUtil.mapToDomainErrorException(e)
                 response(error)
+                response(false)
             }
         }
     }
@@ -50,9 +54,14 @@ abstract class UseCase<P, R, FR>(val errorUtil: CloudErrorMapper) {
 
 
     class Request<T> {
+        private var isLoading: ((Boolean) -> Unit)? = null
         private var onComplete: ((T) -> Unit)? = null
         private var onError: ((ErrorModel) -> Unit)? = null
         private var onCancel: ((CancellationException) -> Unit)? = null
+
+        fun isLoading(isLoading: (Boolean) -> Unit) {
+            this.isLoading = isLoading
+        }
 
         fun onComplete(block: (T) -> Unit) {
             onComplete = block
@@ -64,6 +73,10 @@ abstract class UseCase<P, R, FR>(val errorUtil: CloudErrorMapper) {
 
         fun onCancel(block: (CancellationException) -> Unit) {
             onCancel = block
+        }
+
+        operator fun invoke(loading: Boolean) {
+            isLoading?.invoke(loading)
         }
 
         operator fun invoke(result: T) {
