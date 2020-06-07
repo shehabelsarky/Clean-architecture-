@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.architecture.clean.domain.model.response.ErrorModel
+import javax.inject.Inject
 
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel@Inject constructor() : ViewModel() {
     internal val isloading: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val isLoadingLiveData: MutableLiveData<Boolean> by lazy { isloading }
 

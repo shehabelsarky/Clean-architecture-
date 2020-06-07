@@ -21,10 +21,11 @@ class CloudErrorMapper @Inject constructor(private val gson: Gson) {
             // then attempt to parse error data from response body
             is HttpException -> {
                 // handle UNAUTHORIZED situation (when token expired)
-                if (throwable.code() == 401) {
-                    ErrorModel(ErrorStatus.UNAUTHORIZED)
-                } else {
-                    getHttpError(throwable.response()?.errorBody())
+                when {
+                    throwable.code() == 401 ->
+                        ErrorModel(ErrorStatus.UNAUTHORIZED)
+                    else ->
+                        getHttpError(throwable.response()?.errorBody())
                 }
             }
 

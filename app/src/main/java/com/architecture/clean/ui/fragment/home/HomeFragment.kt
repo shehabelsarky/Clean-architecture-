@@ -4,7 +4,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.architecture.clean.R
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
 import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
@@ -21,8 +20,9 @@ class HomeFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
     @Inject
-    lateinit var viewModel: HomeViewModel
+    lateinit var homeViewModel: HomeViewModel
     private val popularPersonsList: ArrayList<PopularPersons> = arrayListOf()
     private val popularPersonsGroupAdapter = GroupAdapter<ViewHolder>()
 
@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment() {
             getVerticalLayoutManager(requireContext())
         )
 
-        with(viewModel) {
+        with(homeViewModel) {
             PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
             popularPersonsLiveData.observe(this@HomeFragment, Observer (::setData))
 
@@ -44,14 +44,6 @@ class HomeFragment : BaseFragment() {
                     progressBar_home.visibility = View.VISIBLE
                 else
                     progressBar_home.visibility = View.GONE
-            })
-
-            errorLiveData.observe(this@HomeFragment, Observer {
-                Toast.makeText(context, "${it?.message}", Toast.LENGTH_LONG).show()
-            })
-
-            cancellationMsgLiveData.observe(this@HomeFragment, Observer {
-                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             })
         }
     }
