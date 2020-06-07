@@ -2,6 +2,7 @@ package com.architecture.clean.ui.fragment.base
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +11,14 @@ import androidx.lifecycle.Observer
 import com.architecture.clean.ui.utils.LoadingListener
 import com.architecture.clean.ui.view_model.BaseViewModel
 import dagger.android.support.DaggerFragment
-import javax.inject.Inject
 
-abstract class BaseFragment : DaggerFragment() {
+abstract class BaseFragment<VM : BaseViewModel>  : DaggerFragment() {
+
+    private val TAG = BaseFragment::class.java.simpleName
 
     internal abstract var layoutResourceId: Int
-    private var loader: LoadingListener? = null
-
-    @Inject lateinit var baseViewModel: BaseViewModel
+    private var mLoader: LoadingListener? = null
+    abstract val viewModel: VM
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,39 +29,39 @@ abstract class BaseFragment : DaggerFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        with(baseViewModel) {
-
-            errorLiveData.observe(this@BaseFragment, Observer {
-                Toast.makeText(context, "${it?.message}", android.widget.Toast.LENGTH_LONG).show()
+        with(viewModel) {
+            errorLiveData.observe(viewLifecycleOwner, Observer {
+                Toast.makeText(context, "${it?.message}", Toast.LENGTH_LONG).show()
             })
 
-            cancellationMsgLiveData.observe(this@BaseFragment, Observer {
-                Toast.makeText(context, it, android.widget.Toast.LENGTH_LONG).show()
+            cancellationMsgLiveData.observe(viewLifecycleOwner, Observer {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             })
 
-            isLoadingLiveData.observe(this@BaseFragment, Observer {
+            isLoadingLiveData.observe(viewLifecycleOwner, Observer {
                 showLoading(it)
+                Log.d(TAG,"Loading observer is called")
             })
         }
 
     }
 
     private fun showLoading(show: Boolean) {
-        loader?.showLoading(show)
+        mLoader?.showLoading(show)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         context.let {
             if (context is LoadingListener)
-                loader = context
+                mLoader = context
         }
     }
 
     override fun onDetach() {
         super.onDetach()
         showLoading(false)
-        loader = null
+        mLoader = null
     }
 
     override fun onStop() {

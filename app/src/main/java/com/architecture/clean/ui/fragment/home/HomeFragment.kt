@@ -3,7 +3,6 @@ package com.architecture.clean.ui.fragment.home
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.View
 import com.architecture.clean.R
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
 import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
@@ -15,14 +14,13 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment<HomeViewModel>() {
+
     override var layoutResourceId: Int = R.layout.fragment_home
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject override lateinit var viewModel: HomeViewModel
 
-    @Inject
-    lateinit var homeViewModel: HomeViewModel
     private val popularPersonsList: ArrayList<PopularPersons> = arrayListOf()
     private val popularPersonsGroupAdapter = GroupAdapter<ViewHolder>()
 
@@ -35,7 +33,7 @@ class HomeFragment : BaseFragment() {
             getVerticalLayoutManager(requireContext())
         )
 
-        with(homeViewModel) {
+        with(viewModel) {
             PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
             popularPersonsLiveData.observe(this@HomeFragment, Observer (::setData))
         }
