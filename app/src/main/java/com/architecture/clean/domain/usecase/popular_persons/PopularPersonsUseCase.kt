@@ -9,7 +9,7 @@ import com.architecture.clean.domain.repository.AppRepository
 import com.architecture.clean.domain.usecase.base.UseCase
 import javax.inject.Inject
 
-class GetPopularPersonsUseCase @Inject constructor(
+class PopularPersonsUseCase @Inject constructor(
         errorUtil: CloudErrorMapper,
         private val appRepository: AppRepository,
         private val mapper: PopularPersonsMapper
