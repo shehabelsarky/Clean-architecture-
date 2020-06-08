@@ -60,7 +60,6 @@ abstract class BaseFragment<VM : BaseViewModel>  : DaggerFragment() {
 
     override fun onDetach() {
         super.onDetach()
-        showLoading(false)
         mLoader = null
     }
 }
