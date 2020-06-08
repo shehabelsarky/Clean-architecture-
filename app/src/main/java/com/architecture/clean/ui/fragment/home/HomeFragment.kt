@@ -3,7 +3,6 @@ package com.architecture.clean.ui.fragment.home
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import com.architecture.clean.R
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
 import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
@@ -18,7 +17,6 @@ import javax.inject.Inject
 class HomeFragment : BaseFragment<HomeViewModel>() {
 
     override var layoutResourceId: Int = R.layout.fragment_home
-
     private val TAG = HomeFragment::class.java.simpleName
 
     @Inject
@@ -41,15 +39,6 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         with(viewModel) {
             PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
             popularPersonsLiveData.observe(this@HomeFragment, Observer(::setData))
-
-            PopularPersonsRequest().apply {
-                page = 1
-                personsName = "Tom"
-            }.also { searchPopularPersons(it) }
-
-            searchPopularPersonsLiveData.observe(this@HomeFragment, Observer{
-                Log.d(TAG,"Search API is called")
-            })
         }
     }
 

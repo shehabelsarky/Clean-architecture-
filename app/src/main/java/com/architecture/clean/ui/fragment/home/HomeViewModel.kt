@@ -23,8 +23,8 @@ class HomeViewModel @Inject constructor(
     fun getPopularPersons(parameters: PopularPersonsRequest) {
 
         popularPersonsUseCase.execute(parameters) {
-            isLoading (::setLoading)
-            onError (::setErrorReason)
+            isLoading(::setLoading)
+            onError(::setErrorReason)
             onCancel(::setCancellationReason)
 
             onComplete {
@@ -41,8 +41,8 @@ class HomeViewModel @Inject constructor(
     fun searchPopularPersons(parameters: PopularPersonsRequest) {
 
         searchPopularPersonsUseCase.execute(parameters) {
-            isLoading (::setLoading)
-            onError (::setErrorReason)
+            isLoading(::setLoading)
+            onError(::setErrorReason)
             onCancel(::setCancellationReason)
 
             onComplete {
@@ -51,6 +51,7 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
 
     override fun onCleared() {
         super.onCleared()
