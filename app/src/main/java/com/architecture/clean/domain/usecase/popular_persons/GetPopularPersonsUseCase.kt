@@ -11,12 +11,13 @@ import javax.inject.Inject
 
 class GetPopularPersonsUseCase @Inject constructor(
         errorUtil: CloudErrorMapper,
-        private val appRepository: AppRepository
+        private val appRepository: AppRepository,
+        private val mapper: PopularPersonsMapper
 ) : UseCase<PopularPersonsRequest, PopularPersonsResponse, List<PopularPersons>>(errorUtil) {
 
     override suspend fun convert(dto: PopularPersonsResponse): List<PopularPersons> {
        return dto.results?.map {
-           PopularPersonsMapper.convert(it)
+           mapper.convert(it)
         }?: listOf()
     }
 

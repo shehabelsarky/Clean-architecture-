@@ -46,5 +46,4 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             popularPersonsGroupAdapter.add(PopularPersonsAdapter(requireContext(), it))
         }
     }
-
 }
