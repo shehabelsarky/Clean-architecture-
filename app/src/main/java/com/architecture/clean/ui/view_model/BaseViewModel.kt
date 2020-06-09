@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.architecture.clean.domain.model.response.ErrorModel
 import java.util.concurrent.CancellationException
+import com.architecture.clean.domain.model.response.ErrorStatus
+import com.architecture.clean.domain.usecase.base.CompletionBlock
 import javax.inject.Inject
 
 open class BaseViewModel @Inject constructor() : ViewModel() {
@@ -27,5 +29,27 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
 
     fun setCancellationReason(cancellationException: CancellationException){
         cancellationMessage.value = cancellationException.message
+    }
+
+    fun <T> callApi(data: MutableLiveData<T> ,apiCall: (CompletionBlock<T>)->Unit) {
+        apiCall.invoke {
+            isLoading {
+                isLoading.value = it
+            }
+            onComplete {
+                data.value = it
+            }
+            onError { throwable ->
+                when (throwable.errorStatus) {
+                    ErrorStatus.UNAUTHORIZED -> {
+                    }
+                    else -> error.value = throwable
+                }
+
+            }
+            onCancel {
+                cancellationMessage.value = it.message
+            }
+        }
     }
 }

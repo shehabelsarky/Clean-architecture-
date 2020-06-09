@@ -11,7 +11,6 @@ import com.architecture.clean.domain.usecase.search_popular_persons.SearchPopula
 import com.architecture.clean.ui.view_model.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -42,21 +41,13 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private val searchPopularPersonsData: MutableLiveData<ArrayList<PopularPersons>>
-            by lazy { MutableLiveData<ArrayList<PopularPersons>>() }
-    val searchPopularPersonsLiveData: LiveData<ArrayList<PopularPersons>> = searchPopularPersonsData
+    private val searchPopularPersonsData: MutableLiveData<List<PopularPersons>>
+            by lazy { MutableLiveData<List<PopularPersons>>() }
+    val searchPopularPersonsLiveData: LiveData<List<PopularPersons>> = searchPopularPersonsData
 
     fun searchPopularPersons(parameters: PopularPersonsRequest) {
-
-        searchPopularPersonsUseCase.execute(parameters) {
-            isLoading(::setLoading)
-            onError(::setErrorReason)
-            onCancel(::setCancellationReason)
-
-            onComplete {
-                Log.d(TAG, it.toString())
-                searchPopularPersonsData.value = it as ArrayList<PopularPersons>
-            }
+        callApi(searchPopularPersonsData) { statesCallBack ->
+            searchPopularPersonsUseCase.execute(parameters, statesCallBack)
         }
     }
 
