@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.architecture.clean.domain.model.response.ErrorModel
 import com.architecture.clean.domain.model.response.ErrorStatus
 import com.architecture.clean.domain.usecase.base.CompletionBlock
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 open class BaseViewModel @Inject constructor() : ViewModel() {
@@ -18,7 +20,7 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
     private val cancellationMessage: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val cancellationMsgLiveData: LiveData<String> by lazy { cancellationMessage }
 
-    fun <T> callApi(data: MutableLiveData<T> ,apiCall: (CompletionBlock<T>)->Unit) {
+    fun <T> callApiDirectly(data: MutableLiveData<T>, apiCall: (CompletionBlock<T>) -> Unit) {
         apiCall.invoke {
             isLoading {
                 isLoading.value = it

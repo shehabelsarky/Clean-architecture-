@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
 
     val popularPersonsLiveData: LiveData<List<PopularPersons>> = popularPersonsData
     fun getPopularPersons(parameters: PopularPersonsRequest) {
-        callApi(popularPersonsData) { statesCallBack ->
+        callApiDirectly(popularPersonsData) { statesCallBack ->
             getPopularPersonsUseCase.execute(parameters, statesCallBack)
         }
     }
