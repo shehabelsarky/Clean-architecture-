@@ -32,9 +32,7 @@ class PopularPersonsUseCase @Inject constructor(
             }
             .transform {
                 val filteredPopularPersons = arrayListOf<PopularPersons>()
-                for (i in 0 until it.size/2){
-                    filteredPopularPersons.add(it[i])
-                }
+                filteredPopularPersons.addAll(it)
                 emit(filteredPopularPersons)
             }
             .flatMapConcat {
