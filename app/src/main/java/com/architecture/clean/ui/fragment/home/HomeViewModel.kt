@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
 
     private val popularPersonsList = arrayListOf<PopularPersons>()
 
-    val popularPersonsChannel = BroadcastChannel<ArrayList<PopularPersons>>(Channel.BUFFERED)
+    val popularPersonsChannel = BroadcastChannel<ArrayList<PopularPersons>>(20)
     fun getPopularPersons(parameters: PopularPersonsRequest) {
 
         popularPersonsUseCase.execute(parameters) {
