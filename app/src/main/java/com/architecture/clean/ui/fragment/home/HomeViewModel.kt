@@ -10,7 +10,7 @@ import com.architecture.clean.domain.usecase.popular_persons.PopularPersonsUseCa
 import com.architecture.clean.domain.usecase.search_popular_persons.SearchPopularPersonsUseCase
 import com.architecture.clean.ui.view_model.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.BroadcastChannel
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +23,7 @@ class HomeViewModel @Inject constructor(
 
     private val popularPersonsList = arrayListOf<PopularPersons>()
 
-    val popularPersonsChannel = BroadcastChannel<ArrayList<PopularPersons>>(20)
+    val popularPersonsChannel = ConflatedBroadcastChannel<ArrayList<PopularPersons>>()
     fun getPopularPersons(parameters: PopularPersonsRequest) {
 
         popularPersonsUseCase.execute(parameters) {
@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
                 Log.d(TAG, it.toString())
                 viewModelScope.launch {
                     popularPersonsList.addAll(it as ArrayList<PopularPersons>)
-                    popularPersonsChannel.send(popularPersonsList)
+                    popularPersonsChannel.offer(popularPersonsList)
                 }
             }
         }
