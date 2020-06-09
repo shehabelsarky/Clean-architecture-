@@ -1,6 +1,5 @@
 package com.architecture.clean.ui.fragment.home
 
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
@@ -53,7 +52,6 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
                 }
             }
         }
-
     }
 
     private fun setData(data: ArrayList<PopularPersons>) {
