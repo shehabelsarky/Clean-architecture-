@@ -7,6 +7,7 @@ import com.architecture.clean.domain.model.popular_person.parameters.PopularPers
 import com.architecture.clean.domain.model.popular_person.remote.PopularPersonsResponse
 import com.architecture.clean.domain.repository.AppRepository
 import com.architecture.clean.domain.usecase.base.UseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
@@ -17,6 +18,7 @@ class PopularPersonsUseCase @Inject constructor(
     private val mapper: PopularPersonsMapper
 ) : UseCase<PopularPersonsRequest, PopularPersonsResponse, List<PopularPersons>>(errorUtil) {
 
+    @ExperimentalCoroutinesApi
     @FlowPreview
     override suspend fun convert(dto: PopularPersonsResponse): List<PopularPersons> {
         val popularPersons = arrayListOf<PopularPersons>()
@@ -27,6 +29,13 @@ class PopularPersonsUseCase @Inject constructor(
                     popularPersons.add(mapper.convert(result))
                 }
                 popularPersons
+            }
+            .transform {
+                val filteredPopularPersons = arrayListOf<PopularPersons>()
+                for (i in 0 until it.size/2){
+                    filteredPopularPersons.add(it[i])
+                }
+                emit(filteredPopularPersons)
             }
             .flatMapConcat {
                 it.asFlow()
