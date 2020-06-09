@@ -9,4 +9,5 @@ object Config {
     const val POPULAR_PERSON = "person_id"
     const val POPULAR_ACTOR_IMAGES = "person/{$POPULAR_PERSON}/images"
     const val POPULAR_ACTOR_DETAILS = "person/{$POPULAR_PERSON}"
+
 }
