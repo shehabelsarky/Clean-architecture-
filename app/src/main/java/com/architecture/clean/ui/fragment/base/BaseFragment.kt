@@ -46,7 +46,7 @@ abstract class BaseFragment<VM : BaseViewModel>  : DaggerFragment() {
 
     }
 
-    private fun showLoading(show: Boolean) {
+    open fun showLoading(show: Boolean) {
         mLoader?.showLoading(show)
     }
 
@@ -60,12 +60,6 @@ abstract class BaseFragment<VM : BaseViewModel>  : DaggerFragment() {
 
     override fun onDetach() {
         super.onDetach()
-        showLoading(false)
         mLoader = null
-    }
-
-    override fun onStop() {
-        super.onStop()
-        showLoading(false)
     }
 }

@@ -7,17 +7,38 @@ import com.architecture.clean.domain.model.popular_person.parameters.PopularPers
 import com.architecture.clean.domain.model.popular_person.remote.PopularPersonsResponse
 import com.architecture.clean.domain.repository.AppRepository
 import com.architecture.clean.domain.usecase.base.UseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-class GetPopularPersonsUseCase @Inject constructor(
-        errorUtil: CloudErrorMapper,
-        private val appRepository: AppRepository
+class PopularPersonsUseCase @Inject constructor(
+    errorUtil: CloudErrorMapper,
+    private val appRepository: AppRepository,
+    private val mapper: PopularPersonsMapper
 ) : UseCase<PopularPersonsRequest, PopularPersonsResponse, List<PopularPersons>>(errorUtil) {
 
+    @ExperimentalCoroutinesApi
+    @FlowPreview
     override suspend fun convert(dto: PopularPersonsResponse): List<PopularPersons> {
-       return dto.results?.map {
-           PopularPersonsMapper.convert(it)
-        }?: listOf()
+        val popularPersons = arrayListOf<PopularPersons>()
+
+        return flowOf(dto.results)
+            .map {
+                it?.forEach { result ->
+                    popularPersons.add(mapper.convert(result))
+                }
+                popularPersons
+            }
+            .transform {
+                val filteredPopularPersons = arrayListOf<PopularPersons>()
+                filteredPopularPersons.addAll(it)
+                emit(filteredPopularPersons)
+            }
+            .flatMapConcat {
+                it.asFlow()
+            }
+            .toList()
     }
 
     override suspend fun executeOnBackground(parameters: PopularPersonsRequest): PopularPersonsResponse {

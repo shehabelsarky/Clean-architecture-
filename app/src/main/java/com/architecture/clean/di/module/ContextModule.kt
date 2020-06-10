@@ -15,4 +15,10 @@ class ContextModule {
     fun provideContext(application: Application): Context {
         return application
     }
+
+    @Provides
+    @Singleton
+    fun provideApplication(application: Application): Application {
+        return application
+    }
 }
