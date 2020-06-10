@@ -48,7 +48,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
                 PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
 
                 popularPersonsChannel.asFlow().collect {
-                    setData(it)
+                    setData(it as ArrayList<PopularPersons>)
                 }
             }
         }
