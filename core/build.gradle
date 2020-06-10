@@ -1,0 +1,96 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    testImplementation 'org.mockito:mockito-inline:2.11.0'
+    implementation 'androidx.arch.core:core-testing:2.0.0'
+    implementation "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
+
+
+    //kotlin
+    api deps.kotlin_dep.kotlin_stdlib
+    api deps.kotlin_dep.core_ktx
+
+    //androidx_dep
+    api deps.androidx_dep.appcompat
+    api deps.androidx_dep.fragment
+    api deps.androidx_dep.cardview
+    api deps.androidx_dep.recyclerview
+    api deps.androidx_dep.multidex
+    api deps.androidx_dep.lifecycle
+    api deps.androidx_dep.legacy
+    api deps.androidx_dep.lifecycle_compiler_kapt
+    api deps.androidx_dep.ifecycle_reactivestreams
+    api deps.androidx_dep.lifecycle_common
+    api deps.androidx_dep.lifecycle_runtime
+    api deps.androidx_dep.lifecycle_livedata
+    api deps.androidx_dep.constraintlayout
+    api deps.androidx_dep.navigation_fragment
+    api deps.androidx_dep.navigation_ui
+    api deps.androidx_dep.room_runtime
+    api deps.androidx_dep.room_coroutines
+    api deps.androidx_dep.lifecycle_viewmodel
+    kapt deps.androidx_dep.room_compiler_kapt
+
+    //material_dep
+    api deps.material_dep.material
+
+    //retrofit
+    api deps.retrofit_dep.retrofit2
+    api deps.retrofit_dep.okhttp3
+    api deps.retrofit_dep.converter_gson
+    api deps.retrofit_dep.logging_interceptor
+
+    // gson
+    api deps.gson_dep.gson
+
+    //dagger
+    api deps.dagger_dep.dagger
+    api deps.dagger_dep.dagger_android
+    api deps.dagger_dep.dagger_support
+    kapt deps.dagger_dep.dagger_compiler_kapt
+    kapt deps.dagger_dep.dagger_processor_kapt
+    kapt deps.dagger_dep.dagger_support_kapt
+
+    //courotines
+    api deps.coroutines_dep.core
+    api deps.coroutines_dep.android
+
+    //groupie
+    api deps.groupie_dep.groupie
+    api deps.groupie_dep.groupie_extension
+
+
+}
