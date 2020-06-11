@@ -34,6 +34,9 @@ android {
 }
 
 dependencies {
+    kapt deps.dagger_dep.dagger_compiler_kapt
+    kapt deps.dagger_dep.dagger_processor_kapt
+    kapt deps.dagger_dep.dagger_support_kapt
     api project(':core')
     api project(':navigation')
 }

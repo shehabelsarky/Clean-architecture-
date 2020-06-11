@@ -19,10 +19,10 @@ data class Food(
 ) : Parcelable {
     constructor(source: Parcel) : this(
             source.readInt(),
-            source.readString(),
-            source.readString(),
-            source.readString(),
-            source.readString()
+            source.readString()!!,
+            source.readString()!!,
+            source.readString()!!,
+            source.readString()!!
     )
 
     override fun describeContents() = 0

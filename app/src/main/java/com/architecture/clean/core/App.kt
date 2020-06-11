@@ -1,6 +1,5 @@
 package com.architecture.clean.core
 
-
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.architecture.clean.di.component.DaggerCoreComponent

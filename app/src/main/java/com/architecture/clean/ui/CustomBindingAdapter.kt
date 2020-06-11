@@ -6,10 +6,10 @@ import com.squareup.picasso.Picasso
 
 object CustomBindingAdapter{
 
-    @JvmStatic
+  /*  @JvmStatic
     @BindingAdapter("bind:image_url")
     fun loadImage(imageView: ImageView, url: String) {
         Picasso.with(imageView.context).load(url).into(imageView)
-    }
+    }*/
 
 }

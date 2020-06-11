@@ -41,6 +41,7 @@ dependencies {
 
     //kotlin
     api deps.kotlin_dep.kotlin_stdlib
+    api deps.kotlin_dep.kotlin_reflect
     api deps.kotlin_dep.core_ktx
 
     //androidx_dep
@@ -51,7 +52,7 @@ dependencies {
     api deps.androidx_dep.multidex
     api deps.androidx_dep.lifecycle
     api deps.androidx_dep.legacy
-    api deps.androidx_dep.lifecycle_compiler_kapt
+    kapt deps.androidx_dep.lifecycle_compiler_kapt
     api deps.androidx_dep.ifecycle_reactivestreams
     api deps.androidx_dep.lifecycle_common
     api deps.androidx_dep.lifecycle_runtime
@@ -80,9 +81,7 @@ dependencies {
     api deps.dagger_dep.dagger
     api deps.dagger_dep.dagger_android
     api deps.dagger_dep.dagger_support
-    kapt deps.dagger_dep.dagger_compiler_kapt
-    kapt deps.dagger_dep.dagger_processor_kapt
-    kapt deps.dagger_dep.dagger_support_kapt
+
 
     //courotines
     api deps.coroutines_dep.core
@@ -92,5 +91,7 @@ dependencies {
     api deps.groupie_dep.groupie
     api deps.groupie_dep.groupie_extension
 
+    //picasso
+    api deps.picasso_dep.picasso
 
 }
