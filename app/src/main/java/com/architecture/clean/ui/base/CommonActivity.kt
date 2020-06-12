@@ -2,14 +2,17 @@ package com.architecture.clean.ui.base
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.architecture.clean.R
 import com.architecture.clean.ui.utils.LoadingListener
 import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_common.*
 
-abstract class CommonActivity : DaggerAppCompatActivity(), View.OnClickListener, LoadingListener {
+@AndroidEntryPoint
+abstract class CommonActivity : AppCompatActivity(), View.OnClickListener, LoadingListener {
 
     private lateinit var navFragment: NavHostFragment
     private lateinit var navController: NavController

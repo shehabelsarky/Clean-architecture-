@@ -1,5 +1,6 @@
 package com.architecture.clean.ui.fragment.home
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.LiveData
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
@@ -12,14 +13,14 @@ import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-class HomeViewModel @Inject constructor(
+class HomeViewModel @ViewModelInject constructor(
     private val popularPersonsUseCase: PopularPersonsUseCase,
     private val searchPopularPersonsUseCase: SearchPopularPersonsUseCase
 ) : BaseViewModel() {
     private val TAG = HomeViewModel::class.java.simpleName
 
     val popularPersonsChannel : ConflatedBroadcastChannel<List<PopularPersons>> by lazy {
-        ConflatedBroadcastChannel<List<PopularPersons>>()
+        ConflatedBroadcastChannel()
     }
 
     fun getPopularPersons(parameters: PopularPersonsRequest) {

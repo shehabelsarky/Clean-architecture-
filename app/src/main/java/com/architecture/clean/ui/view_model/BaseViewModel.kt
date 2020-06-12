@@ -1,5 +1,6 @@
 package com.architecture.clean.ui.view_model
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,10 +12,9 @@ import com.architecture.clean.domain.usecase.base.CompletionBlock
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-open class BaseViewModel @Inject constructor() : ViewModel() {
+open class BaseViewModel @ViewModelInject constructor() : ViewModel() {
     private val isLoading: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val isLoadingLiveData: MutableLiveData<Boolean> by lazy { isLoading }
 
