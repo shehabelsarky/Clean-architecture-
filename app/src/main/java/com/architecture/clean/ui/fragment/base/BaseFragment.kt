@@ -11,12 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.architecture.clean.ui.utils.LoadingListener
 import com.architecture.clean.ui.view_model.BaseViewModel
-import dagger.android.support.DaggerFragment
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
-@AndroidEntryPoint
 abstract class BaseFragment<VM : BaseViewModel>  : Fragment() {
 
     private val TAG = BaseFragment::class.java.simpleName

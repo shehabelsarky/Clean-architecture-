@@ -15,11 +15,14 @@ class PopularPersonsAdapter(private val mContext: Context, var data: PopularPers
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.apply {
-            tvName.text = data.name
-            tvTitle.text = data.tile
-            tvPopularity.text = data.popularity.toString()
-            tvOverview.text = data.tile
-            Picasso.with(mContext).load(Config.BASE_IMAGE_URL.plus(data.image)).into(ivImage)
+            data.apply {
+                tvName.text = name
+                tvTitle.text = tile
+                tvPopularity.text = popularity.toString()
+                tvOverview.text = tile
+                Picasso.with(mContext).load(Config.BASE_IMAGE_URL.plus(image)).into(ivImage)
+            }
+
         }
     }
 }

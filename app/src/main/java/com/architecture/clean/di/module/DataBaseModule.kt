@@ -6,9 +6,12 @@ import com.architecture.clean.data.source.db.AppDatabase
 import com.architecture.clean.data.source.db.FoodDao
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class DataBaseModule {
 
     @Provides

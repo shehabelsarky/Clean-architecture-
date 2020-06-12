@@ -10,7 +10,6 @@ import com.architecture.clean.domain.usecase.search_popular_persons.SearchPopula
 import com.architecture.clean.ui.view_model.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
-import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 class HomeViewModel @ViewModelInject constructor(
@@ -20,7 +19,7 @@ class HomeViewModel @ViewModelInject constructor(
     private val TAG = HomeViewModel::class.java.simpleName
 
     val popularPersonsChannel : ConflatedBroadcastChannel<List<PopularPersons>> by lazy {
-        ConflatedBroadcastChannel()
+        ConflatedBroadcastChannel<List<PopularPersons>>()
     }
 
     fun getPopularPersons(parameters: PopularPersonsRequest) {

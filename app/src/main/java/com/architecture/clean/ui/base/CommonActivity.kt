@@ -7,11 +7,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.architecture.clean.R
 import com.architecture.clean.ui.utils.LoadingListener
-import dagger.android.support.DaggerAppCompatActivity
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_common.*
 
-@AndroidEntryPoint
 abstract class CommonActivity : AppCompatActivity(), View.OnClickListener, LoadingListener {
 
     private lateinit var navFragment: NavHostFragment
