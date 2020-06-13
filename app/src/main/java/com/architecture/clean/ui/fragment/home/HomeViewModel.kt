@@ -10,9 +10,10 @@ import com.architecture.clean.domain.usecase.search_popular_persons.SearchPopula
 import com.architecture.clean.ui.view_model.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-class HomeViewModel @ViewModelInject constructor(
+class HomeViewModel @Inject constructor(
     private val popularPersonsUseCase: PopularPersonsUseCase,
     private val searchPopularPersonsUseCase: SearchPopularPersonsUseCase
 ) : BaseViewModel() {

@@ -1,7 +1,6 @@
 package com.architecture.clean.ui.fragment.home
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.architecture.clean.R
 import com.architecture.clean.domain.model.popular_person.local.PopularPersons
@@ -18,13 +17,16 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+
 @ExperimentalCoroutinesApi
 @FlowPreview
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel>() {
 
     override var layoutResourceId: Int = R.layout.fragment_home
-    override val viewModel by viewModels<HomeViewModel>()
+    @Inject
+    override lateinit var  viewModel: HomeViewModel
 
     private val TAG = HomeFragment::class.java.simpleName
     private val popularPersonsList: ArrayList<PopularPersons> = arrayListOf()

@@ -11,9 +11,9 @@ interface FoodDao {
     suspend fun insertFood(food: Food): Long
 
     @Delete
-   suspend fun deleteFood(food: Food): Int
+    suspend fun deleteFood(food: Food): Int
 
     @Query("SELECT * from Food")
-   suspend fun selectAllFoods(): MutableList<Food>
+    suspend fun selectAllFoods(): MutableList<Food>
 
 }
