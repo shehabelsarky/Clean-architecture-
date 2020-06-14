@@ -2,8 +2,8 @@ package com.architecture.clean.ui.fragment.home.adapter
 
 import android.content.Context
 import com.architecture.clean.R
-import com.architecture.clean.core.Config
-import com.architecture.clean.domain.model.popular_person.local.PopularPersons
+import com.examples.data.restful.Config
+import com.examples.entities.popular_person.local.PopularPersons
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder

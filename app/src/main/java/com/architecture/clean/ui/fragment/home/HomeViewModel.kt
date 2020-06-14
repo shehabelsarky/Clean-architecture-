@@ -3,11 +3,11 @@ package com.architecture.clean.ui.fragment.home
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.LiveData
-import com.architecture.clean.domain.model.popular_person.local.PopularPersons
-import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
-import com.architecture.clean.domain.usecase.popular_persons.PopularPersonsUseCase
-import com.architecture.clean.domain.usecase.search_popular_persons.SearchPopularPersonsUseCase
-import com.architecture.clean.ui.view_model.BaseViewModel
+import com.examples.entities.popular_person.local.PopularPersons
+import com.examples.entities.popular_person.parameters.PopularPersonsQuery
+import com.examples.domain.popular_persons.PopularPersonsUseCase
+import com.examples.domain.search_popular_persons.SearchPopularPersonsUseCase
+import com.examples.core.base.view_model.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 
@@ -22,7 +22,7 @@ class HomeViewModel @ViewModelInject constructor(
         ConflatedBroadcastChannel<List<PopularPersons>>()
     }
 
-    fun getPopularPersons(parameters: PopularPersonsRequest) {
+    fun getPopularPersons(parameters: PopularPersonsQuery) {
         callApi(popularPersonsChannel){ statesCallBack ->
             popularPersonsUseCase.execute(parameters,statesCallBack)
         }
@@ -32,7 +32,7 @@ class HomeViewModel @ViewModelInject constructor(
             by lazy { MutableLiveData<List<PopularPersons>>() }
     val searchPopularPersonsLiveData: LiveData<List<PopularPersons>> = searchPopularPersonsData
 
-    fun searchPopularPersons(parameters: PopularPersonsRequest) {
+    fun searchPopularPersons(parameters: PopularPersonsQuery) {
         callApi(searchPopularPersonsData) { statesCallBack ->
             searchPopularPersonsUseCase.execute(parameters, statesCallBack)
         }

@@ -1,7 +1,7 @@
 package com.architecture.clean.di.module
 
-import com.architecture.clean.data.repository.AppRepoImp
-import com.architecture.clean.domain.repository.AppRepository
+import com.examples.data.repository.AppRepoImp
+import com.examples.data.repository.AppRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

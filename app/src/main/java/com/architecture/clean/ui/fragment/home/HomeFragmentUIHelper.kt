@@ -3,7 +3,7 @@ package com.architecture.clean.ui.fragment.home
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.architecture.clean.domain.model.popular_person.local.PopularPersons
+import com.examples.entities.popular_person.local.PopularPersons
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 

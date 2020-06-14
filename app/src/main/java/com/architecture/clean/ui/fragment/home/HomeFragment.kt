@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.architecture.clean.R
-import com.architecture.clean.domain.model.popular_person.local.PopularPersons
-import com.architecture.clean.domain.model.popular_person.parameters.PopularPersonsRequest
+import com.examples.entities.popular_person.local.PopularPersons
+import com.examples.entities.popular_person.parameters.PopularPersonsQuery
 import com.architecture.clean.ui.activity.MainActivity
-import com.architecture.clean.ui.fragment.base.BaseFragment
+import com.examples.core.base.fragment.BaseFragment
 import com.architecture.clean.ui.fragment.home.adapter.PopularPersonsAdapter
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -40,7 +40,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         )
         lifecycleScope.launch {
             with(viewModel) {
-                PopularPersonsRequest().apply { page = 1 }.also { getPopularPersons(it) }
+                PopularPersonsQuery().apply { page = 1 }.also { getPopularPersons(it) }
 
                 popularPersonsChannel.asFlow().collect {
                     setData(it as ArrayList<PopularPersons>)
