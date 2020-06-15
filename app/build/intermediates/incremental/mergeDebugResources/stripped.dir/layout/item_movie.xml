@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                              
+
+    
+
+                 
+                       
+                                                
+
+           
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="#f5f5f5"
+        card_view:cardCornerRadius="3dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true" android:tag="layout/item_movie_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/ivImage"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_account_circle_black_24dp" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/ivImage"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/name"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    fontPath="fonts/Roboto-Light.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvName"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/ivImage"
+                    android:fontFamily="@font/robboto"
+                    android:text="@string/date"
+                    android:textColor="#4e4e4e"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tvPopularity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvName"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/tvTitle"
+                    android:drawableStart="@drawable/ic_favorite_border_black_24dp"
+                    android:fontFamily="@font/robboto"
+                    android:text="1325"
+                    android:textColor="#4e4e4e"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header"
+                android:adjustViewBounds="true" />
+
+            <TextView
+                android:id="@+id/tvOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_icon"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/roboto_medium"
+                android:padding="8dp"
+                android:textColor="#424242"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+         

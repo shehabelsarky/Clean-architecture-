@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FAF8F8</color>
+    <color name="colorAccent">#712c40</color>
+    <color name="colorPrimary">#712c81</color>
+    <color name="colorPrimaryDark">#712c81</color>
+    <color name="deep_lavender">#995db0</color>
+    <color name="warm_purple">#712c81</color>
+    <color name="white">#fff</color>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Movies</string>
+    <string name="clicked">clicked</string>
+    <string name="date">Today 03:14PM </string>
+    <string name="empty_list">oops, List is empty.</string>
+    <string name="health">Health</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+    </string>
+    <string name="loading">Please wait...</string>
+    <string name="name">Alicia Scott</string>
+    <string name="not_clicked">not_clicked</string>
+    <string name="popular_persons">Popular persons</string>
+    <string name="signin">Sign in</string>
+    <string name="start">Start</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+</resources>

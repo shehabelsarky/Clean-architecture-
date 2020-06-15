@@ -38,45 +38,47 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation "androidx.fragment:fragment-ktx:1.2.4"
-    implementation 'com.google.android.material:material:1.1.0-alpha02'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
-
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    kapt 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.1.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha01'
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
-
-    //hilt
-    implementation "com.google.dagger:hilt-android:2.28-alpha"
-    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01'
-    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
-    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha01'
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    testImplementation 'org.mockito:mockito-inline:2.11.0'
-    implementation 'androidx.arch.core:core-testing:2.0.0'
-    implementation "com.nhaarman:mockito-kotlin-kt1.1:$mockitoKotlinVersion"
-
     implementation project(":entities")
     api project(":domain")
+
+    //kotlin
+    implementation(Kotlin.kotlin_stdlib_jdk)
+    implementation(Kotlin.kotlin_stdlib)
+    implementation(Kotlin.core_ktx)
+    implementation(Kotlin.kotlin_reflect)
+
+    //Androidx
+    implementation(Androidx.appcompat)
+    implementation(Androidx.fragment)
+    implementation(Androidx.cardview)
+    implementation(Androidx.recyclerview)
+    implementation(Androidx.multidex)
+    implementation(Androidx.lifecycle)
+    implementation(Androidx.legacy)
+    kapt(Androidx.appcompat)
+    implementation(Androidx.ifecycle_reactivestreams)
+    implementation(Androidx.lifecycle_common)
+    implementation(Androidx.lifecycle_runtime)
+    implementation(Androidx.lifecycle_livedata)
+    implementation(Androidx.constraintlayout)
+    implementation(Androidx.navigation_fragment)
+    implementation(Androidx.navigation_ui)
+    implementation(Androidx.room_runtime)
+    implementation(Androidx.room_ktx)
+    kapt(Androidx.room_compiler_kapt)
+    implementation(Androidx.lifecycle_viewmodel)
+
+    //Hilt
+    implementation(Hilt.hilt_android)
+    implementation(Hilt.viewmodel)
+    kapt(Hilt.kapt_hilt_android)
+    kapt(Hilt.kapt_hilt_compiler)
+
+  /*  //test
+    testImplementation(Test.junit)
+    androidTestImplementation(Test.runner)
+    androidTestImplementation(Test.espresso_core)
+    testImplementation(Test.mockito)
+    implementation(Test.core_testing)
+    implementation(Test.mockito_kotlin)*/
 }
