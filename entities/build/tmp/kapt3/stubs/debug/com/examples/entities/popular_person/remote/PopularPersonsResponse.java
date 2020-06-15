@@ -10,13 +10,13 @@ public final class PopularPersonsResponse implements java.io.Serializable {
     private java.util.List<com.examples.entities.popular_person.remote.Profile> profiles;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "page")
-    private int page;
+    private int page = 0;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "total_results")
-    private int totalResults;
+    private int totalResults = 0;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "total_pages")
-    private int totalPages;
+    private int totalPages = 0;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "results")

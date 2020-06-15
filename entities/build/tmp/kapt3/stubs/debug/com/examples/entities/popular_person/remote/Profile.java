@@ -10,23 +10,23 @@ public final class Profile implements java.io.Serializable {
     private java.lang.Object iso6391;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "width")
-    private int width;
+    private int width = 0;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "height")
-    private int height;
+    private int height = 0;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "vote_count")
-    private int voteCount;
+    private int voteCount = 0;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "vote_average")
-    private float voteAverage;
+    private float voteAverage = 0.0F;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "file_path")
     private java.lang.String filePath;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "aspect_ratio")
-    private float aspectRatio;
+    private float aspectRatio = 0.0F;
     private static final long serialVersionUID = -1264620972366786161L;
     public static final com.examples.entities.popular_person.remote.Profile.Companion Companion = null;
     

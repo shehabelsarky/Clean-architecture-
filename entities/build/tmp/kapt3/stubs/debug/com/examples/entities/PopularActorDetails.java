@@ -18,7 +18,7 @@ public final class PopularActorDetails implements java.io.Serializable {
     private java.lang.Object deathday;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "id")
-    private int id;
+    private int id = 0;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "name")
@@ -29,14 +29,14 @@ public final class PopularActorDetails implements java.io.Serializable {
     private java.util.List<java.lang.String> alsoKnownAs;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "gender")
-    private int gender;
+    private int gender = 0;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "biography")
     private java.lang.String biography;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "popularity")
-    private float popularity;
+    private float popularity = 0.0F;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "place_of_birth")
@@ -47,7 +47,7 @@ public final class PopularActorDetails implements java.io.Serializable {
     private java.lang.String profilePath;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "adult")
-    private boolean isAdult;
+    private boolean isAdult = false;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "imdb_id")

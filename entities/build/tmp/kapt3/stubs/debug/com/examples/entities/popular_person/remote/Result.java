@@ -6,10 +6,10 @@ import java.lang.System;
 public final class Result implements java.io.Serializable {
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "popularity")
-    private float popularity;
+    private float popularity = 0.0F;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "id")
-    private int id;
+    private int id = 0;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "profile_path")
@@ -24,7 +24,7 @@ public final class Result implements java.io.Serializable {
     private java.util.List<com.examples.entities.popular_person.remote.KnownFor> knownFor;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "adult")
-    private boolean isAdult;
+    private boolean isAdult = false;
     private static final long serialVersionUID = -3162855886569890092L;
     public static final com.examples.entities.popular_person.remote.Result.Companion Companion = null;
     

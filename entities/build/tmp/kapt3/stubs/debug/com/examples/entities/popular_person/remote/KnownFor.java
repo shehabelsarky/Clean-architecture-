@@ -6,16 +6,16 @@ import java.lang.System;
 public final class KnownFor implements java.io.Serializable {
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "vote_average")
-    private float voteAverage;
+    private float voteAverage = 0.0F;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "vote_count")
-    private int voteCount;
+    private int voteCount = 0;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "id")
-    private int id;
+    private int id = 0;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "video")
-    private boolean isVideo;
+    private boolean isVideo = false;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "media_type")
@@ -26,7 +26,7 @@ public final class KnownFor implements java.io.Serializable {
     private java.lang.String title;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "popularity")
-    private float popularity;
+    private float popularity = 0.0F;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "poster_path")
@@ -49,7 +49,7 @@ public final class KnownFor implements java.io.Serializable {
     private java.lang.String backdropPath;
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "adult")
-    private boolean isAdult;
+    private boolean isAdult = false;
     @org.jetbrains.annotations.Nullable()
     @com.google.gson.annotations.Expose()
     @com.google.gson.annotations.SerializedName(value = "overview")
