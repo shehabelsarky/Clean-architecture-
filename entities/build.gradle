@@ -51,11 +51,11 @@ dependencies {
     implementation(Androidx.room_ktx)
     kapt(Androidx.room_compiler_kapt)
 
-   /* //test
-    androidTestImplementation(Test.junit)
-    androidTestImplementation(Test.runner)
-    androidTestImplementation(Test.espresso_core)
-    testImplementation(Test.mockito)
-    implementation(Test.core_testing)
-    implementation(Test.mockito_kotlin)*/
+    //test
+    testImplementation(Androidx.junit)
+    androidTestImplementation(Androidx.runner)
+    androidTestImplementation(Androidx.espresso_core)
+    testImplementation(Androidx.mockito)
+    implementation(Androidx.core_testing)
+    implementation(Androidx.mockito_kotlin)
 }

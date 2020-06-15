@@ -74,11 +74,11 @@ dependencies {
     kapt(Hilt.kapt_hilt_android)
     kapt(Hilt.kapt_hilt_compiler)
 
-  /*  //test
-    testImplementation(Test.junit)
-    androidTestImplementation(Test.runner)
-    androidTestImplementation(Test.espresso_core)
-    testImplementation(Test.mockito)
-    implementation(Test.core_testing)
-    implementation(Test.mockito_kotlin)*/
+    //test
+    testImplementation(Androidx.junit)
+    androidTestImplementation(Androidx.runner)
+    androidTestImplementation(Androidx.espresso_core)
+    testImplementation(Androidx.mockito)
+    implementation(Androidx.core_testing)
+    implementation(Androidx.mockito_kotlin)
 }

@@ -68,6 +68,13 @@ object Androidx {
     val room_compiler_kapt = "androidx.room:room-compiler:${Versions.room_version}"
     val lifecycle_viewmodel =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+
+    val junit = "junit:junit:${Versions.test_junit}"
+    val runner = "androidx.test:runner:${Versions.test_runner}"
+    val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    val mockito = "org.mockito:mockito-inline:${Versions.mockitoInline}"
+    val core_testing = "androidx.arch.core:core-testing:${Versions.test_arch_core}"
+    val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockitoKotlinVersion}"
 }
 
 object Material {
@@ -105,13 +112,4 @@ object Hilt {
     val viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hilt_view_model}"
     val kapt_hilt_android = "com.google.dagger:hilt-android-compiler:${Versions.hilt_kapt}"
     val kapt_hilt_compiler = "androidx.hilt:hilt-compiler:${Versions.hilt_kapt_compiler}"
-}
-
-object Test {
-    val junit = "junit:junit:${Versions.test_junit}"
-    val runner = "androidx.test:runner:${Versions.test_runner}"
-    val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso}"
-    val mockito = "org.mockito:mockito-inline:${Versions.mockitoInline}"
-    val core_testing = "androidx.arch.core:core-testing:${Versions.test_arch_core}"
-    val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockitoKotlinVersion}"
 }

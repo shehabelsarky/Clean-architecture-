@@ -1,1 +1,28 @@
-[{"outputType":{"type":"MERGED_MANIFESTS"},"apkData":{"type":"MAIN","splits":[],"versionCode":100,"versionName":"1.0.0","enabled":true,"outputFile":"app-debug.apk","fullName":"debug","baseName":"debug","dirName":""},"path":"AndroidManifest.xml","properties":{"packageId":"com.cooking.coroutine","split":"","minSdkVersion":"23"}}]
+{
+  "version": 1,
+  "applicationId": "com.cooking.coroutine",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "MERGED_MANIFESTS"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 100,
+        "versionName": "1.0.0",
+        "outputFile": "app-debug.apk",
+        "fullName": "debug",
+        "baseName": "debug",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {
+        "packageId": "com.cooking.coroutine",
+        "split": "",
+        "minSdkVersion": "23"
+      }
+    }
+  ]
+}

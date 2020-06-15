@@ -4,7 +4,7 @@
             "outputFile": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\shehab\\.gradle\\caches\\transforms-2\\files-2.1\\c1678d555eb6bd97a6a83d06fec91d10\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\shehab\\.gradle\\caches\\transforms-2\\files-2.1\\2901fd47cbe21b1b30ddad3d0f7d6a80\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\shehab\\.gradle\\caches\\transforms-2\\files-2.1\\ac2fd28867c53dbbc65dd68523d9c2cd\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\shehab\\.gradle\\caches\\transforms-2\\files-2.1\\ffb37f688f120cfeda52b274e7480ec4\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
