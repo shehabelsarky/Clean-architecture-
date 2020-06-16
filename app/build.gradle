@@ -7,13 +7,13 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion (Android.compileSdkVersion)
     defaultConfig {
-        applicationId "com.cooking.coroutine"
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 100
-        versionName "1.0.0"
+        applicationId = Android.applicationId
+        minSdkVersion (Android.minSdkVersion)
+        targetSdkVersion (Android.targetSdkVersion)
+        versionCode = Android.versionCode
+        versionName = Android.versionName
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

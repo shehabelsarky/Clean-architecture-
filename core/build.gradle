@@ -8,13 +8,13 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion (Android.compileSdkVersion)
 
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion (Android.minSdkVersion)
+        targetSdkVersion (Android.targetSdkVersion)
+        versionCode = Android.versionCode
+        versionName = Android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -75,10 +75,10 @@ dependencies {
     kapt(Hilt.kapt_hilt_compiler)
 
     //test
-    testImplementation(Androidx.junit)
-    androidTestImplementation(Androidx.runner)
-    androidTestImplementation(Androidx.espresso_core)
-    testImplementation(Androidx.mockito)
-    implementation(Androidx.core_testing)
-    implementation(Androidx.mockito_kotlin)
+    testImplementation(TestLib.junit)
+    androidTestImplementation(TestLib.runner)
+    androidTestImplementation(TestLib.espresso_core)
+    testImplementation(TestLib.mockito)
+    implementation(TestLib.core_testing)
+    implementation(TestLib.mockito_kotlin)
 }
