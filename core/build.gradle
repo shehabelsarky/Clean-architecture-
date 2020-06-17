@@ -67,6 +67,8 @@ dependencies {
     implementation(Androidx.room_ktx)
     kapt(Androidx.room_compiler_kapt)
     implementation(Androidx.lifecycle_viewmodel)
+    implementation(Androidx.activityKtx)
+    implementation(Androidx.fragmentKtx)
 
     //Hilt
     implementation(Hilt.hilt_android)

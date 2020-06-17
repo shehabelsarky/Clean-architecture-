@@ -20,66 +20,70 @@
 13-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:8:5-79
 13-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:8:22-76
 14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-15    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:9:5-81
+14-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:9:22-78
+15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:10:5-80
+15-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:10:22-77
+16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 17
 18    <application
-18-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:11:5-31:19
+18-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:13:5-33:19
 19        android:name="com.architecture.clean.core.App"
-19-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:12:9-33
+19-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:14:9-33
 20        android:allowBackup="true"
-20-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:13:9-35
+20-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:15:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.3.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\0e7d9a77b29912da55561439c2abac03\core-1.3.0\AndroidManifest.xml:24:18-86
+21-->[androidx.core:core:1.3.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b29ea55e45782985df4cb0d5890776f7\core-1.3.0\AndroidManifest.xml:24:18-86
 22        android:debuggable="true"
 23        android:extractNativeLibs="false"
 24        android:icon="@mipmap/ic_launcher"
-24-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:14:9-43
+24-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:16:9-43
 25        android:label="@string/app_name"
-25-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:15:9-41
+25-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:17:9-41
 26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:16:9-54
+26-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:18:9-54
 27        android:supportsRtl="true"
-27-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:17:9-35
+27-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:19:9-35
 28        android:testOnly="true"
 29        android:theme="@style/AppTheme"
-29-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:18:9-40
+29-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:20:9-40
 30        android:usesCleartextTraffic="true" >
-30-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:19:9-44
+30-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:21:9-44
 31        <activity android:name="com.architecture.clean.ui.activity.MainActivity" >
-31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:23:9-29:20
-31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:23:19-59
+31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:9-31:20
+31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:19-59
 32            <intent-filter>
-32-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:24:13-28:29
+32-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:26:13-30:29
 33                <action android:name="android.intent.action.MAIN" />
-33-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:17-69
-33-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:25-66
+33-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:27:17-69
+33-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:27:25-66
 34
 35                <category android:name="android.intent.category.LAUNCHER" />
-35-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:27:17-77
-35-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:27:27-74
+35-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:29:17-77
+35-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:29:27-74
 36            </intent-filter>
 37        </activity>
 38
 39        <service
-39-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\7651a16a82daabd9312aaa5c4fdaf577\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
+39-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
 40            android:name="androidx.room.MultiInstanceInvalidationService"
-40-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\7651a16a82daabd9312aaa5c4fdaf577\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
+40-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
 41            android:directBootAware="true"
-41-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\7651a16a82daabd9312aaa5c4fdaf577\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
+41-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
 42            android:exported="false" />
-42-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\7651a16a82daabd9312aaa5c4fdaf577\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
+42-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
 43
 44        <provider
-44-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\e6a3497a1ec40aed4b62f93c69e03df2\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+44-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
 45            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-45-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\e6a3497a1ec40aed4b62f93c69e03df2\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+45-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
 46            android:authorities="com.cooking.coroutine.lifecycle-process"
-46-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\e6a3497a1ec40aed4b62f93c69e03df2\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+46-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
 47            android:exported="false"
-47-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\e6a3497a1ec40aed4b62f93c69e03df2\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+47-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
 48            android:multiprocess="true" />
-48-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\e6a3497a1ec40aed4b62f93c69e03df2\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+48-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
 49    </application>
 50
 51</manifest>

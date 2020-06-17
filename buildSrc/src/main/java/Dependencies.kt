@@ -34,6 +34,8 @@ object Versions {
     val mockitoInline = "2.11.0"
     val test_arch_core = "2.0.0"
     val mockitoKotlinVersion = "1.5.0"
+    val activityKtxVersion = "1.2.0-alpha05"
+    val fragmentKtxVersion = "1.3.0-alpha05"
 }
 
 
@@ -87,6 +89,9 @@ object Androidx {
     val room_compiler_kapt = "androidx.room:room-compiler:${Versions.room_version}"
     val lifecycle_viewmodel =
             "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+
+    val activityKtx =  "androidx.activity:activity-ktx:${Versions.activityKtxVersion}"
+    val fragmentKtx =  "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"
 }
 
 object Material {
