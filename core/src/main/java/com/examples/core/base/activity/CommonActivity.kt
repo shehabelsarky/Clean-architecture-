@@ -34,11 +34,7 @@ abstract class CommonActivity : AppCompatActivity(), View.OnClickListener, Loadi
             }.map { it == PackageManager.PERMISSION_GRANTED }.find { !it } ?: true
 
             if (!allGranted) {
-                Toast.makeText(
-                    this,
-                    "Permissions are not granted",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "Permissions are not granted", Toast.LENGTH_SHORT).show()
             }
         }
 
