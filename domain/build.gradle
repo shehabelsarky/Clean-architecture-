@@ -40,7 +40,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api project(":data")
-    implementation project(":entities")
 
     //kotlin
     implementation(Kotlin.kotlin_stdlib_jdk)

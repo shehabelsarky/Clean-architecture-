@@ -41,22 +41,10 @@ dependencies {
     implementation(Kotlin.kotlin_stdlib)
     implementation(Kotlin.kotlin_reflect)
 
-    implementation(Kotlin.core_ktx)
-    implementation(Androidx.appcompat)
-
-
     implementation(Gson.gson)
 
     //Room
     implementation(Androidx.room_runtime)
     implementation(Androidx.room_ktx)
     kapt(Androidx.room_compiler_kapt)
-
-    //test
-    testImplementation(TestLib.junit)
-    androidTestImplementation(TestLib.runner)
-    androidTestImplementation(TestLib.espresso_core)
-    testImplementation(TestLib.mockito)
-    implementation(TestLib.core_testing)
-    implementation(TestLib.mockito_kotlin)
 }

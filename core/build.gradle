@@ -38,7 +38,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":entities")
     api project(":domain")
 
     //kotlin
