@@ -9,10 +9,10 @@ import androidx.hilt.lifecycle.ViewModelFactoryModules_ActivityModule_ProvideFac
 import androidx.hilt.lifecycle.ViewModelFactoryModules_FragmentModule_ProvideFactoryFactory;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import com.architecture.clean.ui.activity.MainActivity;
-import com.architecture.clean.ui.fragment.home.HomeFragment;
-import com.architecture.clean.ui.fragment.home.HomeViewModel_AssistedFactory;
-import com.architecture.clean.ui.fragment.home.HomeViewModel_AssistedFactory_Factory;
+import com.example.popularpersons.ui.activity.MainActivity;
+import com.example.popularpersons.ui.fragment.home.HomeFragment;
+import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory;
+import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory_Factory;
 import com.examples.core.base.view_model.BaseViewModel_AssistedFactory;
 import com.examples.core.base.view_model.BaseViewModel_AssistedFactory_Factory;
 import com.examples.data.di.DataBaseModule;
@@ -329,7 +329,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private Map<String, Provider<ViewModelAssistedFactory<? extends ViewModel>>> getMapOfStringAndProviderOfViewModelAssistedFactoryOf(
           ) {
-        return MapBuilder.<String, Provider<ViewModelAssistedFactory<? extends ViewModel>>>newMapBuilder(2).put("com.examples.core.base.view_model.BaseViewModel", (Provider) getBaseViewModel_AssistedFactoryProvider()).put("com.architecture.clean.ui.fragment.home.HomeViewModel", (Provider) getHomeViewModel_AssistedFactoryProvider()).build();
+        return MapBuilder.<String, Provider<ViewModelAssistedFactory<? extends ViewModel>>>newMapBuilder(2).put("com.examples.core.base.view_model.BaseViewModel", (Provider) getBaseViewModel_AssistedFactoryProvider()).put("com.example.popularpersons.ui.fragment.home.HomeViewModel", (Provider) getHomeViewModel_AssistedFactoryProvider()).build();
       }
 
       private ViewModelProvider.Factory getProvideFactory() {
@@ -337,7 +337,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       }
 
       @Override
-      public void injectMainActivity(MainActivity mainActivity) {
+      public void injectMainActivity(MainActivity arg0) {
       }
 
       @Override
@@ -383,7 +383,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         }
 
         @Override
-        public void injectHomeFragment(HomeFragment homeFragment) {
+        public void injectHomeFragment(HomeFragment arg0) {
         }
 
         @Override
@@ -455,7 +455,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
             case 0: // com.examples.core.base.view_model.BaseViewModel_AssistedFactory 
             return (T) BaseViewModel_AssistedFactory_Factory.newInstance();
 
-            case 1: // com.architecture.clean.ui.fragment.home.HomeViewModel_AssistedFactory 
+            case 1: // com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory 
             return (T) ActivityCImpl.this.getHomeViewModel_AssistedFactory();
 
             case 2: // com.examples.domain.popular_persons.PopularPersonsUseCase 

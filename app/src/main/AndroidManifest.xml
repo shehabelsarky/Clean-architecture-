@@ -22,7 +22,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="q">
 
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name="com.example.popularpersons.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -4,6 +4,7 @@ ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-ar
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:2:1-35:12
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:2:1-35:12
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:2:1-35:12
+MERGED from [:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:domain] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\domain\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [:data] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\data\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-12:12
@@ -161,10 +162,10 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\sh
 		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:21:9-44
 	android:name
 		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:14:9-33
-activity#com.architecture.clean.ui.activity.MainActivity
+activity#com.example.popularpersons.ui.activity.MainActivity
 ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:9-31:20
 	android:name
-		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:19-59
+		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:19-85
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:26:13-30:29
 action#android.intent.action.MAIN
@@ -179,6 +180,8 @@ uses-sdk
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml
+MERGED from [:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:domain] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\domain\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41

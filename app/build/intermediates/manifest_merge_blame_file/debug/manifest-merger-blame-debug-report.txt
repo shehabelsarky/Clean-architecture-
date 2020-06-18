@@ -50,9 +50,9 @@
 29-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:20:9-40
 30        android:usesCleartextTraffic="true" >
 30-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:21:9-44
-31        <activity android:name="com.architecture.clean.ui.activity.MainActivity" >
+31        <activity android:name="com.example.popularpersons.ui.activity.MainActivity" >
 31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:9-31:20
-31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:19-59
+31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:19-85
 32            <intent-filter>
 32-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:26:13-30:29
 33                <action android:name="android.intent.action.MAIN" />

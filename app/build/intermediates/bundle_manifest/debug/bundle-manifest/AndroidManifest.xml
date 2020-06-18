@@ -28,7 +28,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name="com.architecture.clean.ui.activity.MainActivity" >
+        <activity android:name="com.example.popularpersons.ui.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

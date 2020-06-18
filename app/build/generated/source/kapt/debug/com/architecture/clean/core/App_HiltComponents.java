@@ -2,9 +2,9 @@ package com.architecture.clean.core;
 
 import androidx.hilt.lifecycle.ViewModelFactoryModules;
 import com.architecture.clean.di.module.AppModule;
-import com.architecture.clean.ui.activity.MainActivity_GeneratedInjector;
-import com.architecture.clean.ui.fragment.home.HomeFragment_GeneratedInjector;
-import com.architecture.clean.ui.fragment.home.HomeViewModel_HiltModule;
+import com.example.popularpersons.ui.activity.MainActivity_GeneratedInjector;
+import com.example.popularpersons.ui.fragment.home.HomeFragment_GeneratedInjector;
+import com.example.popularpersons.ui.fragment.home.HomeViewModel_HiltModule;
 import com.examples.core.base.view_model.BaseViewModel_HiltModule;
 import com.examples.data.di.DataBaseModule;
 import com.examples.data.di.NetworkModule;
