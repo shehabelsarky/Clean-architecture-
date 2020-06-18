@@ -64,26 +64,29 @@
 35-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:29:27-74
 36            </intent-filter>
 37        </activity>
-38
-39        <service
-39-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
-40            android:name="androidx.room.MultiInstanceInvalidationService"
-40-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
-41            android:directBootAware="true"
-41-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
-42            android:exported="false" />
-42-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
-43
-44        <provider
-44-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-45            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-45-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-46            android:authorities="com.cooking.coroutine.lifecycle-process"
-46-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-47            android:exported="false"
-47-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-48            android:multiprocess="true" />
-48-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-49    </application>
-50
-51</manifest>
+38        <activity android:name="com.examples.core.base.activity.PermissionsActivity" />
+38-->[:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-88
+38-->[:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-85
+39
+40        <service
+40-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
+41            android:name="androidx.room.MultiInstanceInvalidationService"
+41-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
+42            android:directBootAware="true"
+42-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
+43            android:exported="false" />
+43-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\26a6bb56d91add1f286c12882cb73a48\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
+44
+45        <provider
+45-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+46            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+46-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+47            android:authorities="com.cooking.coroutine.lifecycle-process"
+47-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+48            android:exported="false"
+48-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+49            android:multiprocess="true" />
+49-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\b9004caecf068501fff04036d71b428e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+50    </application>
+51
+52</manifest>

@@ -19,30 +19,10 @@ abstract class CommonActivity : AppCompatActivity(), View.OnClickListener, Loadi
 
     abstract var navGraphResourceId: Int
 
-    companion object {
-        private val permissions = arrayOf(
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            android.Manifest.permission.READ_EXTERNAL_STORAGE
-        )
-    }
-
-    private val requestPermissions =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-            // Do something if some permissions granted or denied
-            val allGranted = permissions.entries.map {
-                checkSelfPermission(it.key)
-            }.map { it == PackageManager.PERMISSION_GRANTED }.find { !it } ?: true
-
-            if (!allGranted) {
-                Toast.makeText(this, "Permissions are not granted", Toast.LENGTH_SHORT).show()
-            }
-        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_common)
         setNavFragment()
-        requestPermissions.launch(permissions)
         btnBack.setOnClickListener(this)
     }
 
