@@ -1635,6 +1635,8 @@ id design_menu_item_action_area
 id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
+id detailsFragment
+id details_nav_graph
 id dialog_button
 id dimensions
 id direct
@@ -1951,6 +1953,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_details
 layout fragment_home
 layout item_movie
 layout mtrl_alert_dialog
@@ -2019,6 +2022,7 @@ menu activity_main_drawer
 menu menu_detail
 mipmap ic_launcher
 mipmap ic_launcher_round
+navigation details_nav_graph
 navigation nav_graph
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description

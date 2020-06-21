@@ -43,6 +43,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     api project(":core")
     api project(":domain")
+    api project(":navigation")
 
     //kotlin
     implementation(Kotlin.kotlin_stdlib_jdk)

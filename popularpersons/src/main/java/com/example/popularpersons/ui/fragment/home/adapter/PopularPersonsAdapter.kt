@@ -9,7 +9,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class PopularPersonsAdapter(private val mContext: Context, var data: PopularPersons) : Item<ViewHolder>() {
+class PopularPersonsAdapter(private val mContext: Context, var data: PopularPersons,private var mListener: OnPopularPersonItemClickListener) : Item<ViewHolder>() {
 
     override fun getLayout(): Int = R.layout.item_movie
 
@@ -21,8 +21,15 @@ class PopularPersonsAdapter(private val mContext: Context, var data: PopularPers
                 tvPopularity.text = popularity.toString()
                 tvOverview.text = tile
                 Picasso.with(mContext).load(Config.BASE_IMAGE_URL.plus(image)).into(ivImage)
-            }
 
+                setOnClickListener {
+                    mListener.onPopularPersonItemClickListener(data)
+                }
+            }
         }
+    }
+
+    interface OnPopularPersonItemClickListener{
+        fun onPopularPersonItemClickListener(data: PopularPersons)
     }
 }

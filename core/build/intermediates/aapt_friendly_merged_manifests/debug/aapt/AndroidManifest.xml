@@ -9,7 +9,8 @@
         android:targetSdkVersion="29" />
 
     <application>
-        <activity android:name="com.examples.core.base.activity.PermissionsActivity" />
+        <activity android:name="com.examples.core.base.activity.PermissionsActivity" >
+        </activity>
     </application>
 
 </manifest>

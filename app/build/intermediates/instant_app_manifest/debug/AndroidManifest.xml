@@ -36,7 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.examples.core.base.activity.PermissionsActivity" />
+        <activity android:name="com.example.details.ui.activity.DetailsActivity" />
+        <activity android:name="com.examples.core.base.activity.PermissionsActivity" >
+        </activity>
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

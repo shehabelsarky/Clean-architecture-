@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion (Android.compileSdkVersion)
+
+    defaultConfig {
+        minSdkVersion (Android.minSdkVersion)
+        targetSdkVersion (Android.targetSdkVersion)
+        versionCode = Android.versionCode
+        versionName = Android.versionName
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    api project(":core")
+    api project(":domain")
+    api project(":navigation")
+
+    //kotlin
+    implementation(Kotlin.kotlin_stdlib_jdk)
+    implementation(Kotlin.kotlin_stdlib)
+    implementation(Kotlin.core_ktx)
+    implementation(Kotlin.kotlin_reflect)
+
+    //Androidx
+    implementation(Androidx.appcompat)
+    implementation(Androidx.fragment)
+    implementation(Androidx.cardview)
+    implementation(Androidx.recyclerview)
+    implementation(Androidx.multidex)
+    implementation(Androidx.lifecycle)
+    implementation(Androidx.legacy)
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt(Androidx.appcompat)
+    implementation(Androidx.ifecycle_reactivestreams)
+    implementation(Androidx.lifecycle_common)
+    implementation(Androidx.lifecycle_runtime)
+    implementation(Androidx.lifecycle_livedata)
+    implementation(Androidx.constraintlayout)
+    implementation(Androidx.navigation_fragment)
+    implementation(Androidx.navigation_ui)
+    implementation(Androidx.lifecycle_viewmodel)
+
+    //Material
+    implementation(Material.material)
+
+    //picasso
+    implementation(Picasso.picasso)
+
+
+    //Coroutines
+    implementation(Coroutines.core)
+    implementation(Coroutines.android)
+
+    //Groupie
+    implementation(Groupie.groupie)
+    implementation(Groupie.groupie_extension)
+
+    //Hilt
+    implementation(Hilt.hilt_android)
+    implementation(Hilt.viewmodel)
+    kapt(Hilt.kapt_hilt_android)
+    kapt(Hilt.kapt_hilt_compiler)
+
+    //test
+    testImplementation(TestLib.junit)
+    androidTestImplementation(TestLib.runner)
+    androidTestImplementation(TestLib.espresso_core)
+    testImplementation(TestLib.mockito)
+    implementation(TestLib.core_testing)
+    implementation(TestLib.mockito_kotlin)
+
+}

@@ -9,6 +9,7 @@ import androidx.hilt.lifecycle.ViewModelFactoryModules_ActivityModule_ProvideFac
 import androidx.hilt.lifecycle.ViewModelFactoryModules_FragmentModule_ProvideFactoryFactory;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import com.example.details.ui.activity.DetailsActivity;
 import com.example.popularpersons.ui.activity.MainActivity;
 import com.example.popularpersons.ui.fragment.home.HomeFragment;
 import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory;
@@ -334,6 +335,10 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private ViewModelProvider.Factory getProvideFactory() {
         return ViewModelFactoryModules_ActivityModule_ProvideFactoryFactory.provideFactory(activity, ApplicationContextModule_ProvideApplicationFactory.provideApplication(DaggerApp_HiltComponents_ApplicationC.this.applicationContextModule), getMapOfStringAndProviderOfViewModelAssistedFactoryOf());
+      }
+
+      @Override
+      public void injectDetailsActivity(DetailsActivity arg0) {
       }
 
       @Override

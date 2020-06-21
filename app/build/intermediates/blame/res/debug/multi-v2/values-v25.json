@@ -4,7 +4,7 @@
             "outputFile": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\shehab\\.gradle\\caches\\transforms-2\\files-2.1\\0f1714daea1f0d9be013c95f414193b1\\appcompat-1.1.0\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\shehab\\.gradle\\caches\\transforms-2\\files-2.1\\99411c874e9b7e916c45e7ec38e3d30a\\appcompat-1.1.0\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

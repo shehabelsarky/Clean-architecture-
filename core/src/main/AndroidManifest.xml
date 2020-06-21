@@ -3,7 +3,9 @@
     package="com.examples.core">
 
     <application>
-        <activity android:name=".base.activity.PermissionsActivity"></activity>
+        <activity android:name="com.examples.core.base.activity.PermissionsActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -11,10 +11,11 @@
 9-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
 10
 11    <application>
-11-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:5-7:19
-12        <activity android:name="com.examples.core.base.activity.PermissionsActivity" />
-12-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:9-80
-12-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:19-68
-13    </application>
-14
-15</manifest>
+11-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:5-9:19
+12        <activity android:name="com.examples.core.base.activity.PermissionsActivity" >
+12-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:9-8:20
+12-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:19-85
+13        </activity>
+14    </application>
+15
+16</manifest>

@@ -1,3 +1,4 @@
+include ':details'
 include ':popularpersons'
 include ':entities'
 include ':data'
