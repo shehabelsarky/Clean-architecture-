@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import com.example.details.R
 import com.example.details.ui.utils.DETAILS_DATA
-import com.examples.core.base.activity.CommonActivity
+import com.examples.core.base.activity.BaseActivity
 import com.examples.core.utils.NavigationConstants
 import com.examples.entities.popular_person.local.PopularPersons
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailsActivity : CommonActivity() {
+class DetailsActivity : BaseActivity() {
     override var navGraphResourceId: Int =
         R.navigation.details_nav_graph
 

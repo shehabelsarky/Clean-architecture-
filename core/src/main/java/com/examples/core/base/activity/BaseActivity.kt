@@ -12,7 +12,7 @@ import com.examples.core.R
 import com.examples.core.utils.LoadingListener
 import kotlinx.android.synthetic.main.activity_common.*
 
-abstract class CommonActivity : AppCompatActivity(), View.OnClickListener, LoadingListener {
+abstract class BaseActivity : AppCompatActivity(), View.OnClickListener, LoadingListener {
 
     private lateinit var navFragment: NavHostFragment
     private lateinit var navController: NavController

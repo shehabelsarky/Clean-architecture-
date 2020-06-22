@@ -4,7 +4,7 @@ import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 
-abstract class PermissionsActivity : CommonActivity() {
+abstract class PermissionsActivity : BaseActivity() {
 
     abstract var permissions: Array<String>
 
