@@ -1938,6 +1938,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_common
 layout activity_main
+layout activity_splash
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2076,6 +2077,7 @@ string icon_content_description
 string item_view_role_description
 string large_text
 string loading
+string movies
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description

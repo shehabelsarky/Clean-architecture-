@@ -28,7 +28,7 @@
 16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 17
 18    <application
-18-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:13:5-27:19
+18-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:13:5-36:19
 19        android:name="com.architecture.clean.core.App"
 19-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:14:9-33
 20        android:allowBackup="true"
@@ -50,47 +50,57 @@
 29-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:20:9-40
 30        android:usesCleartextTraffic="true" >
 30-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:21:9-44
-31        <activity android:name="com.example.popularpersons.ui.activity.MainActivity" >
-31-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-18:20
-31-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-85
-32            <intent-filter>
-32-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-17:29
-33                <action android:name="android.intent.action.MAIN" />
-33-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-69
-33-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:25-66
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:17-77
-35-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:27-74
-36            </intent-filter>
-37        </activity>
-38        <activity android:name="com.example.details.ui.activity.DetailsActivity" />
-38-->[:details] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\details\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-84
-38-->[:details] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\details\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-81
-39        <activity android:name="com.examples.core.base.activity.PermissionsActivity" >
-39-->[:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-13:20
-39-->[:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-85
-40        </activity>
-41
-42        <service
-42-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
-43            android:name="androidx.room.MultiInstanceInvalidationService"
-43-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
-44            android:directBootAware="true"
-44-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
-45            android:exported="false" />
-45-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
+31        <activity android:name="com.example.popularpersons.ui.activity.SplashActivity" >
+31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:9-34:20
+31-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:25:19-87
+32            <meta-data
+32-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:26:13-28:42
+33                android:name="quadrant"
+33-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:27:17-40
+34                android:value="ignore" />
+34-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:28:17-39
+35
+36            <intent-filter>
+36-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:30:13-33:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:31:17-69
+37-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:31:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:32:17-77
+39-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\app\src\main\AndroidManifest.xml:32:27-74
+40            </intent-filter>
+41        </activity>
+42        <activity android:name="com.example.popularpersons.ui.activity.MainActivity" />
+42-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-88
+42-->[:popularpersons] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\popularpersons\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-85
+43        <activity android:name="com.example.details.ui.activity.DetailsActivity" />
+43-->[:details] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\details\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-84
+43-->[:details] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\details\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-81
+44        <activity android:name="com.examples.core.base.activity.PermissionsActivity" >
+44-->[:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-13:20
+44-->[:core] E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-85
+45        </activity>
 46
-47        <provider
-47-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-48            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-48-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-49            android:authorities="com.cooking.coroutine.lifecycle-process"
-49-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-50            android:exported="false"
-50-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-51            android:multiprocess="true" />
-51-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-52    </application>
-53
-54</manifest>
+47        <service
+47-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
+48            android:name="androidx.room.MultiInstanceInvalidationService"
+48-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
+49            android:directBootAware="true"
+49-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
+50            android:exported="false" />
+50-->[androidx.room:room-runtime:2.2.5] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\bb99c985d623658f87867463d8ba96b8\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
+51
+52        <provider
+52-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+53            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+53-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+54            android:authorities="com.cooking.coroutine.lifecycle-process"
+54-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+55            android:exported="false"
+55-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+56            android:multiprocess="true" />
+56-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\shehab\.gradle\caches\transforms-2\files-2.1\ceff724316752f8334a2fe1717ec330a\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+57    </application>
+58
+59</manifest>

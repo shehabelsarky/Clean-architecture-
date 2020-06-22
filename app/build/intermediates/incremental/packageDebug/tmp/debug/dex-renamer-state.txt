@@ -1,4 +1,4 @@
-#Mon Jun 22 02:18:46 EET 2020
+#Mon Jun 22 15:01:50 EET 2020
 base.10=E\:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_15.dex
 path.30=classes_9.dex
 base.9=E\:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_14.dex

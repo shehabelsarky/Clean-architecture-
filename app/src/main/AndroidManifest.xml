@@ -22,7 +22,16 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="q">
 
+        <activity android:name="com.example.popularpersons.ui.activity.SplashActivity">
+            <meta-data
+                android:name="quadrant"
+                android:value="ignore" />
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 
