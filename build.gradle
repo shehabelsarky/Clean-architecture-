@@ -24,6 +24,9 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_plugin"
+        /**
+         * @link https://github.com/gaelmarhic/Quadrant naviagtion plugin
+         */
         classpath "gradle.plugin.com.gaelmarhic:quadrant:$modules_navigation"
     }
 }

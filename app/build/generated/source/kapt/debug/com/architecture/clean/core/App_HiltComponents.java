@@ -3,6 +3,8 @@ package com.architecture.clean.core;
 import androidx.hilt.lifecycle.ViewModelFactoryModules;
 import com.architecture.clean.di.module.AppModule;
 import com.example.details.ui.activity.DetailsActivity_GeneratedInjector;
+import com.example.details.ui.fragments.DetailsFragment_GeneratedInjector;
+import com.example.details.ui.fragments.DetailsViewModel_HiltModule;
 import com.example.popularpersons.ui.activity.MainActivity_GeneratedInjector;
 import com.example.popularpersons.ui.fragment.home.HomeFragment_GeneratedInjector;
 import com.example.popularpersons.ui.fragment.home.HomeViewModel_HiltModule;
@@ -135,6 +137,7 @@ public final class App_HiltComponents {
       modules = {
           ActivityCBuilderModule.class,
           BaseViewModel_HiltModule.class,
+          DetailsViewModel_HiltModule.class,
           HomeViewModel_HiltModule.class
       }
   )
@@ -173,7 +176,8 @@ public final class App_HiltComponents {
       }
   )
   @FragmentScoped
-  public abstract static class FragmentC implements HomeFragment_GeneratedInjector,
+  public abstract static class FragmentC implements DetailsFragment_GeneratedInjector,
+      HomeFragment_GeneratedInjector,
       FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,

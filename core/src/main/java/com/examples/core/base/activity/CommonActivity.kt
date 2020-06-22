@@ -18,6 +18,7 @@ abstract class CommonActivity : AppCompatActivity(), View.OnClickListener, Loadi
     private lateinit var navController: NavController
 
     abstract var navGraphResourceId: Int
+    protected lateinit var bundle: Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,10 @@ abstract class CommonActivity : AppCompatActivity(), View.OnClickListener, Loadi
         navFragment =
             supportFragmentManager.findFragmentById(R.id.common_nav_fragment) as NavHostFragment
         navController = navFragment.navController
-        navController.setGraph(navGraphResourceId)
+        if (::bundle.isInitialized)
+            navController.setGraph(navGraphResourceId, bundle)
+        else
+            navController.setGraph(navGraphResourceId)
         tvtitle.text = navController.currentDestination?.label
     }
 

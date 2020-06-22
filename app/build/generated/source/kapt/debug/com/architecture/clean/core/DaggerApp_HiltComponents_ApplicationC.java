@@ -10,6 +10,9 @@ import androidx.hilt.lifecycle.ViewModelFactoryModules_FragmentModule_ProvideFac
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.details.ui.activity.DetailsActivity;
+import com.example.details.ui.fragments.DetailsFragment;
+import com.example.details.ui.fragments.DetailsViewModel_AssistedFactory;
+import com.example.details.ui.fragments.DetailsViewModel_AssistedFactory_Factory;
 import com.example.popularpersons.ui.activity.MainActivity;
 import com.example.popularpersons.ui.fragment.home.HomeFragment;
 import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory;
@@ -266,6 +269,8 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private volatile Provider<BaseViewModel_AssistedFactory> baseViewModel_AssistedFactoryProvider;
 
+      private volatile Provider<DetailsViewModel_AssistedFactory> detailsViewModel_AssistedFactoryProvider;
+
       private volatile Provider<PopularPersonsUseCase> popularPersonsUseCaseProvider;
 
       private volatile Provider<SearchPopularPersonsUseCase> searchPopularPersonsUseCaseProvider;
@@ -285,6 +290,16 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         return (Provider<BaseViewModel_AssistedFactory>) local;
       }
 
+      private Provider<DetailsViewModel_AssistedFactory> getDetailsViewModel_AssistedFactoryProvider(
+          ) {
+        Object local = detailsViewModel_AssistedFactoryProvider;
+        if (local == null) {
+          local = new SwitchingProvider<>(1);
+          detailsViewModel_AssistedFactoryProvider = (Provider<DetailsViewModel_AssistedFactory>) local;
+        }
+        return (Provider<DetailsViewModel_AssistedFactory>) local;
+      }
+
       private CloudErrorMapper getCloudErrorMapper() {
         return new CloudErrorMapper(DaggerApp_HiltComponents_ApplicationC.this.getGson());
       }
@@ -296,7 +311,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       private Provider<PopularPersonsUseCase> getPopularPersonsUseCaseProvider() {
         Object local = popularPersonsUseCaseProvider;
         if (local == null) {
-          local = new SwitchingProvider<>(2);
+          local = new SwitchingProvider<>(3);
           popularPersonsUseCaseProvider = (Provider<PopularPersonsUseCase>) local;
         }
         return (Provider<PopularPersonsUseCase>) local;
@@ -309,7 +324,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       private Provider<SearchPopularPersonsUseCase> getSearchPopularPersonsUseCaseProvider() {
         Object local = searchPopularPersonsUseCaseProvider;
         if (local == null) {
-          local = new SwitchingProvider<>(3);
+          local = new SwitchingProvider<>(4);
           searchPopularPersonsUseCaseProvider = (Provider<SearchPopularPersonsUseCase>) local;
         }
         return (Provider<SearchPopularPersonsUseCase>) local;
@@ -322,7 +337,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       private Provider<HomeViewModel_AssistedFactory> getHomeViewModel_AssistedFactoryProvider() {
         Object local = homeViewModel_AssistedFactoryProvider;
         if (local == null) {
-          local = new SwitchingProvider<>(1);
+          local = new SwitchingProvider<>(2);
           homeViewModel_AssistedFactoryProvider = (Provider<HomeViewModel_AssistedFactory>) local;
         }
         return (Provider<HomeViewModel_AssistedFactory>) local;
@@ -330,7 +345,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private Map<String, Provider<ViewModelAssistedFactory<? extends ViewModel>>> getMapOfStringAndProviderOfViewModelAssistedFactoryOf(
           ) {
-        return MapBuilder.<String, Provider<ViewModelAssistedFactory<? extends ViewModel>>>newMapBuilder(2).put("com.examples.core.base.view_model.BaseViewModel", (Provider) getBaseViewModel_AssistedFactoryProvider()).put("com.example.popularpersons.ui.fragment.home.HomeViewModel", (Provider) getHomeViewModel_AssistedFactoryProvider()).build();
+        return MapBuilder.<String, Provider<ViewModelAssistedFactory<? extends ViewModel>>>newMapBuilder(3).put("com.examples.core.base.view_model.BaseViewModel", (Provider) getBaseViewModel_AssistedFactoryProvider()).put("com.example.details.ui.fragments.DetailsViewModel", (Provider) getDetailsViewModel_AssistedFactoryProvider()).put("com.example.popularpersons.ui.fragment.home.HomeViewModel", (Provider) getHomeViewModel_AssistedFactoryProvider()).build();
       }
 
       private ViewModelProvider.Factory getProvideFactory() {
@@ -385,6 +400,10 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
         private ViewModelProvider.Factory getProvideFactory() {
           return ViewModelFactoryModules_FragmentModule_ProvideFactoryFactory.provideFactory(fragment, ApplicationContextModule_ProvideApplicationFactory.provideApplication(DaggerApp_HiltComponents_ApplicationC.this.applicationContextModule), ActivityCImpl.this.getMapOfStringAndProviderOfViewModelAssistedFactoryOf());
+        }
+
+        @Override
+        public void injectDetailsFragment(DetailsFragment arg0) {
         }
 
         @Override
@@ -460,13 +479,16 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
             case 0: // com.examples.core.base.view_model.BaseViewModel_AssistedFactory 
             return (T) BaseViewModel_AssistedFactory_Factory.newInstance();
 
-            case 1: // com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory 
+            case 1: // com.example.details.ui.fragments.DetailsViewModel_AssistedFactory 
+            return (T) DetailsViewModel_AssistedFactory_Factory.newInstance();
+
+            case 2: // com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory 
             return (T) ActivityCImpl.this.getHomeViewModel_AssistedFactory();
 
-            case 2: // com.examples.domain.popular_persons.PopularPersonsUseCase 
+            case 3: // com.examples.domain.popular_persons.PopularPersonsUseCase 
             return (T) ActivityCImpl.this.getPopularPersonsUseCase();
 
-            case 3: // com.examples.domain.search_popular_persons.SearchPopularPersonsUseCase 
+            case 4: // com.examples.domain.search_popular_persons.SearchPopularPersonsUseCase 
             return (T) ActivityCImpl.this.getSearchPopularPersonsUseCase();
 
             default: throw new AssertionError(id);
