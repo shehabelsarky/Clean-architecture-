@@ -24,10 +24,6 @@
         "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\drawable\\pic.png"
     },
     {
-        "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_back_arrow.png.flat",
         "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\back_arrow.png"
     },
@@ -64,10 +60,6 @@
         "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\font\\robboto.TTF"
     },
     {
-        "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\navigation_nav_graph.xml.flat",
-        "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\navigation\\nav_graph.xml"
-    },
-    {
         "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back_black_24dp.xml.flat",
         "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\drawable\\ic_arrow_back_black_24dp.xml"
     },
@@ -78,10 +70,6 @@
     {
         "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\layout_toolbar_main.xml.flat",
-        "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\layout\\toolbar_main.xml"
     },
     {
         "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -124,16 +112,8 @@
         "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_home.xml.flat",
-        "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\layout\\fragment_home.xml"
-    },
-    {
         "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_movie.xml.flat",
-        "source": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\src\\main\\res\\layout\\item_movie.xml"
     },
     {
         "merged": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_favorite_border_black_24dp.xml.flat",

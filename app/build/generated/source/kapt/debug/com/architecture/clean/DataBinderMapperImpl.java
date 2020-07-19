@@ -6,8 +6,6 @@ import android.view.View;
 import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
-import com.architecture.clean.databinding.ItemMovieBindingImpl;
-import java.lang.IllegalArgumentException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
@@ -20,13 +18,7 @@ import javax.annotation.Generated;
 
 @Generated("Android Data Binding")
 public class DataBinderMapperImpl extends DataBinderMapper {
-  private static final int LAYOUT_ITEMMOVIE = 1;
-
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(1);
-
-  static {
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.architecture.clean.R.layout.item_movie, LAYOUT_ITEMMOVIE);
-  }
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(0);
 
   @Override
   public ViewDataBinding getDataBinder(DataBindingComponent component, View view, int layoutId) {
@@ -35,14 +27,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       final Object tag = view.getTag();
       if(tag == null) {
         throw new RuntimeException("view must have a tag");
-      }
-      switch(localizedLayoutId) {
-        case  LAYOUT_ITEMMOVIE: {
-          if ("layout/item_movie_0".equals(tag)) {
-            return new ItemMovieBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for item_movie is invalid. Received: " + tag);
-        }
       }
     }
     return null;
@@ -98,10 +82,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(1);
-
-    static {
-      sKeys.put("layout/item_movie_0", com.architecture.clean.R.layout.item_movie);
-    }
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(0);
   }
 }

@@ -51,10 +51,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         lifecycleScope.launch {
             with(viewModel) {
                 PopularPersonsQuery().apply { page = 1 }.also {
-                    if (NetworkingUtils.isNetworkConnected)
-                        getPopularPersons(it)
-                    else
-                        getPopularPersons(it, requireContext())
+                    getPopularPersons(it)
                 }
 
                 popularPersonsChannel.asFlow().collect {
@@ -63,37 +60,28 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             }
         }
 
+        btnTest.setOnClickListener {
+            if (!NetworkingUtils.isNetworkConnected) {
+                with(viewModel) {
+                    PopularPersonsQuery().apply { page = 1 }.also {
+                        getPopularPersons(it, requireContext())
+                    }
+                }
+            }
+        }
+
         Log.d(
             TAG,
             "Work Manager state: " + FastSave.getInstance().getString(WORK_MANAGER_STATE, "")
         )
+        clearTinyDatabase()
     }
 
     private fun setData(data: ArrayList<PopularPersons>) {
         clearData(popularPersonsGroupAdapter, popularPersonsList)
         popularPersonsList.addAll(data)
         popularPersonsList.map {
-
-            popularPersonsGroupAdapter.add(
-                PopularPersonsAdapter(
-                    requireContext(),
-                    it,
-                    object : PopularPersonsAdapter.OnPopularPersonItemClickListener {
-                        override fun onPopularPersonItemClickListener(data: PopularPersons) {
-                            startActivity(
-                                Intent()
-                                    .setClassName(
-                                        requireContext(),
-                                        QuadrantConstants.DETAILS_ACTIVITY
-                                    )
-                                    .putExtra(
-                                        NavigationConstants.POPULAR_PERSONS_TO_DETAILS_DATA,
-                                        data
-                                    )
-                            )
-                        }
-                    })
-            )
+            setGroupieAdapterData(requireContext(),popularPersonsGroupAdapter,it)
         }
     }
 }
