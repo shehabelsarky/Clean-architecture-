@@ -40,11 +40,10 @@ class HomeViewModel @ViewModelInject constructor(
 
         }.also {
             WorkManagerHelper.popularPersonData = it
-            val workRequest = WorkerRequest(it)
             WorkManager
                 .getInstance(context)
                 .enqueue(
-                    workRequest.getPopularPersonsWMWorkRequest()
+                    WorkerRequest().getPopularPersonsWMWorkRequest()
                 )
         }
 

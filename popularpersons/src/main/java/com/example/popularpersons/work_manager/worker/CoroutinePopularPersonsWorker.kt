@@ -4,10 +4,8 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.appizona.yehiahd.fastsave.FastSave
-import com.example.popularpersons.utils.POPULAR_PERSON_WORKER_USE_CASE
 import com.example.popularpersons.utils.WORK_MANAGER_STATE
 import com.example.popularpersons.work_manager.data.PopularPersonsData
-import com.example.popularpersons.work_manager.worker_request.WorkManagerDataHelper
 import com.example.popularpersons.work_manager.worker_request.WorkManagerHelper
 import com.examples.data.types.WorkManagerWorkerResultType
 import com.examples.domain.popular_persons.PopularPersonsUseCase
@@ -25,13 +23,10 @@ class CoroutinePopularPersonsWorker(
 
     override suspend fun doWork(): Result = coroutineScope {
 
-//        val dataInput: String? = inputData.getString(POPULAR_PERSON_WORKER_USE_CASE)
         val dataInput= WorkManagerHelper.popularPersonData
 
         if (dataInput == null)
             Result.failure()
-
-//        val dataUseCaseInput = WorkManagerDataHelper.deserializePopularPersonPOJOFromJson(dataInput)
 
         withContext(IO) {
             if (dataInput is PopularPersonsData) {
