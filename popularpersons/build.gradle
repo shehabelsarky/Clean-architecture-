@@ -34,6 +34,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -86,6 +91,16 @@ dependencies {
     implementation(Hilt.viewmodel)
     kapt(Hilt.kapt_hilt_android)
     kapt(Hilt.kapt_hilt_compiler)
+
+    //WorkManager
+    implementation(WorkManager.workManager)
+
+    
+    //Gson
+    implementation(Gson.gson)
+
+    //Shared Pref
+    implementation(SharedPreference.sharedPreference)
 
     //test
     testImplementation(TestLib.junit)

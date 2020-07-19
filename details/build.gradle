@@ -87,6 +87,10 @@ dependencies {
     kapt(Hilt.kapt_hilt_android)
     kapt(Hilt.kapt_hilt_compiler)
 
+    //Shared Pref
+    implementation(SharedPreference.sharedPreference)
+
+
     //test
     testImplementation(TestLib.junit)
     androidTestImplementation(TestLib.runner)

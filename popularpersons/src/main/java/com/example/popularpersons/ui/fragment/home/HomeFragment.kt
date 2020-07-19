@@ -2,16 +2,20 @@ package com.example.popularpersons.ui.fragment.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.appizona.yehiahd.fastsave.FastSave
 import com.example.popularpersons.R
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.parameters.PopularPersonsQuery
 import com.example.popularpersons.ui.activity.MainActivity
 import com.examples.core.base.fragment.BaseFragment
 import com.example.popularpersons.ui.fragment.home.adapter.PopularPersonsAdapter
+import com.example.popularpersons.utils.WORK_MANAGER_STATE
 import com.examples.core.utils.NavigationConstants
+import com.examples.core.utils.NetworkingUtils
 import com.gaelmarhic.quadrant.QuadrantConstants
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -22,6 +26,7 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 @ExperimentalCoroutinesApi
 @FlowPreview
 @AndroidEntryPoint
@@ -42,15 +47,26 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             popularPersonsGroupAdapter,
             getVerticalLayoutManager(requireContext())
         )
+
         lifecycleScope.launch {
             with(viewModel) {
-                PopularPersonsQuery().apply { page = 1 }.also { getPopularPersons(it) }
+                PopularPersonsQuery().apply { page = 1 }.also {
+                    if (NetworkingUtils.isNetworkConnected)
+                        getPopularPersons(it)
+                    else
+                        getPopularPersons(it, requireContext())
+                }
 
                 popularPersonsChannel.asFlow().collect {
                     setData(it as ArrayList<PopularPersons>)
                 }
             }
         }
+
+        Log.d(
+            TAG,
+            "Work Manager state: " + FastSave.getInstance().getString(WORK_MANAGER_STATE, "")
+        )
     }
 
     private fun setData(data: ArrayList<PopularPersons>) {
@@ -58,12 +74,26 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         popularPersonsList.addAll(data)
         popularPersonsList.map {
 
-            popularPersonsGroupAdapter.add(PopularPersonsAdapter(requireContext(), it,object: PopularPersonsAdapter.OnPopularPersonItemClickListener{
-                override fun onPopularPersonItemClickListener(data: PopularPersons) {
-                    startActivity(Intent().setClassName(requireContext(), QuadrantConstants.DETAILS_ACTIVITY)
-                        .putExtra(NavigationConstants.POPULAR_PERSONS_TO_DETAILS_DATA,data))
-                }
-            }))
+            popularPersonsGroupAdapter.add(
+                PopularPersonsAdapter(
+                    requireContext(),
+                    it,
+                    object : PopularPersonsAdapter.OnPopularPersonItemClickListener {
+                        override fun onPopularPersonItemClickListener(data: PopularPersons) {
+                            startActivity(
+                                Intent()
+                                    .setClassName(
+                                        requireContext(),
+                                        QuadrantConstants.DETAILS_ACTIVITY
+                                    )
+                                    .putExtra(
+                                        NavigationConstants.POPULAR_PERSONS_TO_DETAILS_DATA,
+                                        data
+                                    )
+                            )
+                        }
+                    })
+            )
         }
     }
 }

@@ -1,8 +1,13 @@
 package com.example.popularpersons.ui.fragment.home
 
+import android.content.Context
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.LiveData
+import androidx.work.WorkManager
+import com.example.popularpersons.work_manager.data.PopularPersonsData
+import com.example.popularpersons.work_manager.worker_request.WorkManagerHelper
+import com.example.popularpersons.work_manager.worker_request.WorkerRequest
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.parameters.PopularPersonsQuery
 import com.examples.domain.popular_persons.PopularPersonsUseCase
@@ -16,16 +21,33 @@ class HomeViewModel @ViewModelInject constructor(
     private val popularPersonsUseCase: PopularPersonsUseCase,
     private val searchPopularPersonsUseCase: SearchPopularPersonsUseCase
 ) : BaseViewModel() {
-    private val TAG = HomeViewModel::class.java.simpleName
 
-    val popularPersonsChannel : ConflatedBroadcastChannel<List<PopularPersons>> by lazy {
+    val popularPersonsChannel: ConflatedBroadcastChannel<List<PopularPersons>> by lazy {
         ConflatedBroadcastChannel<List<PopularPersons>>()
     }
 
     fun getPopularPersons(parameters: PopularPersonsQuery) {
-        callApi(popularPersonsChannel){ statesCallBack ->
-            popularPersonsUseCase.execute(parameters,statesCallBack)
+        callApi(popularPersonsChannel) { statesCallBack ->
+            popularPersonsUseCase.execute(parameters, statesCallBack)
         }
+    }
+
+    fun getPopularPersons(parameters: PopularPersonsQuery, context: Context) {
+
+        PopularPersonsData().apply {
+            this.popularPersonsUseCase = this@HomeViewModel.popularPersonsUseCase
+            this.parameters = parameters
+
+        }.also {
+            WorkManagerHelper.popularPersonData = it
+            val workRequest = WorkerRequest(it)
+            WorkManager
+                .getInstance(context)
+                .enqueue(
+                    workRequest.getPopularPersonsWMWorkRequest()
+                )
+        }
+
     }
 
     private val searchPopularPersonsData: MutableLiveData<List<PopularPersons>>

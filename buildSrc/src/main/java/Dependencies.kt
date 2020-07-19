@@ -1,10 +1,9 @@
 object Versions {
+    val sharedPreference = "1.0.6"
+    val work_version = "2.3.4"
     val core_ktx_version = "1.3.0"
     val kotlin_version = "1.3.41"
-    val support_version = "29.0.0"
     val picasso_version = "2.5.2"
-    val arch_version = "1.1.1"
-    val daggerVersion = "2.16"
     val nav_version = "2.3.0-beta01"
     val appcompat_version = "1.1.0"
     val fragment_version = "1.2.4"
@@ -14,7 +13,6 @@ object Versions {
     val lifecycle_version = "2.2.0"
     val legacy_version = "1.0.0"
     val room_version = "2.2.5"
-    val room_coroutines_version = "2.1.0-alpha03"
     val constraintlayout_version = "1.1.3"
     val material_version = "1.3.0-alpha01"
     val retrofit2_version = "2.6.1"
@@ -141,5 +139,13 @@ object TestLib {
     val mockito = "org.mockito:mockito-inline:${Versions.mockitoInline}"
     val core_testing = "androidx.arch.core:core-testing:${Versions.test_arch_core}"
     val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockitoKotlinVersion}"
+}
+
+object WorkManager{
+    val workManager = "androidx.work:work-runtime-ktx:${Versions.work_version}"
+}
+
+object SharedPreference{
+    val sharedPreference = "com.github.yehiahd:FastSave-Android:${Versions.sharedPreference}"
 }
 

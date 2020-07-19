@@ -34,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
@@ -74,6 +75,9 @@ dependencies {
     implementation(Hilt.viewmodel)
     kapt(Hilt.kapt_hilt_android)
     kapt(Hilt.kapt_hilt_compiler)
+
+    //Shared Pref
+    implementation(SharedPreference.sharedPreference)
 
     //test
     testImplementation(TestLib.junit)

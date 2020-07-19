@@ -10,12 +10,16 @@
 9        android:targetSdkVersion="29" />
 9-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
 10
-11    <application>
-11-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:5-9:19
-12        <activity android:name="com.examples.core.base.activity.PermissionsActivity" >
-12-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:9-8:20
-12-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:19-85
-13        </activity>
-14    </application>
-15
-16</manifest>
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+11-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:5-79
+11-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:22-76
+12
+13    <application>
+13-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:5-10:19
+14        <activity android:name="com.examples.core.base.activity.PermissionsActivity" >
+14-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:7:9-9:20
+14-->E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:7:19-85
+15        </activity>
+16    </application>
+17
+18</manifest>

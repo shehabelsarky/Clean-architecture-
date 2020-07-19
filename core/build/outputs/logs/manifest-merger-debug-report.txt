@@ -1,32 +1,36 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
-INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
-INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
-INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
-INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
-INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
-INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
+ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
+INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
 	package
 		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:3:5-32
 		INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
 		INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
-		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
+		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
 		INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
-		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-11:12
+		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:1-12:12
 		INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:2:11-69
-application
-ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:5-9:19
-activity#com.examples.core.base.activity.PermissionsActivity
-ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:9-8:20
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:5-79
 	android:name
-		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:19-85
+		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:5:22-76
+application
+ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:6:5-10:19
+activity#com.examples.core.base.activity.PermissionsActivity
+ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:7:9-9:20
+	android:name
+		ADDED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml:7:19-85
 uses-sdk
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Android_Project\MVVM Coroutines Clean arch sample\android-clean-arc-coroutines\core\src\main\AndroidManifest.xml
