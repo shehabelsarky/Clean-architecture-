@@ -6,8 +6,6 @@ import com.google.gson.annotations.Expose
 import java.io.Serializable
 
 class PopularPersonsData : Serializable{
-    @Expose
     var popularPersonsUseCase: PopularPersonsUseCase? = null
-    @Expose
     var parameters: PopularPersonsQuery? = null
 }
