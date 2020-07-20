@@ -1,7 +1,7 @@
 package com.examples.data.di;
 
 import com.examples.data.source.db.AppDatabase;
-import com.examples.data.source.db.FoodDao;
+import com.examples.data.source.db.PopularPersonsDao;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
 import javax.annotation.Generated;
@@ -15,7 +15,7 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes"
 })
-public final class DataBaseModule_ProvideUserDaoFactory implements Factory<FoodDao> {
+public final class DataBaseModule_ProvideUserDaoFactory implements Factory<PopularPersonsDao> {
   private final DataBaseModule module;
 
   private final Provider<AppDatabase> appDataBaseProvider;
@@ -27,7 +27,7 @@ public final class DataBaseModule_ProvideUserDaoFactory implements Factory<FoodD
   }
 
   @Override
-  public FoodDao get() {
+  public PopularPersonsDao get() {
     return provideUserDao(module, appDataBaseProvider.get());
   }
 
@@ -36,7 +36,7 @@ public final class DataBaseModule_ProvideUserDaoFactory implements Factory<FoodD
     return new DataBaseModule_ProvideUserDaoFactory(module, appDataBaseProvider);
   }
 
-  public static FoodDao provideUserDao(DataBaseModule instance, AppDatabase appDataBase) {
+  public static PopularPersonsDao provideUserDao(DataBaseModule instance, AppDatabase appDataBase) {
     return Preconditions.checkNotNull(instance.provideUserDao(appDataBase), "Cannot return null from a non-@Nullable @Provides method");
   }
 }

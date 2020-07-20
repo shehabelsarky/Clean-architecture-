@@ -25,21 +25,21 @@ import javax.annotation.Generated;
 @Generated("androidx.room.RoomProcessor")
 @SuppressWarnings({"unchecked", "deprecation"})
 public final class AppDatabase_Impl extends AppDatabase {
-  private volatile FoodDao _foodDao;
+  private volatile PopularPersonsDao _popularPersonsDao;
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `Food` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `href` TEXT, `ingredients` TEXT, `thumbnail` TEXT)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `PopularPersons` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `tile` TEXT NOT NULL, `overview` TEXT NOT NULL, `image` TEXT NOT NULL, `popularity` REAL NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7731d6ac5d174e4e5cc0b7e1ee71c5ab')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '74f3285f03e711bfa147ad1a66f6787d')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("DROP TABLE IF EXISTS `Food`");
+        _db.execSQL("DROP TABLE IF EXISTS `PopularPersons`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -78,24 +78,25 @@ public final class AppDatabase_Impl extends AppDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsFood = new HashMap<String, TableInfo.Column>(5);
-        _columnsFood.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsFood.put("title", new TableInfo.Column("title", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsFood.put("href", new TableInfo.Column("href", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsFood.put("ingredients", new TableInfo.Column("ingredients", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsFood.put("thumbnail", new TableInfo.Column("thumbnail", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysFood = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesFood = new HashSet<TableInfo.Index>(0);
-        final TableInfo _infoFood = new TableInfo("Food", _columnsFood, _foreignKeysFood, _indicesFood);
-        final TableInfo _existingFood = TableInfo.read(_db, "Food");
-        if (! _infoFood.equals(_existingFood)) {
-          return new RoomOpenHelper.ValidationResult(false, "Food(com.examples.entities.Food).\n"
-                  + " Expected:\n" + _infoFood + "\n"
-                  + " Found:\n" + _existingFood);
+        final HashMap<String, TableInfo.Column> _columnsPopularPersons = new HashMap<String, TableInfo.Column>(6);
+        _columnsPopularPersons.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPopularPersons.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPopularPersons.put("tile", new TableInfo.Column("tile", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPopularPersons.put("overview", new TableInfo.Column("overview", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPopularPersons.put("image", new TableInfo.Column("image", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPopularPersons.put("popularity", new TableInfo.Column("popularity", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysPopularPersons = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesPopularPersons = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoPopularPersons = new TableInfo("PopularPersons", _columnsPopularPersons, _foreignKeysPopularPersons, _indicesPopularPersons);
+        final TableInfo _existingPopularPersons = TableInfo.read(_db, "PopularPersons");
+        if (! _infoPopularPersons.equals(_existingPopularPersons)) {
+          return new RoomOpenHelper.ValidationResult(false, "PopularPersons(com.examples.entities.popular_person.local.PopularPersons).\n"
+                  + " Expected:\n" + _infoPopularPersons + "\n"
+                  + " Found:\n" + _existingPopularPersons);
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "7731d6ac5d174e4e5cc0b7e1ee71c5ab", "39fe265234fb3b1d0c0140543b37ba01");
+    }, "74f3285f03e711bfa147ad1a66f6787d", "e909a1e2ffa0350a0b02d420002a395e");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -108,7 +109,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "Food");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "PopularPersons");
   }
 
   @Override
@@ -117,7 +118,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     final SupportSQLiteDatabase _db = super.getOpenHelper().getWritableDatabase();
     try {
       super.beginTransaction();
-      _db.execSQL("DELETE FROM `Food`");
+      _db.execSQL("DELETE FROM `PopularPersons`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -129,15 +130,15 @@ public final class AppDatabase_Impl extends AppDatabase {
   }
 
   @Override
-  public FoodDao foodDao() {
-    if (_foodDao != null) {
-      return _foodDao;
+  public PopularPersonsDao popularPersonsDao() {
+    if (_popularPersonsDao != null) {
+      return _popularPersonsDao;
     } else {
       synchronized(this) {
-        if(_foodDao == null) {
-          _foodDao = new FoodDao_Impl(this);
+        if(_popularPersonsDao == null) {
+          _popularPersonsDao = new PopularPersonsDao_Impl(this);
         }
-        return _foodDao;
+        return _popularPersonsDao;
       }
     }
   }

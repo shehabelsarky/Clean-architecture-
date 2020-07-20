@@ -10,16 +10,20 @@ import com.example.popularpersons.work_manager.worker_request.WorkManagerHelper
 import com.example.popularpersons.work_manager.worker_request.WorkerRequest
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.parameters.PopularPersonsQuery
-import com.examples.domain.popular_persons.PopularPersonsUseCase
-import com.examples.domain.search_popular_persons.SearchPopularPersonsUseCase
+import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase
+import com.examples.domain.search_popular_persons.SearchPopularPersonsRemoteUseCase
 import com.examples.core.base.view_model.BaseViewModel
+import com.examples.domain.popular_persons.InsertPopularPersonUseCase
+import com.examples.domain.popular_persons.SelectPopularPersonsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 
 @ExperimentalCoroutinesApi
 class HomeViewModel @ViewModelInject constructor(
-    private val popularPersonsUseCase: PopularPersonsUseCase,
-    private val searchPopularPersonsUseCase: SearchPopularPersonsUseCase
+    private val popularPersonsUseCase: PopularPersonsRemoteUseCase,
+    private val searchPopularPersonsUseCase: SearchPopularPersonsRemoteUseCase,
+    private val insertPopularPersonsUseCase: InsertPopularPersonUseCase,
+    private val selectPopularPersonsUseCase: SelectPopularPersonsUseCase
 ) : BaseViewModel() {
 
     val popularPersonsChannel: ConflatedBroadcastChannel<List<PopularPersons>> by lazy {

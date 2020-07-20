@@ -3,7 +3,7 @@ package com.examples.data.di
 import android.app.Application
 import androidx.room.Room
 import com.examples.data.source.db.AppDatabase
-import com.examples.data.source.db.FoodDao
+import com.examples.data.source.db.PopularPersonsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +24,7 @@ class DataBaseModule {
     }
 
     @Provides
-    fun provideUserDao(appDataBase: AppDatabase): FoodDao {
-        return appDataBase.foodDao()
+    fun provideUserDao(appDataBase: AppDatabase): PopularPersonsDao {
+        return appDataBase.popularPersonsDao()
     }
 }

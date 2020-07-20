@@ -15,7 +15,7 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes"
 })
-public final class SearchPopularPersonsUseCase_Factory implements Factory<SearchPopularPersonsUseCase> {
+public final class SearchPopularPersonsUseCase_Factory implements Factory<SearchPopularPersonsRemoteUseCase> {
   private final Provider<CloudErrorMapper> errorUtilProvider;
 
   private final Provider<AppRepository> appRepositoryProvider;
@@ -31,7 +31,7 @@ public final class SearchPopularPersonsUseCase_Factory implements Factory<Search
   }
 
   @Override
-  public SearchPopularPersonsUseCase get() {
+  public SearchPopularPersonsRemoteUseCase get() {
     return newInstance(errorUtilProvider.get(), appRepositoryProvider.get(), mapperProvider.get());
   }
 
@@ -41,8 +41,8 @@ public final class SearchPopularPersonsUseCase_Factory implements Factory<Search
     return new SearchPopularPersonsUseCase_Factory(errorUtilProvider, appRepositoryProvider, mapperProvider);
   }
 
-  public static SearchPopularPersonsUseCase newInstance(CloudErrorMapper errorUtil,
-      AppRepository appRepository, PopularPersonsMapper mapper) {
-    return new SearchPopularPersonsUseCase(errorUtil, appRepository, mapper);
+  public static SearchPopularPersonsRemoteUseCase newInstance(CloudErrorMapper errorUtil,
+                                                              AppRepository appRepository, PopularPersonsMapper mapper) {
+    return new SearchPopularPersonsRemoteUseCase(errorUtil, appRepository, mapper);
   }
 }

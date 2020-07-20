@@ -8,7 +8,7 @@ import com.example.popularpersons.utils.WORK_MANAGER_STATE
 import com.example.popularpersons.work_manager.data.PopularPersonsData
 import com.example.popularpersons.work_manager.worker_request.WorkManagerHelper
 import com.examples.data.types.WorkManagerWorkerResultType
-import com.examples.domain.popular_persons.PopularPersonsUseCase
+import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase
 import com.examples.entities.popular_person.parameters.PopularPersonsQuery
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.coroutineScope
@@ -43,7 +43,7 @@ class CoroutinePopularPersonsWorker(
         }
     }
 
-    private fun executePopularPersonUseCase(parameters: PopularPersonsQuery,popularPersonsUseCase: PopularPersonsUseCase): WorkManagerWorkerResultType{
+    private fun executePopularPersonUseCase(parameters: PopularPersonsQuery,popularPersonsUseCase: PopularPersonsRemoteUseCase): WorkManagerWorkerResultType{
         popularPersonsUseCase.execute(parameters) {
             onComplete {
                 resultType = WorkManagerWorkerResultType.SUCCESS

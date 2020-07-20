@@ -33,8 +33,8 @@ import com.examples.data.repository.AppRepoImp;
 import com.examples.data.restful.ApiService;
 import com.examples.data.source.cloud.BaseCloudRepository;
 import com.examples.domain.mappers.popular_persons.PopularPersonsMapper;
-import com.examples.domain.popular_persons.PopularPersonsUseCase;
-import com.examples.domain.search_popular_persons.SearchPopularPersonsUseCase;
+import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase;
+import com.examples.domain.search_popular_persons.SearchPopularPersonsRemoteUseCase;
 import com.google.gson.Gson;
 import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
 import dagger.hilt.android.internal.builders.ActivityRetainedComponentBuilder;
@@ -271,9 +271,9 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private volatile Provider<DetailsViewModel_AssistedFactory> detailsViewModel_AssistedFactoryProvider;
 
-      private volatile Provider<PopularPersonsUseCase> popularPersonsUseCaseProvider;
+      private volatile Provider<PopularPersonsRemoteUseCase> popularPersonsUseCaseProvider;
 
-      private volatile Provider<SearchPopularPersonsUseCase> searchPopularPersonsUseCaseProvider;
+      private volatile Provider<SearchPopularPersonsRemoteUseCase> searchPopularPersonsUseCaseProvider;
 
       private volatile Provider<HomeViewModel_AssistedFactory> homeViewModel_AssistedFactoryProvider;
 
@@ -304,30 +304,30 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         return new CloudErrorMapper(DaggerApp_HiltComponents_ApplicationC.this.getGson());
       }
 
-      private PopularPersonsUseCase getPopularPersonsUseCase() {
-        return new PopularPersonsUseCase(getCloudErrorMapper(), DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp(), new PopularPersonsMapper());
+      private PopularPersonsRemoteUseCase getPopularPersonsUseCase() {
+        return new PopularPersonsRemoteUseCase(getCloudErrorMapper(), DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp(), new PopularPersonsMapper());
       }
 
-      private Provider<PopularPersonsUseCase> getPopularPersonsUseCaseProvider() {
+      private Provider<PopularPersonsRemoteUseCase> getPopularPersonsUseCaseProvider() {
         Object local = popularPersonsUseCaseProvider;
         if (local == null) {
           local = new SwitchingProvider<>(3);
-          popularPersonsUseCaseProvider = (Provider<PopularPersonsUseCase>) local;
+          popularPersonsUseCaseProvider = (Provider<PopularPersonsRemoteUseCase>) local;
         }
-        return (Provider<PopularPersonsUseCase>) local;
+        return (Provider<PopularPersonsRemoteUseCase>) local;
       }
 
-      private SearchPopularPersonsUseCase getSearchPopularPersonsUseCase() {
-        return new SearchPopularPersonsUseCase(getCloudErrorMapper(), DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp(), new PopularPersonsMapper());
+      private SearchPopularPersonsRemoteUseCase getSearchPopularPersonsUseCase() {
+        return new SearchPopularPersonsRemoteUseCase(getCloudErrorMapper(), DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp(), new PopularPersonsMapper());
       }
 
-      private Provider<SearchPopularPersonsUseCase> getSearchPopularPersonsUseCaseProvider() {
+      private Provider<SearchPopularPersonsRemoteUseCase> getSearchPopularPersonsUseCaseProvider() {
         Object local = searchPopularPersonsUseCaseProvider;
         if (local == null) {
           local = new SwitchingProvider<>(4);
-          searchPopularPersonsUseCaseProvider = (Provider<SearchPopularPersonsUseCase>) local;
+          searchPopularPersonsUseCaseProvider = (Provider<SearchPopularPersonsRemoteUseCase>) local;
         }
-        return (Provider<SearchPopularPersonsUseCase>) local;
+        return (Provider<SearchPopularPersonsRemoteUseCase>) local;
       }
 
       private HomeViewModel_AssistedFactory getHomeViewModel_AssistedFactory() {

@@ -5,14 +5,14 @@ import com.examples.entities.response.ErrorModel
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-typealias CompletionBlock<T> = UseCase.Request<T>.() -> Unit
+typealias CompletionBlock<T> = RemoteUseCase.Request<T>.() -> Unit
 
 /**
  * @type in P paramater
  * @type R DTO result
  * @type FR(final result) mapped DTO to BO
  */
-abstract class UseCase<P, R, FR>(val errorUtil: CloudErrorMapper) {
+abstract class RemoteUseCase<P, R, FR>(val errorUtil: CloudErrorMapper) {
 
     private var parentJob: Job = Job()
     private var backgroundContext: CoroutineContext = Dispatchers.IO

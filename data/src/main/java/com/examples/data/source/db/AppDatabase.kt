@@ -2,13 +2,13 @@ package com.examples.data.source.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.examples.entities.Food
+import com.examples.entities.popular_person.local.PopularPersons
 
-@Database(entities = [com.examples.entities.Food::class], version = AppDatabase.VERSION)
+@Database(entities = [PopularPersons::class], version = AppDatabase.VERSION, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-        const val DB_NAME = "foods.db"
-        const val VERSION = 1
+        const val DB_NAME = "movies.db"
+        const val VERSION = 2
     }
-    abstract fun foodDao(): FoodDao
+    abstract fun popularPersonsDao(): PopularPersonsDao
 }
