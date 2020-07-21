@@ -6,8 +6,8 @@ import kotlin.coroutines.CoroutineContext
 typealias CompleteBlock<F> = LocalUseCase.Request<F>.() -> Unit
 
 /**
- * @type T represents object type
- * @type R represtents return value
+ * @type T represents object type for inserting
+ * @type R represents return value for selecting
  */
 abstract class LocalUseCase<T, R> {
     private var parentJob: Job = Job()
@@ -17,7 +17,6 @@ abstract class LocalUseCase<T, R> {
 
     fun execute(parameters: T, block: CompleteBlock<R>) {
         val response = Request<R>().apply { block() }
-        unsubscribe()
         parentJob = Job()
         CoroutineScope(backgroundContext + parentJob).launch {
             try {

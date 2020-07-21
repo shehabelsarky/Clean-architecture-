@@ -1,9 +1,11 @@
 package com.example.popularpersons.ui.fragment.home
 
 import android.content.Context
+import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import androidx.work.WorkManager
 import com.example.popularpersons.work_manager.data.PopularPersonsData
 import com.example.popularpersons.work_manager.worker_request.WorkManagerHelper
@@ -17,6 +19,7 @@ import com.examples.domain.popular_persons.InsertPopularPersonUseCase
 import com.examples.domain.popular_persons.SelectPopularPersonsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 class HomeViewModel @ViewModelInject constructor(
@@ -25,14 +28,48 @@ class HomeViewModel @ViewModelInject constructor(
     private val insertPopularPersonsUseCase: InsertPopularPersonUseCase,
     private val selectPopularPersonsUseCase: SelectPopularPersonsUseCase
 ) : BaseViewModel() {
+    private val TAG = HomeViewModel::class.simpleName
 
     val popularPersonsChannel: ConflatedBroadcastChannel<List<PopularPersons>> by lazy {
         ConflatedBroadcastChannel<List<PopularPersons>>()
     }
 
+
     fun getPopularPersons(parameters: PopularPersonsQuery) {
-        callApi(popularPersonsChannel) { statesCallBack ->
-            popularPersonsUseCase.execute(parameters, statesCallBack)
+        popularPersonsUseCase.execute(parameters) {
+            onComplete {
+                viewModelScope.launch {
+                    popularPersonsChannel.offer(it)
+                }
+                it.map(:: insertPopularPerson)
+            }
+            onError(::setErrorReason)
+            onCancel(::setCancellationReason)
+            isLoading(::setLoading)
+        }
+    }
+
+   private fun insertPopularPerson(popularPerson: PopularPersons){
+        insertPopularPersonsUseCase.execute(popularPerson) {
+            onComplete {
+                Log.d(TAG, "Inserting...")
+            }
+            onCancel {
+                Log.d(TAG, "Insert exception occurred...")
+            }
+        }
+    }
+
+    fun getCachedPopularPersons(){
+        selectPopularPersonsUseCase.execute(Unit){
+            onComplete {
+                viewModelScope.launch {
+                    popularPersonsChannel.offer(it)
+                }
+            }
+            onCancel {
+                Log.d(TAG, "Coroutine is cancelled")
+            }
         }
     }
 

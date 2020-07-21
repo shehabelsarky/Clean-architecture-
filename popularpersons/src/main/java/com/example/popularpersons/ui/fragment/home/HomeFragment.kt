@@ -1,6 +1,5 @@
 package com.example.popularpersons.ui.fragment.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,11 +11,8 @@ import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.parameters.PopularPersonsQuery
 import com.example.popularpersons.ui.activity.MainActivity
 import com.examples.core.base.fragment.BaseFragment
-import com.example.popularpersons.ui.fragment.home.adapter.PopularPersonsAdapter
 import com.example.popularpersons.utils.WORK_MANAGER_STATE
-import com.examples.core.utils.NavigationConstants
 import com.examples.core.utils.NetworkingUtils
-import com.gaelmarhic.quadrant.QuadrantConstants
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +47,10 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         lifecycleScope.launch {
             with(viewModel) {
                 PopularPersonsQuery().apply { page = 1 }.also {
-                    getPopularPersons(it)
+                    if (NetworkingUtils.isNetworkConnected)
+                        getPopularPersons(it)
+                    else
+                        getCachedPopularPersons()
                 }
 
                 popularPersonsChannel.asFlow().collect {
@@ -81,7 +80,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         clearData(popularPersonsGroupAdapter, popularPersonsList)
         popularPersonsList.addAll(data)
         popularPersonsList.map {
-            setGroupieAdapterData(requireContext(),popularPersonsGroupAdapter,it)
+            setGroupieAdapterData(requireContext(), popularPersonsGroupAdapter, it)
         }
     }
 }

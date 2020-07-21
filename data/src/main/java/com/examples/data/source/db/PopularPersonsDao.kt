@@ -1,7 +1,6 @@
 package com.examples.data.source.db
 
 import androidx.room.*
-import com.examples.entities.Food
 import com.examples.entities.popular_person.local.PopularPersons
 
 @Dao
