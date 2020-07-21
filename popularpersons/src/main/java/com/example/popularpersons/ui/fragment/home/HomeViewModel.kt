@@ -15,18 +15,22 @@ import com.examples.entities.popular_person.parameters.PopularPersonsQuery
 import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase
 import com.examples.domain.search_popular_persons.SearchPopularPersonsRemoteUseCase
 import com.examples.core.base.view_model.BaseViewModel
+import com.examples.domain.popular_persons.DropPopularPersonsUseCase
 import com.examples.domain.popular_persons.InsertPopularPersonUseCase
 import com.examples.domain.popular_persons.SelectPopularPersonsUseCase
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @ExperimentalCoroutinesApi
 class HomeViewModel @ViewModelInject constructor(
     private val popularPersonsUseCase: PopularPersonsRemoteUseCase,
     private val searchPopularPersonsUseCase: SearchPopularPersonsRemoteUseCase,
     private val insertPopularPersonsUseCase: InsertPopularPersonUseCase,
-    private val selectPopularPersonsUseCase: SelectPopularPersonsUseCase
+    private val selectPopularPersonsUseCase: SelectPopularPersonsUseCase,
+    private val dropPopularPersonsUseCase: DropPopularPersonsUseCase
 ) : BaseViewModel() {
     private val TAG = HomeViewModel::class.simpleName
 
@@ -41,7 +45,7 @@ class HomeViewModel @ViewModelInject constructor(
                 viewModelScope.launch {
                     popularPersonsChannel.offer(it)
                 }
-                it.map(:: insertPopularPerson)
+                it.map(::insertPopularPerson)
             }
             onError(::setErrorReason)
             onCancel(::setCancellationReason)
@@ -49,7 +53,7 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-   private fun insertPopularPerson(popularPerson: PopularPersons){
+    private fun insertPopularPerson(popularPerson: PopularPersons) {
         insertPopularPersonsUseCase.execute(popularPerson) {
             onComplete {
                 Log.d(TAG, "Inserting...")
@@ -60,12 +64,24 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-    fun getCachedPopularPersons(){
-        selectPopularPersonsUseCase.execute(Unit){
+    fun selectPopularPersons() {
+        selectPopularPersonsUseCase.execute(Unit) {
             onComplete {
                 viewModelScope.launch {
                     popularPersonsChannel.offer(it)
                 }
+            }
+            onCancel {
+                Log.d(TAG, "Coroutine is cancelled")
+            }
+        }
+    }
+
+    private fun dropPopularPersons(popularPerson: List<PopularPersons>) {
+        dropPopularPersonsUseCase.execute(Unit) {
+            onComplete {
+                Log.d(TAG, "Popular persons table is nuked")
+                // TODO() if you want to drop table then insert call insert method here
             }
             onCancel {
                 Log.d(TAG, "Coroutine is cancelled")

@@ -50,7 +50,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
                     if (NetworkingUtils.isNetworkConnected)
                         getPopularPersons(it)
                     else
-                        getCachedPopularPersons()
+                        selectPopularPersons()
                 }
 
                 popularPersonsChannel.asFlow().collect {

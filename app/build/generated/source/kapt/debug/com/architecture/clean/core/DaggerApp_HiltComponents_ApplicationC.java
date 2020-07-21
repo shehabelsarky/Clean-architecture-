@@ -35,6 +35,7 @@ import com.examples.data.restful.ApiService;
 import com.examples.data.source.cloud.BaseCloudRepository;
 import com.examples.data.source.db.AppDatabase;
 import com.examples.domain.mappers.popular_persons.PopularPersonsMapper;
+import com.examples.domain.popular_persons.DropPopularPersonsUseCase;
 import com.examples.domain.popular_persons.InsertPopularPersonUseCase;
 import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase;
 import com.examples.domain.popular_persons.SelectPopularPersonsUseCase;
@@ -303,6 +304,8 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private volatile Provider<SelectPopularPersonsUseCase> selectPopularPersonsUseCaseProvider;
 
+      private volatile Provider<DropPopularPersonsUseCase> dropPopularPersonsUseCaseProvider;
+
       private volatile Provider<HomeViewModel_AssistedFactory> homeViewModel_AssistedFactoryProvider;
 
       private ActivityCImpl(Activity activityParam) {
@@ -385,8 +388,21 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         return (Provider<SelectPopularPersonsUseCase>) local;
       }
 
+      private DropPopularPersonsUseCase getDropPopularPersonsUseCase() {
+        return new DropPopularPersonsUseCase(DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp());
+      }
+
+      private Provider<DropPopularPersonsUseCase> getDropPopularPersonsUseCaseProvider() {
+        Object local = dropPopularPersonsUseCaseProvider;
+        if (local == null) {
+          local = new SwitchingProvider<>(7);
+          dropPopularPersonsUseCaseProvider = (Provider<DropPopularPersonsUseCase>) local;
+        }
+        return (Provider<DropPopularPersonsUseCase>) local;
+      }
+
       private HomeViewModel_AssistedFactory getHomeViewModel_AssistedFactory() {
-        return HomeViewModel_AssistedFactory_Factory.newInstance(getPopularPersonsRemoteUseCaseProvider(), getSearchPopularPersonsRemoteUseCaseProvider(), getInsertPopularPersonUseCaseProvider(), getSelectPopularPersonsUseCaseProvider());
+        return HomeViewModel_AssistedFactory_Factory.newInstance(getPopularPersonsRemoteUseCaseProvider(), getSearchPopularPersonsRemoteUseCaseProvider(), getInsertPopularPersonUseCaseProvider(), getSelectPopularPersonsUseCaseProvider(), getDropPopularPersonsUseCaseProvider());
       }
 
       private Provider<HomeViewModel_AssistedFactory> getHomeViewModel_AssistedFactoryProvider() {
@@ -551,6 +567,9 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
             case 6: // com.examples.domain.popular_persons.SelectPopularPersonsUseCase 
             return (T) ActivityCImpl.this.getSelectPopularPersonsUseCase();
+
+            case 7: // com.examples.domain.popular_persons.DropPopularPersonsUseCase 
+            return (T) ActivityCImpl.this.getDropPopularPersonsUseCase();
 
             default: throw new AssertionError(id);
           }

@@ -31,4 +31,9 @@ class AppRepoImp @Inject constructor(
     override suspend fun selectPopularPerson(): MutableList<PopularPersons> {
         return database.popularPersonsDao().selectAllPopularPersons()
     }
+
+    override suspend fun deletePopularPersonTable() {
+        return database.popularPersonsDao().deletePopularPersonTable()
+
+    }
 }
