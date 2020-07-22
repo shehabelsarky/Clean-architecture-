@@ -17,5 +17,4 @@ interface PopularPersonsDao {
 
     @Query("SELECT * from PopularPersons ORDER BY date ASC")
     suspend fun selectAllPopularPersons(): MutableList<PopularPersons>
-
 }
