@@ -8,7 +8,7 @@ import com.examples.entities.popular_person.local.PopularPersons
 abstract class AppDatabase : RoomDatabase() {
     companion object {
         const val DB_NAME = "movies.db"
-        const val VERSION = 2
+        const val VERSION = 3
     }
     abstract fun popularPersonsDao(): PopularPersonsDao
 }

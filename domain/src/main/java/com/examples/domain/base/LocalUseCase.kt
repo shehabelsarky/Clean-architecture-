@@ -12,13 +12,13 @@ typealias CompleteBlock<F> = LocalUseCase.Request<F>.() -> Unit
 abstract class LocalUseCase<T, R> {
     private var parentJob: Job = Job()
     private var backgroundContext: CoroutineContext = Dispatchers.IO
+    private val jobs: ArrayList<Job> = arrayListOf()
 
     protected abstract suspend fun executeOnBackground(parameters: T): R
 
-    fun execute(parameters: T, block: CompleteBlock<R>) {
-        val response = Request<R>().apply { block() }
-        parentJob = Job()
-        CoroutineScope(backgroundContext + parentJob).launch {
+    suspend fun execute(parameters: T, block: CompleteBlock<R>) {
+        CoroutineScope(backgroundContext + parentJob ).async {
+            val response = Request<R>().apply { block() }
             try {
                 val result = withContext(backgroundContext) {
                     executeOnBackground(parameters)
@@ -27,8 +27,9 @@ abstract class LocalUseCase<T, R> {
             } catch (cancellationException: CancellationException) {
                 response(cancellationException)
             }
-        }
+        }.await()
     }
+
 
     fun unsubscribe() {
         parentJob.apply {

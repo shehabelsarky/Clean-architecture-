@@ -53,38 +53,48 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
+
     private fun insertPopularPerson(popularPerson: PopularPersons) {
-        insertPopularPersonsUseCase.execute(popularPerson) {
-            onComplete {
-                Log.d(TAG, "Inserting...")
-            }
-            onCancel {
-                Log.d(TAG, "Insert exception occurred...")
+        viewModelScope.launch {
+            insertPopularPersonsUseCase.execute(popularPerson) {
+                onComplete {
+                    Log.d(TAG, "Inserting...Id= ${popularPerson.id} name= ${popularPerson.name}")
+                }
+                onCancel {
+                    Log.d(TAG, "Insert exception occurred...")
+                }
             }
         }
     }
 
     fun selectPopularPersons() {
-        selectPopularPersonsUseCase.execute(Unit) {
-            onComplete {
-                viewModelScope.launch {
-                    popularPersonsChannel.offer(it)
+        viewModelScope.launch {
+            selectPopularPersonsUseCase.execute(Unit) {
+                onComplete {
+                    it.map {
+                        Log.d(TAG, "Selected data...id:${it.id} name:${it.name}")
+                    }
+                    viewModelScope.launch {
+                        popularPersonsChannel.offer(it)
+                    }
                 }
-            }
-            onCancel {
-                Log.d(TAG, "Coroutine is cancelled")
+                onCancel {
+                    Log.d(TAG, "Coroutine is cancelled")
+                }
             }
         }
     }
 
     private fun dropPopularPersons(popularPerson: List<PopularPersons>) {
-        dropPopularPersonsUseCase.execute(Unit) {
-            onComplete {
-                Log.d(TAG, "Popular persons table is nuked")
-                // TODO() if you want to drop table then insert call insert method here
-            }
-            onCancel {
-                Log.d(TAG, "Coroutine is cancelled")
+        viewModelScope.launch {
+            dropPopularPersonsUseCase.execute(Unit) {
+                onComplete {
+                    Log.d(TAG, "Popular persons table is nuked")
+                    // TODO() if you want to drop table then insert call insert method here
+                }
+                onCancel {
+                    Log.d(TAG, "Coroutine is cancelled")
+                }
             }
         }
     }

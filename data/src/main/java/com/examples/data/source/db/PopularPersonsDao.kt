@@ -15,7 +15,7 @@ interface PopularPersonsDao {
     @Query("DELETE FROM PopularPersons")
     suspend fun deletePopularPersonTable()
 
-    @Query("SELECT * from PopularPersons")
+    @Query("SELECT * from PopularPersons ORDER BY date ASC")
     suspend fun selectAllPopularPersons(): MutableList<PopularPersons>
 
 }

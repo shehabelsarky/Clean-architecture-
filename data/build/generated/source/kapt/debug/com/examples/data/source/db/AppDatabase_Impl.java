@@ -29,12 +29,12 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `PopularPersons` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `tile` TEXT NOT NULL, `overview` TEXT NOT NULL, `image` TEXT NOT NULL, `popularity` REAL NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `PopularPersons` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `tile` TEXT NOT NULL, `overview` TEXT NOT NULL, `image` TEXT NOT NULL, `popularity` REAL NOT NULL, `date` INTEGER NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '74f3285f03e711bfa147ad1a66f6787d')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ab0b5751d36cf43ff8c44dcfc24d4c5b')");
       }
 
       @Override
@@ -78,13 +78,14 @@ public final class AppDatabase_Impl extends AppDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsPopularPersons = new HashMap<String, TableInfo.Column>(6);
+        final HashMap<String, TableInfo.Column> _columnsPopularPersons = new HashMap<String, TableInfo.Column>(7);
         _columnsPopularPersons.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPopularPersons.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPopularPersons.put("tile", new TableInfo.Column("tile", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPopularPersons.put("overview", new TableInfo.Column("overview", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPopularPersons.put("image", new TableInfo.Column("image", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsPopularPersons.put("popularity", new TableInfo.Column("popularity", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPopularPersons.put("date", new TableInfo.Column("date", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysPopularPersons = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesPopularPersons = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoPopularPersons = new TableInfo("PopularPersons", _columnsPopularPersons, _foreignKeysPopularPersons, _indicesPopularPersons);
@@ -96,7 +97,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "74f3285f03e711bfa147ad1a66f6787d", "e909a1e2ffa0350a0b02d420002a395e");
+    }, "ab0b5751d36cf43ff8c44dcfc24d4c5b", "aeefeec7c68a68d4e97a19132587a414");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
