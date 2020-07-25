@@ -58,7 +58,7 @@ class HomeViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             insertPopularPersonsUseCase.execute(popularPerson) {
                 onComplete {
-                    Log.d(TAG, "Inserting...Id= ${popularPerson.id} name= ${popularPerson.name}")
+                    Log.d(TAG, "Inserting...Id= ${popularPerson.entityId} name= ${popularPerson.name}")
                 }
                 onCancel {
                     Log.d(TAG, "Insert exception occurred...")
