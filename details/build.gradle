@@ -6,11 +6,11 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdkVersion (Android.compileSdkVersion)
+    compileSdkVersion(Android.compileSdkVersion)
 
     defaultConfig {
-        minSdkVersion (Android.minSdkVersion)
-        targetSdkVersion (Android.targetSdkVersion)
+        minSdkVersion(Android.minSdkVersion)
+        targetSdkVersion(Android.targetSdkVersion)
         versionCode = Android.versionCode
         versionName = Android.versionName
         multiDexEnabled true
@@ -90,13 +90,30 @@ dependencies {
     //Shared Pref
     implementation(SharedPreference.sharedPreference)
 
-
     //test
-    testImplementation(TestLib.junit)
-    androidTestImplementation(TestLib.runner)
+    androidTestImplementation(TestLib.junit)
+    androidTestImplementation(TestLib.androidxTestCore)
+    androidTestImplementation(TestLib.androidxTestCoreKtx)
+    androidTestImplementation(TestLib.core_testing)
+
+    testImplementation(TestLib.junit_jupiter_api)
+    testImplementation(TestLib.junit_jupiter_params)
+    testRuntimeOnly(TestLib.junit_jupiter_engine)
+
+    testImplementation(TestLib.mockito_core)
+
+    androidTestImplementation(TestLib.kotlinTest)
     androidTestImplementation(TestLib.espresso_core)
-    testImplementation(TestLib.mockito)
-    implementation(TestLib.core_testing)
-    implementation(TestLib.mockito_kotlin)
+    androidTestImplementation(TestLib.espresso_contrib)
+    androidTestImplementation(TestLib.androidx_espresso_idling_resource)
+    implementation(TestLib.androidx_espresso_idling_resource)
+
+    androidTestImplementation(TestLib.mockk)
+    androidTestImplementation(TestLib.runner)
+    androidTestImplementation(TestLib.testRules)
+    androidTestImplementation(TestLib.testExt)
+
+    debugImplementation(TestLib.fragmentTesting)
+    androidTestImplementation(TestLib.navigationTesting)
 
 }

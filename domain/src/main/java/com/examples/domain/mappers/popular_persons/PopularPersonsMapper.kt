@@ -9,7 +9,7 @@ class PopularPersonsMapper @Inject constructor() {
 
     fun convert(dtoItem: Result): PopularPersons {
         return PopularPersons(
-            EntityHelper.id,
+            EntityHelper.id++,
             dtoItem.id,
             dtoItem.name ?: "",
             dtoItem.knownFor!![0].title ?: "",
