@@ -12,7 +12,7 @@ interface AppRepository{
         actorName: String
     ): PopularPersonsResponse
 
-    suspend fun insertPopularPerson(popularPerson: PopularPersons)
+    suspend fun insertPopularPerson(popularPerson: PopularPersons): Long
     suspend fun selectPopularPerson(): MutableList<PopularPersons>
     suspend fun deletePopularPersonTable()
 }

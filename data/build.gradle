@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'dagger.hilt.android.plugin'
-
+apply plugin: 'de.mannodermaus.android-junit5'
 
 
 android {
@@ -29,6 +29,11 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
     }
 
     kotlinOptions {
@@ -69,10 +74,13 @@ dependencies {
     kapt(Hilt.kapt_hilt_compiler)
 
     //test
+    testImplementation (TestLib.junit)
     androidTestImplementation(TestLib.junit)
     androidTestImplementation(TestLib.androidxTestCore)
     androidTestImplementation(TestLib.androidxTestCoreKtx)
     androidTestImplementation(TestLib.core_testing)
+
+
 
     testImplementation(TestLib.junit_jupiter_api)
     testImplementation(TestLib.junit_jupiter_params)
@@ -93,4 +101,7 @@ dependencies {
 
     debugImplementation(TestLib.fragmentTesting)
     androidTestImplementation(TestLib.navigationTesting)
+
+    testImplementation (TestLib.coroutinesTest)
+    androidTestImplementation(TestLib.coroutinesTest)
 }

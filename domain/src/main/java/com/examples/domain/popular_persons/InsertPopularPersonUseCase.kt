@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 class InsertPopularPersonUseCase@Inject constructor(
     private val appRepository: AppRepository
-) : LocalUseCase<PopularPersons,Unit>() {
+) : LocalUseCase<PopularPersons,Long>() {
 
-    override suspend fun executeOnBackground(parameters: PopularPersons): Unit {
+    override suspend fun executeOnBackground(parameters: PopularPersons): Long {
         return appRepository.insertPopularPerson(parameters)
     }
 }

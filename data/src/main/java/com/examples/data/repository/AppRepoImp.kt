@@ -2,7 +2,6 @@ package com.examples.data.repository
 
 import com.examples.data.source.cloud.BaseCloudRepository
 import com.examples.data.source.db.AppDatabase
-import com.examples.entities.PopularActorDetails
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
 import javax.inject.Inject
@@ -24,16 +23,16 @@ class AppRepoImp @Inject constructor(
         return cloudRepository.getPopularPersons(page)
     }
 
-    override suspend fun insertPopularPerson(popularPerson: PopularPersons) {
-        return database.popularPersonsDao().insertPopularPerson(popularPerson)
+    override suspend fun insertPopularPerson(popularPerson: PopularPersons): Long {
+        return database.getPopularPersonsDao().insertPopularPerson(popularPerson)
     }
 
     override suspend fun selectPopularPerson(): MutableList<PopularPersons> {
-        return database.popularPersonsDao().selectAllPopularPersons()
+        return database.getPopularPersonsDao().selectAllPopularPersons()
     }
 
     override suspend fun deletePopularPersonTable() {
-        return database.popularPersonsDao().deletePopularPersonTable()
+        return database.getPopularPersonsDao().deletePopularPersonTable()
 
     }
 }

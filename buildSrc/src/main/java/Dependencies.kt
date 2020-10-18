@@ -183,6 +183,9 @@ object TestLib {
     // Navigation testing artifact
     val navigationTesting = "androidx.navigation:navigation-testing:${Versions.nav_version}"
 
+    //coroutines test
+    val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines_version}"
+
     val mockito = "org.mockito:mockito-inline:${Versions.mockitoInline}"
     val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockitoKotlinVersion}"
 }

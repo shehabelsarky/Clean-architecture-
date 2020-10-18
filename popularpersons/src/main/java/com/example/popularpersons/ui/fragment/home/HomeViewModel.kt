@@ -90,7 +90,6 @@ class HomeViewModel @ViewModelInject constructor(
             dropPopularPersonsUseCase.execute(Unit) {
                 onComplete {
                     Log.d(TAG, "Popular persons table is nuked")
-                    // TODO() if you want to drop table then insert call insert method here
                 }
                 onCancel {
                     Log.d(TAG, "Coroutine is cancelled")

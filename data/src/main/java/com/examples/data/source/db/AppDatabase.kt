@@ -10,5 +10,5 @@ abstract class AppDatabase : RoomDatabase() {
         const val DB_NAME = "movies.db"
         const val VERSION = 5
     }
-    abstract fun popularPersonsDao(): PopularPersonsDao
+    abstract fun getPopularPersonsDao(): PopularPersonsDao
 }

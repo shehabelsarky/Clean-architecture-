@@ -25,6 +25,6 @@ class DataBaseModule {
 
     @Provides
     fun provideUserDao(appDataBase: AppDatabase): PopularPersonsDao {
-        return appDataBase.popularPersonsDao()
+        return appDataBase.getPopularPersonsDao()
     }
 }

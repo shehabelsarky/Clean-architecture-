@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'de.mannodermaus.android-junit5'
+
 
 android {
     compileSdkVersion (Android.compileSdkVersion)
@@ -127,5 +129,6 @@ dependencies {
 
     debugImplementation(TestLib.fragmentTesting)
     androidTestImplementation(TestLib.navigationTesting)
-
+    testImplementation (TestLib.coroutinesTest)
+    androidTestImplementation(TestLib.coroutinesTest)
 }

@@ -7,10 +7,13 @@ import com.examples.entities.popular_person.local.PopularPersons
 interface PopularPersonsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPopularPerson(popularPerson: PopularPersons)
+    suspend fun insertPopularPerson(popularPerson: PopularPersons): Long
 
     @Delete
     suspend fun deletePopularPerson(popularPerson: PopularPersons): Int
+
+    @Update
+    suspend fun updatePopularPerson(popularPerson: PopularPersons): Int
 
     @Query("DELETE FROM PopularPersons")
     suspend fun deletePopularPersonTable()
