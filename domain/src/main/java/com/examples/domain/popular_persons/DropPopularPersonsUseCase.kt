@@ -6,9 +6,9 @@ import javax.inject.Inject
 
 class DropPopularPersonsUseCase @Inject constructor(
     private val appRepository: AppRepository
-) : LocalUseCase<Unit, Unit>() {
+) : LocalUseCase<Unit, Int>() {
 
-    override suspend fun executeOnBackground(parameters: Unit) {
+    override suspend fun executeOnBackground(parameters: Unit): Int {
         return appRepository.deletePopularPersonTable()
     }
 }

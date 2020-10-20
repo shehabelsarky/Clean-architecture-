@@ -12,5 +12,5 @@ interface AppRepository{
 
     suspend fun insertPopularPerson(popularPerson: PopularPersons): Long
     suspend fun selectPopularPerson(): MutableList<PopularPersons>
-    suspend fun deletePopularPersonTable()
+    suspend fun deletePopularPersonTable(): Int
 }

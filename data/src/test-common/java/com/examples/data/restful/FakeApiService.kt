@@ -18,6 +18,7 @@ constructor(
 ): ApiService{
 
     var popularActorsJsonFileName: String = Constants.POPULAR_ACTORS_FILENAME
+    var searchActorsJsonFileName: String = Constants.SEARCH_ACTORS_FILENAME
     var networkDelay: Long = 0L
 
     override suspend fun getPopularPersons(page: Int): PopularPersonsResponse {
@@ -32,7 +33,7 @@ constructor(
 
 
     override suspend fun searchPersons(page: Int, actorName: String): PopularPersonsResponse {
-        val rawJson = jsonUtil.readJSONFromAsset(popularActorsJsonFileName)
+        val rawJson = jsonUtil.readJSONFromAsset(searchActorsJsonFileName)
         val popularActors = Gson().fromJson<PopularPersonsResponse>(
             rawJson,
             object : TypeToken<PopularPersonsResponse>() {}.type

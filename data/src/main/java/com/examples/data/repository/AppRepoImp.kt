@@ -28,7 +28,7 @@ class AppRepoImp @Inject constructor(
         return database.getPopularPersonsDao().selectAllPopularPersons()
     }
 
-    override suspend fun deletePopularPersonTable() {
+    override suspend fun deletePopularPersonTable(): Int {
         return database.getPopularPersonsDao().deletePopularPersonTable()
 
     }
