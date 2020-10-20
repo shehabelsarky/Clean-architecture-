@@ -1,4 +1,4 @@
-package com.examples.data.entities
+package com.examples.entities
 
 import com.examples.entities.popular_person.local.PopularPersons
 import org.junit.Assert.assertEquals

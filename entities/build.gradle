@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion (Android.compileSdkVersion)
@@ -47,4 +47,10 @@ dependencies {
     implementation(Androidx.room_runtime)
     implementation(Androidx.room_ktx)
     kapt(Androidx.room_compiler_kapt)
+
+    //test
+    testImplementation (TestLib.junit)
+    testImplementation(TestLib.junit_jupiter_api)
+    testImplementation(TestLib.junit_jupiter_params)
+    testRuntimeOnly(TestLib.junit_jupiter_engine)
 }

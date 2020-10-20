@@ -80,8 +80,6 @@ dependencies {
     androidTestImplementation(TestLib.androidxTestCoreKtx)
     androidTestImplementation(TestLib.core_testing)
 
-
-
     testImplementation(TestLib.junit_jupiter_api)
     testImplementation(TestLib.junit_jupiter_params)
     testRuntimeOnly(TestLib.junit_jupiter_engine)
