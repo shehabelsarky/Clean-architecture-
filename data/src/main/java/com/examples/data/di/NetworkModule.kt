@@ -78,6 +78,7 @@ object NetworkModule {
         return retrofit.create(ApiService::class.java)
     }
 
+    @Singleton
     @Provides
     fun provideCloudRepository(apIs: ApiService): BaseCloudRepository {
         return CloudRepository(apIs)

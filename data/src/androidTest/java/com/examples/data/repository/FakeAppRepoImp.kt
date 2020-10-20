@@ -1,13 +1,13 @@
 package com.examples.data.repository
 
-import com.examples.data.source.cloud.BaseCloudRepository
+import com.examples.data.source.cloud.FakeCloudRepository
 import com.examples.data.source.db.AppDatabase
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
 import javax.inject.Inject
 
-class AppRepoImp @Inject constructor(
-    private val cloudRepository: BaseCloudRepository,
+class FakeAppRepoImp @Inject constructor(
+    private val cloudRepository: FakeCloudRepository,
     private val database: AppDatabase
 
 ) : AppRepository {
