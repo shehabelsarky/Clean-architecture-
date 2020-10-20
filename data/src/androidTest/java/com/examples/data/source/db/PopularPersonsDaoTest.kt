@@ -5,7 +5,7 @@ import com.examples.data.util.CoroutineTestRule
 import com.examples.data.util.TestUtil
 import com.examples.entities.popular_person.local.PopularPersons
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -25,7 +25,7 @@ class PopularPersonsDaoTest : AppDatabaseTest() {
     var coroutinesTestRule = CoroutineTestRule()
 
     @Test
-    fun testEmptyDatabase() = runBlockingTest {
+    fun testEmptyDatabase() = runBlocking {
         val selectedPopularPersonsList: MutableList<PopularPersons> =
             getPopularPersonsDao().selectAllPopularPersons()
 
@@ -41,7 +41,7 @@ class PopularPersonsDaoTest : AppDatabaseTest() {
 
 
     @Test
-    fun insertRead() = runBlockingTest {
+    fun insertRead() = runBlocking {
         val popularPersons = PopularPersons(TestUtil.TEST_POPULAR_PERSONS_1)
 
         // insert
@@ -57,7 +57,7 @@ class PopularPersonsDaoTest : AppDatabaseTest() {
 
 
     @Test
-    fun insertReadDelete() = runBlockingTest {
+    fun insertReadDelete() = runBlocking {
         val popularPersons = PopularPersons(TestUtil.TEST_POPULAR_PERSONS_1)
 
         // insert
@@ -90,7 +90,7 @@ class PopularPersonsDaoTest : AppDatabaseTest() {
 
 
     @Test
-    fun insertReadUpdateReadDelete() = runBlockingTest {
+    fun insertReadUpdateReadDelete() = runBlocking {
         val popularPersons = PopularPersons(TestUtil.TEST_POPULAR_PERSONS_1)
 
         // insert

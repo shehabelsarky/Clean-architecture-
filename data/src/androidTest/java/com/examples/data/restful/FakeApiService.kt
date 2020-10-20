@@ -2,7 +2,6 @@ package com.examples.data.restful
 
 import com.examples.data.util.Constants
 import com.examples.data.util.JsonUtil
-import com.examples.entities.PopularActorDetails
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -11,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FakeApiService
+open class FakeApiService
 @Inject
 constructor(
     private val jsonUtil: JsonUtil

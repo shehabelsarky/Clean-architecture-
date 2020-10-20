@@ -14,7 +14,7 @@ import com.examples.data.util.InstantExecutorExtension
 import com.examples.data.util.TestUtil
 import com.examples.entities.popular_person.local.PopularPersons
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -49,8 +49,8 @@ class AppRepoImpTest {
       retrieve popular persons from remote API service
      */
     @Test
-    fun getPopularPersonsFromRemoteWebservice_returnSuccess() = runBlockingTest{
-        val retrievedData = appRepo.getPopularPersons(PAGE)
+    fun getPopularPersonsFromRemoteWebservice_returnSuccess() = runBlocking {
+        val retrievedData =  appRepo.getPopularPersons(PAGE) 
         assertNotNull(retrievedData)
         assertEquals(retrievedData.results!!.size, POPULAR_PERSONS_COUNT)
     }
@@ -60,7 +60,7 @@ class AppRepoImpTest {
      search popular person from remote API service
     */
     @Test
-    fun searchPopularPersonsFromRemoteWebservice_returnSuccess() = runBlockingTest {
+    fun searchPopularPersonsFromRemoteWebservice_returnSuccess() = runBlocking {
         val retrievedData = cloudRepository.searchPersons(PAGE, ACTOR_NAME)
         assertNotNull(retrievedData)
         assertEquals(retrievedData.results!!.size, SEARCH_COUNT)
@@ -72,7 +72,7 @@ class AppRepoImpTest {
     returns empty list
     */
     @Test
-    fun searchPopularPersonsFromRemoteWebservice_returnEmptyList() = runBlockingTest {
+    fun searchPopularPersonsFromRemoteWebservice_returnEmptyList() = runBlocking {
         val retrievedData = cloudRepository.searchPersons(PAGE, NON_EXIST_NAME)
         assertNotNull(retrievedData)
         assertEquals(retrievedData.results!!.size, EMPTY_SEARCH_COUNT)
@@ -84,7 +84,7 @@ class AppRepoImpTest {
         confirm new rows inserted
      */
     @Test
-    fun insertPopularPerson_returnRow() = runBlockingTest {
+    fun insertPopularPerson_returnRow() = runBlocking {
         // Arrange
         val insertedRow = 1L
         mockitoWhen(
@@ -110,7 +110,7 @@ class AppRepoImpTest {
        return failure
     */
     @Test
-    fun insertPopularPerson_returnFailure() = runBlockingTest {
+    fun insertPopularPerson_returnFailure() = runBlocking {
         // Arrange
         val failedInsert = -1L
         mockitoWhen(
@@ -136,7 +136,7 @@ class AppRepoImpTest {
      return popularPersons list
     */
     @Test
-    fun selectPopularPersons_returnListOfPopularPersons() = runBlockingTest {
+    fun selectPopularPersons_returnListOfPopularPersons() = runBlocking {
         //Arrange
         val popularPersonsList: MutableList<PopularPersons> = TestUtil.TEST_POPULAR_PERSONS_LIST
         mockitoWhen(
@@ -147,7 +147,7 @@ class AppRepoImpTest {
 
         // Act
         val returnedData = appRepo.selectPopularPerson()
-        assertEquals(popularPersonsList,returnedData)
+        assertEquals(popularPersonsList, returnedData)
     }
 
     /*
@@ -155,7 +155,7 @@ class AppRepoImpTest {
        return popularPersons emptyList
     */
     @Test
-    fun selectPopularPersons_returnEmptyList() = runBlockingTest {
+    fun selectPopularPersons_returnEmptyList() = runBlocking {
         //Arrange
         val popularPersonsList: MutableList<PopularPersons> = ArrayList()
         mockitoWhen(
@@ -166,7 +166,7 @@ class AppRepoImpTest {
 
         // Act
         val returnedData = appRepo.selectPopularPerson()
-        assertEquals(popularPersonsList,returnedData)
+        assertEquals(popularPersonsList, returnedData)
     }
 
 
@@ -175,7 +175,7 @@ class AppRepoImpTest {
       return success
    */
     @Test
-    fun deletePopularPersons_returnSuccess() = runBlockingTest {
+    fun deletePopularPersons_returnSuccess() = runBlocking {
         //Arrange
         val deletedTable = 1
         mockitoWhen(
@@ -186,7 +186,7 @@ class AppRepoImpTest {
 
         // Act
         val returnedValue = appRepo.deletePopularPersonTable()
-        assertEquals(deletedTable,returnedValue)
+        assertEquals(deletedTable, returnedValue)
     }
 
     /*
@@ -194,7 +194,7 @@ class AppRepoImpTest {
     return failure
     */
     @Test
-    fun deletePopularPersons_returnFailure() = runBlockingTest {
+    fun deletePopularPersons_returnFailure() = runBlocking {
         //Arrange
         val deletedTable = -1
         mockitoWhen(
@@ -205,7 +205,7 @@ class AppRepoImpTest {
 
         // Act
         val returnedValue = appRepo.deletePopularPersonTable()
-        assertEquals(deletedTable,returnedValue)
+        assertEquals(deletedTable, returnedValue)
     }
 }
 

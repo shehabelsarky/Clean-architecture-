@@ -9,7 +9,6 @@ import javax.inject.Inject
 class FakeAppRepoImp @Inject constructor(
     private val cloudRepository: FakeCloudRepository,
     private val database: AppDatabase
-
 ) : AppRepository {
 
     override suspend fun searchPersons(page: Int, actorName: String): PopularPersonsResponse {

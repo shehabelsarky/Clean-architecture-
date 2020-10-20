@@ -8,7 +8,7 @@ import com.examples.entities.popular_person.remote.PopularPersonsResponse
  * fake and it's not being injected so I can change it at runtime.
  * That way I can alter the FakeApiService for each individual test.
  */
-class FakeCloudRepository(private val apIs: FakeApiService) : BaseCloudRepository {
+open class FakeCloudRepository(private val apIs: FakeApiService) : BaseCloudRepository {
 
     override suspend fun searchPersons(page: Int, actorName: String): PopularPersonsResponse {
         return apIs.searchPersons(page,actorName)
