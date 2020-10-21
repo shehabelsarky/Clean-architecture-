@@ -9,6 +9,13 @@ class CloudRepository(private val apIs: ApiService) : BaseCloudRepository {
         return apIs.searchPersons(page,actorName)
     }
 
+    override suspend fun searchPersonsReturnsData(
+        page: Int,
+        actorName: String
+    ): PopularPersonsResponse {
+        return apIs.searchPersonsReturnsData(page,actorName)
+    }
+
     override suspend fun getPopularPersons(page: Int): PopularPersonsResponse {
         return apIs.getPopularPersons(page)
     }

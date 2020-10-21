@@ -8,6 +8,7 @@ import com.examples.data.util.Constants.PAGE
 import com.examples.data.util.Constants.POPULAR_PERSONS_COUNT
 import com.examples.data.util.Constants.SEARCH_COUNT
 import com.examples.data.util.InstantExecutorExtension
+import com.examples.data.util.MockJson
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -15,7 +16,6 @@ import org.junit.Assert.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.Mockito.mock
 
 
 @ExperimentalCoroutinesApi
@@ -24,11 +24,13 @@ class CloudRepositoryImpTest {
 
     //system under test
     private lateinit var cloudRepository: BaseCloudRepository
-    lateinit var apiService: FakeApiService
+    private lateinit var apiService: FakeApiService
+    private lateinit var mockJson: MockJson
 
     @BeforeEach
     fun initEach() {
-        apiService = mock(FakeApiService::class.java)
+        mockJson = MockJson()
+        apiService = FakeApiService(mockJson)
         cloudRepository = FakeCloudRepository(apiService)
     }
 
@@ -37,7 +39,7 @@ class CloudRepositoryImpTest {
       retrieve popular persons from remote API service
      */
     @Test
-    fun getPopularPersonsFromRemoteWebservice_returnSuccess() = runBlocking  {
+    fun getPopularPersonsFromRemoteWebservice_returnSuccess() = runBlocking {
         val retrievedData = cloudRepository.getPopularPersons(PAGE)
         assertNotNull(retrievedData)
         assertEquals(retrievedData.results!!.size, POPULAR_PERSONS_COUNT)
@@ -49,7 +51,7 @@ class CloudRepositoryImpTest {
      */
     @Test
     fun searchPopularPersonsFromRemoteWebservice_returnSuccess() = runBlocking {
-        val retrievedData = cloudRepository.searchPersons(PAGE, ACTOR_NAME)
+        val retrievedData = cloudRepository.searchPersonsReturnsData(PAGE, ACTOR_NAME)
         assertNotNull(retrievedData)
         assertEquals(retrievedData.results!!.size, SEARCH_COUNT)
     }

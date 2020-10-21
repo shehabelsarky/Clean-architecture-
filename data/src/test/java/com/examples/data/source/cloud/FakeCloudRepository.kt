@@ -17,4 +17,8 @@ open class FakeCloudRepository(private val apIs: FakeApiService) : BaseCloudRepo
     override suspend fun getPopularPersons(page: Int): PopularPersonsResponse {
         return apIs.getPopularPersons(page)
     }
+
+    override suspend fun searchPersonsReturnsData(page: Int, actorName: String): PopularPersonsResponse{
+        return apIs.searchPersonsReturnsData(page,actorName)
+    }
 }

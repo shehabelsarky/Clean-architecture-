@@ -14,4 +14,9 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("query") actorName: String
     ): PopularPersonsResponse
+
+    suspend fun searchPersonsReturnsData(
+        @Query("page") page: Int,
+        @Query("query") actorName: String
+    ): PopularPersonsResponse
 }

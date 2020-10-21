@@ -8,4 +8,9 @@ interface BaseCloudRepository {
       page: Int,
       actorName: String
    ): PopularPersonsResponse
+
+   suspend fun searchPersonsReturnsData(
+      page: Int,
+      actorName: String
+   ): PopularPersonsResponse
 }

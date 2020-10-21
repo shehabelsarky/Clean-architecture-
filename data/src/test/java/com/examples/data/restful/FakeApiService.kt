@@ -14,7 +14,7 @@ open class FakeApiService
 @Inject
 constructor(
     private val mockJson: MockJson
-): ApiService{
+) : ApiService {
 
     var popularActorsJsonFileName: String = Constants.POPULAR_ACTORS_FILENAME
     var searchActorsJsonFileName: String = Constants.SEARCH_ACTORS_FILENAME
@@ -24,7 +24,19 @@ constructor(
     override suspend fun getPopularPersons(page: Int): PopularPersonsResponse {
         val rawJson = mockJson.getJson(popularActorsJsonFileName)
         delay(networkDelay)
-        return  Gson().fromJson(
+        return Gson().fromJson(
+            rawJson,
+            object : TypeToken<PopularPersonsResponse>() {}.type
+        )
+    }
+
+    override suspend fun searchPersonsReturnsData(
+        page: Int,
+        actorName: String
+    ): PopularPersonsResponse {
+        val rawJson = mockJson.getJson(searchActorsJsonFileName)
+        delay(networkDelay)
+        return Gson().fromJson(
             rawJson,
             object : TypeToken<PopularPersonsResponse>() {}.type
         )
@@ -34,7 +46,7 @@ constructor(
     override suspend fun searchPersons(page: Int, actorName: String): PopularPersonsResponse {
         val rawJson = mockJson.getJson(emptyListJsonFileName)
         delay(networkDelay)
-        return  Gson().fromJson(
+        return Gson().fromJson(
             rawJson,
             object : TypeToken<PopularPersonsResponse>() {}.type
         )
