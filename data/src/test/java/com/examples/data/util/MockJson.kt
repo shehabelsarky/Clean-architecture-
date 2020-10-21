@@ -1,4 +1,4 @@
-package com.examples.domain.util
+package com.examples.data.util
 
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
 import com.google.gson.Gson

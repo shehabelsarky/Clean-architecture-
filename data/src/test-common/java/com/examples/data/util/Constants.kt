@@ -4,6 +4,7 @@ object Constants {
 
     const val POPULAR_ACTORS_FILENAME = "popular_actors.json"
     const val SEARCH_ACTORS_FILENAME = "search_actors.json"
+    const val EMPTY_SEARCH_LIST_FILENAME = "empty_list.json"
     const val EMPTY_LIST = "empty_list.json"
     const val UNKNOWN_ERROR = "Unknown error"
 
