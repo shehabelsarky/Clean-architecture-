@@ -12,8 +12,8 @@ open class PopularPersonsMapper @Inject constructor() {
             EntityHelper.id++,
             dtoItem.id,
             dtoItem.name ?: "",
-            dtoItem.knownFor!![0].title ?: "",
-            dtoItem.knownFor!![0].overview ?: "",
+            dtoItem.knownFor?.get(0)?.title ?: "",
+            dtoItem.knownFor?.get(0)?.overview ?: "",
             dtoItem.profilePath ?: "",
             dtoItem.popularity ?: 0.0f
         )

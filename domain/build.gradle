@@ -44,12 +44,14 @@ android {
         unitTests.includeAndroidResources = true
     }
 
-  /*  sourceSets {
+   /* sourceSets {
         test {
-            resources.srcDirs += ['src/test/resources']
+            java.srcDirs += ["${project(':data').projectDir}/src/test/java"]
+            java.srcDirs += ["${project(':data').projectDir}/src/test-common/java"]
         }
         androidTest {
-            resources.srcDirs += ['src/androidTest/resources']
+            java.srcDirs += ["${project(':data').projectDir}/src/androidTest/java"]
+            java.srcDirs += ["${project(':data').projectDir}/src/test-common/java"]
         }
     }*/
 }

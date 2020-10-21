@@ -6,6 +6,7 @@ import com.examples.data.repository.AppRepository
 import com.examples.domain.mappers.popular_persons.PopularPersonsMapper
 import com.examples.domain.util.InstantExecutorExtension
 import com.examples.domain.util.MockJson
+import com.examples.entities.popular_person.parameters.PopularPersonsQuery
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito
+import org.mockito.Mockito.`when` as mockitoWhen
 
 
 @FlowPreview
@@ -29,6 +31,7 @@ class PopularPersonsRemoteUseCaseTest {
     private lateinit var appRepository: AppRepository
     private lateinit var mapper: PopularPersonsMapper
     private lateinit var mockJson: MockJson
+    private val COUNT = 10
 
     @BeforeEach
     fun initEach() {
@@ -59,5 +62,22 @@ class PopularPersonsRemoteUseCaseTest {
         Assert.assertEquals(dto.results!![0].profilePath!! ,bo[0].image)
         Assert.assertEquals(dto.results!![0].knownFor!![0].overview!! ,bo[0].overview)
         Assert.assertEquals(dto.results!![0].knownFor!![0].title!! ,bo[0].tile)
+    }
+
+
+    @Test
+    fun executeOnBackground_returnPopularPersonsResponseDto() = runBlocking {
+        //Given
+        val dto: PopularPersonsResponse = mockJson.getPopularPersons()
+        val query = PopularPersonsQuery()
+        query.page = 1
+        //when
+        mockitoWhen(popularPersonsRemoteUseCase.executeOnBackground(query))
+            .thenReturn(dto)
+
+        //then
+        Assert.assertNotNull(dto)
+        Assert.assertEquals(dto.results!!.size ,COUNT)
+
     }
 }

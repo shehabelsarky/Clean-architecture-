@@ -41,7 +41,7 @@ class PopularPersonsRemoteUseCase @Inject constructor(
             .toList()
     }
 
-    override suspend fun executeOnBackground(parameters: PopularPersonsQuery): PopularPersonsResponse {
+    public override suspend fun executeOnBackground(parameters: PopularPersonsQuery): PopularPersonsResponse {
         return appRepository.getPopularPersons(parameters.page)
     }
 }
