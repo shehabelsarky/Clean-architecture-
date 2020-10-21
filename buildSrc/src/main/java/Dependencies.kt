@@ -42,6 +42,8 @@ object Versions {
     val kotlinTest = "1.3.61"
     val androidx_espresso_idling_resource = "3.2.0"
     val mockk_version = "1.9.2"
+    val mockwebserver_version = "4.1.0"
+
 }
 
 
@@ -176,6 +178,7 @@ object TestLib {
 
     //mockk
     val mockk = "io.mockk:mockk-android:${Versions.mockk_version}"
+    val mockwebserver = "com.squareup.okhttp3:mockwebserver:${Versions.mockwebserver_version}"
 
     // androidx.fragment
     val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.fragment_version}"
@@ -188,6 +191,8 @@ object TestLib {
 
     val mockito = "org.mockito:mockito-inline:${Versions.mockitoInline}"
     val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockitoKotlinVersion}"
+
+
 }
 
 object WorkManager {

@@ -1,4 +1,4 @@
-package com.examples.domain.popular_persons
+package com.examples.domain.usecases.popular_persons
 
 import com.examples.data.mapper.CloudErrorMapper
 import com.examples.entities.popular_person.local.PopularPersons
@@ -20,7 +20,7 @@ class PopularPersonsRemoteUseCase @Inject constructor(
 
     @ExperimentalCoroutinesApi
     @FlowPreview
-    override suspend fun convert(dto: PopularPersonsResponse): List<PopularPersons> {
+    public override suspend fun convert(dto: PopularPersonsResponse): List<PopularPersons> {
         val popularPersons = arrayListOf<PopularPersons>()
 
         return flowOf(dto.results)

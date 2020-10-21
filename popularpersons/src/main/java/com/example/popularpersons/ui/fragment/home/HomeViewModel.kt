@@ -12,17 +12,15 @@ import com.example.popularpersons.work_manager.worker_request.WorkManagerHelper
 import com.example.popularpersons.work_manager.worker_request.WorkerRequest
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.parameters.PopularPersonsQuery
-import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase
-import com.examples.domain.search_popular_persons.SearchPopularPersonsRemoteUseCase
+import com.examples.domain.usecases.popular_persons.PopularPersonsRemoteUseCase
+import com.examples.domain.usecases.search_popular_persons.SearchPopularPersonsRemoteUseCase
 import com.examples.core.base.view_model.BaseViewModel
-import com.examples.domain.popular_persons.DropPopularPersonsUseCase
-import com.examples.domain.popular_persons.InsertPopularPersonUseCase
-import com.examples.domain.popular_persons.SelectPopularPersonsUseCase
-import kotlinx.coroutines.Dispatchers.IO
+import com.examples.domain.usecases.popular_persons.DropPopularPersonsUseCase
+import com.examples.domain.usecases.popular_persons.InsertPopularPersonUseCase
+import com.examples.domain.usecases.popular_persons.SelectPopularPersonsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @ExperimentalCoroutinesApi
 class HomeViewModel @ViewModelInject constructor(

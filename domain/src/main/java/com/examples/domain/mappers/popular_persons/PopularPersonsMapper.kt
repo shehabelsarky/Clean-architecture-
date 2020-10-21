@@ -5,7 +5,7 @@ import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.remote.Result
 import javax.inject.Inject
 
-class PopularPersonsMapper @Inject constructor() {
+open class PopularPersonsMapper @Inject constructor() {
 
     fun convert(dtoItem: Result): PopularPersons {
         return PopularPersons(

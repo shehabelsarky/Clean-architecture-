@@ -6,7 +6,7 @@ import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
 import javax.inject.Inject
 
-class AppRepoImp @Inject constructor(
+open class AppRepoImp @Inject constructor(
     private val cloudRepository: BaseCloudRepository,
     private val database: AppDatabase
 

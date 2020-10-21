@@ -35,6 +35,23 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    sourceSets {
+        test.resources.srcDirs += 'src/unitTests/resources'
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+    }
+
+  /*  sourceSets {
+        test {
+            resources.srcDirs += ['src/test/resources']
+        }
+        androidTest {
+            resources.srcDirs += ['src/androidTest/resources']
+        }
+    }*/
 }
 
 dependencies {
@@ -51,6 +68,9 @@ dependencies {
     implementation(Coroutines.core)
     implementation(Coroutines.android)
 
+    //Gson
+    implementation(Gson.gson)
+
     //Hilt
     implementation(Hilt.hilt_android)
     implementation(Hilt.viewmodel)
@@ -58,6 +78,7 @@ dependencies {
     kapt(Hilt.kapt_hilt_compiler)
 
     //test
+    testImplementation (TestLib.junit)
     androidTestImplementation(TestLib.junit)
     androidTestImplementation(TestLib.androidxTestCore)
     androidTestImplementation(TestLib.androidxTestCoreKtx)
@@ -85,3 +106,4 @@ dependencies {
     testImplementation (TestLib.coroutinesTest)
     androidTestImplementation(TestLib.coroutinesTest)
 }
+

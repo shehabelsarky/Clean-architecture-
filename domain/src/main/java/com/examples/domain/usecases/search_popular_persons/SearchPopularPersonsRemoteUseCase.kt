@@ -1,4 +1,4 @@
-package com.examples.domain.search_popular_persons
+package com.examples.domain.usecases.search_popular_persons
 
 import com.examples.data.mapper.CloudErrorMapper
 import com.examples.entities.popular_person.local.PopularPersons
