@@ -5,12 +5,6 @@ import com.examples.data.source.cloud.FakeCloudRepository
 import com.examples.data.source.cloud.BaseCloudRepository
 import com.examples.data.source.db.AppDatabase
 import com.examples.data.source.db.PopularPersonsDao
-import com.examples.data.util.Constants.ACTOR_NAME
-import com.examples.data.util.Constants.EMPTY_SEARCH_COUNT
-import com.examples.data.util.Constants.NON_EXIST_NAME
-import com.examples.data.util.Constants.PAGE
-import com.examples.data.util.Constants.POPULAR_PERSONS_COUNT
-import com.examples.data.util.Constants.SEARCH_COUNT
 import com.examples.data.util.InstantExecutorExtension
 import com.examples.data.util.MockJson
 import com.examples.data.util.TestUtil

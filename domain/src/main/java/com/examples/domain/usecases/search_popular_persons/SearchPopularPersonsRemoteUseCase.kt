@@ -9,7 +9,7 @@ import com.examples.domain.base.RemoteUseCase
 import com.examples.domain.mappers.popular_persons.PopularPersonsMapper
 import javax.inject.Inject
 
-class SearchPopularPersonsRemoteUseCase @Inject constructor(
+open class SearchPopularPersonsRemoteUseCase @Inject constructor(
     errorUtil: CloudErrorMapper,
     private val appRepository: AppRepository,
     private val mapper: PopularPersonsMapper

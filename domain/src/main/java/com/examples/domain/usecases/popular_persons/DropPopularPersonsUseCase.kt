@@ -4,7 +4,7 @@ import com.examples.data.repository.AppRepository
 import com.examples.domain.base.LocalUseCase
 import javax.inject.Inject
 
-class DropPopularPersonsUseCase @Inject constructor(
+open class DropPopularPersonsUseCase @Inject constructor(
     private val appRepository: AppRepository
 ) : LocalUseCase<Unit, Int>() {
 

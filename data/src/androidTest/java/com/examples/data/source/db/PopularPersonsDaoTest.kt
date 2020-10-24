@@ -1,7 +1,6 @@
 package com.examples.data.source.db
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.examples.data.util.CoroutineTestRule
 import com.examples.data.util.TestUtil
 import com.examples.entities.popular_person.local.PopularPersons
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -13,16 +12,13 @@ import org.junit.Test
 private const val NAME = "Shehab Elsarky"
 private const val OVERVIEW = "Nice person"
 private const val POPULARITY = 10f
-private const val TILE = "6"
+private const val TILE = "Awesome title"
 
 @ExperimentalCoroutinesApi
 class PopularPersonsDaoTest : AppDatabaseTest() {
 
     @get:Rule
     var rule = InstantTaskExecutorRule()
-
-    @get:Rule
-    var coroutinesTestRule = CoroutineTestRule()
 
     @Test
     fun testEmptyDatabase() = runBlocking {

@@ -33,7 +33,7 @@ object Versions {
     val mockitoInline = "2.11.0"
     val test_arch_core = "2.0.1"
     val junit_jupiter_version = "5.3.2"
-    val mockitoKotlinVersion = "1.5.0"
+    val mockitoKotlinVersion = "2.2.0"
     val activityKtxVersion = "1.2.0-alpha05"
     val fragmentKtxVersion = "1.3.0-alpha05"
     val androidx_test_version = "1.1.0"
@@ -190,7 +190,7 @@ object TestLib {
     val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines_version}"
 
     val mockito = "org.mockito:mockito-inline:${Versions.mockitoInline}"
-    val mockito_kotlin = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockitoKotlinVersion}"
+    val mockito_kotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlinVersion}"
 
 
 }

@@ -23,7 +23,7 @@ import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
-class HomeViewModel @ViewModelInject constructor(
+open class HomeViewModel @ViewModelInject constructor(
     private val popularPersonsUseCase: PopularPersonsRemoteUseCase,
     private val searchPopularPersonsUseCase: SearchPopularPersonsRemoteUseCase,
     private val insertPopularPersonsUseCase: InsertPopularPersonUseCase,

@@ -103,8 +103,10 @@ dependencies {
 
     //Shared Pref
     implementation(SharedPreference.sharedPreference)
+    
 
     //test
+    testImplementation (TestLib.junit)
     androidTestImplementation(TestLib.junit)
     androidTestImplementation(TestLib.androidxTestCore)
     androidTestImplementation(TestLib.androidxTestCoreKtx)
@@ -115,6 +117,7 @@ dependencies {
     testRuntimeOnly(TestLib.junit_jupiter_engine)
 
     testImplementation(TestLib.mockito_core)
+    testImplementation(TestLib.mockito_kotlin)
 
     androidTestImplementation(TestLib.kotlinTest)
     androidTestImplementation(TestLib.espresso_core)

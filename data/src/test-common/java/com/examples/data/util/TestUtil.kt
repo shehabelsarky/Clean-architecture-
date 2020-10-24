@@ -10,7 +10,7 @@ class TestUtil {
             id = 1,
             name = "Shehab",
             overview = "Amazing person",
-            tile = "5",
+            tile = "Awesome title",
             popularity = 5f
         )
 
@@ -18,7 +18,7 @@ class TestUtil {
             id = 1,
             name = "Elsarky",
             overview = "Amazing family",
-            tile = "5",
+            tile = "Awesome title",
             popularity = 5f
         )
 

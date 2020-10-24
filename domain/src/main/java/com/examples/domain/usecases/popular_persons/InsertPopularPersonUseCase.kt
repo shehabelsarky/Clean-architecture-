@@ -5,7 +5,7 @@ import com.examples.domain.base.LocalUseCase
 import com.examples.entities.popular_person.local.PopularPersons
 import javax.inject.Inject
 
-class InsertPopularPersonUseCase@Inject constructor(
+open class InsertPopularPersonUseCase@Inject constructor(
     private val appRepository: AppRepository
 ) : LocalUseCase<PopularPersons,Long>() {
 

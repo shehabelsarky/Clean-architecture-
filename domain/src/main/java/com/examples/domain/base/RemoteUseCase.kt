@@ -21,7 +21,7 @@ abstract class RemoteUseCase<P, R, FR>(val errorUtil: CloudErrorMapper) {
     protected abstract suspend fun executeOnBackground(parameters: P): R
     protected abstract suspend fun convert(dto: R): FR
 
-    fun execute(parameters: P, block: CompletionBlock<FR>) {
+    open fun execute(parameters: P, block: CompletionBlock<FR>) {
         val response = Request<FR>().apply { block() }
         unsubscribe()
         parentJob = Job()

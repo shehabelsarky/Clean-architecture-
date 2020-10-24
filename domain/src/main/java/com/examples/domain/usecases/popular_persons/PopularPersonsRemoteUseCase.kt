@@ -12,7 +12,7 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-class PopularPersonsRemoteUseCase @Inject constructor(
+open class PopularPersonsRemoteUseCase @Inject constructor(
     errorUtil: CloudErrorMapper,
     private val appRepository: AppRepository,
     private val mapper: PopularPersonsMapper
