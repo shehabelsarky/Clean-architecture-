@@ -16,6 +16,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * Created by Shehab Elsarky
+ */
 @Module
 @InstallIn(ApplicationComponent::class)
 object NetworkModule {
@@ -50,7 +53,7 @@ object NetworkModule {
             .addInterceptor { chain ->
                 val request = chain.request() //original request
                 val url = request.url().newBuilder() //modified url
-                    .addQueryParameter("api_key", Config.API_KEY)
+                    .addQueryParameter("appid", Config.API_KEY)
                     .build()
                 val newRequest = request.newBuilder().url(url).build() // modified request
                 chain.proceed(newRequest)

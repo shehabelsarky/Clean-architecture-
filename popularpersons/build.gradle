@@ -61,6 +61,8 @@ dependencies {
     implementation(Androidx.multidex)
     implementation(Androidx.lifecycle)
     implementation(Androidx.legacy)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt(Androidx.appcompat)
     implementation(Androidx.ifecycle_reactivestreams)
     implementation(Androidx.lifecycle_common)

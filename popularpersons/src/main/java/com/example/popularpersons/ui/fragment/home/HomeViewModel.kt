@@ -18,19 +18,28 @@ import com.examples.core.base.view_model.BaseViewModel
 import com.examples.domain.popular_persons.DropPopularPersonsUseCase
 import com.examples.domain.popular_persons.InsertPopularPersonUseCase
 import com.examples.domain.popular_persons.SelectPopularPersonsUseCase
-import kotlinx.coroutines.Dispatchers.IO
+import com.examples.domain.usecases.cities.CitiesUseCase
+import com.examples.domain.usecases.weather.WeatherUseCase
+import com.examples.entities.city.local.City
+import com.examples.entities.weather.local.Weather
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
+/**
+ * Created by Shehab Elsarky
+ */
+@FlowPreview
 @ExperimentalCoroutinesApi
 class HomeViewModel @ViewModelInject constructor(
     private val popularPersonsUseCase: PopularPersonsRemoteUseCase,
     private val searchPopularPersonsUseCase: SearchPopularPersonsRemoteUseCase,
     private val insertPopularPersonsUseCase: InsertPopularPersonUseCase,
     private val selectPopularPersonsUseCase: SelectPopularPersonsUseCase,
-    private val dropPopularPersonsUseCase: DropPopularPersonsUseCase
+    private val dropPopularPersonsUseCase: DropPopularPersonsUseCase,
+    private val citiesUseCase: CitiesUseCase,
+    private val weatherUseCase: WeatherUseCase
 ) : BaseViewModel() {
     private val TAG = HomeViewModel::class.simpleName
 
@@ -50,6 +59,34 @@ class HomeViewModel @ViewModelInject constructor(
             onError(::setErrorReason)
             onCancel(::setCancellationReason)
             isLoading(::setLoading)
+        }
+    }
+
+
+    val weatherChannel: ConflatedBroadcastChannel<Weather> by lazy {
+        ConflatedBroadcastChannel<Weather>()
+    }
+
+    fun getWeather(cityName: String) {
+        weatherUseCase.execute(cityName) {
+            onComplete {
+                viewModelScope.launch {
+                    weatherChannel.offer(it)
+                }
+            }
+            onError(::setErrorReason)
+            onCancel(::setCancellationReason)
+            isLoading(::setLoading)
+        }
+    }
+
+    val citiesChannel: ConflatedBroadcastChannel<List<City>> by lazy {
+        ConflatedBroadcastChannel<List<City>>()
+    }
+
+    fun getCities() {
+        callApi(citiesChannel) { callBack ->
+            citiesUseCase.execute(Unit,callBack)
         }
     }
 
@@ -115,6 +152,7 @@ class HomeViewModel @ViewModelInject constructor(
         }
 
     }
+
 
     private val searchPopularPersonsData: MutableLiveData<List<PopularPersons>>
             by lazy { MutableLiveData<List<PopularPersons>>() }

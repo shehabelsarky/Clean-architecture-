@@ -13,6 +13,16 @@
         tools:layout="@layout/fragment_home">
 
     </fragment>
+    <fragment
+        android:id="@+id/citiesFragment"
+        android:name="com.example.popularpersons.ui.fragment.cities.CitiesFragment"
+        android:label="fragment_cities"
+        tools:layout="@layout/fragment_cities" />
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.popularpersons.ui.fragment.weather.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" />
 
 
 </navigation>

@@ -1,12 +1,15 @@
 package com.examples.data.restful
 
 
-import com.examples.entities.PopularActorDetails
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
+import com.examples.entities.weather.response.RemoteWeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * Created by Shehab Elsarky
+ */
 interface ApiService {
 
     @GET(Config.POPULAR_ACTORS)
@@ -26,4 +29,9 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("query") actorName: String
     ): PopularPersonsResponse
+
+    @GET(Config.WEATHER)
+    suspend fun getWeatherByCityName(
+        @Query("q") cityName: String
+    ): RemoteWeatherResponse
 }

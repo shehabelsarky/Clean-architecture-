@@ -8,6 +8,10 @@ import kotlin.coroutines.CoroutineContext
 typealias CompletionBlock<T> = RemoteUseCase.Request<T>.() -> Unit
 
 /**
+ * Created by Shehab Elsarky
+ */
+
+/**
  * @type in P paramater
  * @type R DTO result
  * @type FR(final result) mapped DTO to BO

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 2643743,
+    "name": "London",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -0.12574,
+      "lat": 51.50853
+    }
+  },
+  {
+    "id": 2643744,
+    "name": "City of London",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -0.08901,
+      "lat": 51.51334
+    }
+  },
+  {
+    "id": 2643745,
+    "name": "Londesborough",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -0.68333,
+      "lat": 53.883331
+    }
+  },
+  {
+    "id": 2643773,
+    "name": "Loftus",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -0.89459,
+      "lat": 54.555431
+    }
+  },
+  {
+    "id": 2643776,
+    "name": "Lofthouse",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -1.49697,
+      "lat": 53.729469
+    }
+  },
+  {
+    "id": 2643783,
+    "name": "Loddon",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": 1.48183,
+      "lat": 52.5327
+    }
+  },
+  {
+    "id": 2643788,
+    "name": "Lockington",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -0.48572,
+      "lat": 53.91415
+    }
+  },
+  {
+    "id": 2643791,
+    "name": "Lockerbie",
+    "state": "",
+    "country": "GB",
+    "coord": {
+      "lon": -3.35635,
+      "lat": 55.12302
+    }
+  }
+]
