@@ -59,6 +59,10 @@ abstract class BaseRecyclerAdapter<T>(
         bind(holder.itemView, getItem(position), position)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     /**
      * Bind the item of type [T] to the itemView
      */
@@ -75,6 +79,11 @@ abstract class BaseRecyclerAdapter<T>(
     fun addElementToList(index: Int,element: T){
         currentList.add(index,element)
         notifyItemChanged(index)
+    }
+
+    fun removeElement(item: T){
+        ArrayList(currentList).remove(item)
+        notifyDataSetChanged()
     }
 }
 

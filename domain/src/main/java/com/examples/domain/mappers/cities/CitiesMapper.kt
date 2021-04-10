@@ -11,7 +11,6 @@ class CitiesMapper @Inject constructor() {
 
     fun convert(dtoItem: RemoteCity): City {
         return City(
-            cityId = dtoItem.id?.toLong() ?:0,
             cityName = dtoItem.name?:""
         )
     }

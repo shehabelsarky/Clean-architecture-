@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.AutoCompleteTextView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.popularpersons.R
@@ -25,7 +24,6 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Created by Shehab Elsarky
@@ -39,7 +37,8 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
     override val viewModel by viewModels<HomeViewModel>()
     private lateinit var citiesAdapter: CitiesAdapter
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var citiesList: List<City>
+    private var citiesList: ArrayList<City> = arrayListOf()
+    private var dropdownCitiesList: ArrayList<City> = arrayListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,9 +47,12 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
     }
 
     private fun initCitiesList() {
-        citiesAdapter = CitiesAdapter { cityDetails ->
+        citiesAdapter = CitiesAdapter({ cityDetails ->
             navigateToWeatherFragment(cityDetails.cityName)
-        }
+        }, { city, position ->
+            citiesList.removeAt(position)
+            citiesAdapter.notifyItemRemoved(position)
+        })
         rvList.adapter = citiesAdapter
     }
 
@@ -59,9 +61,13 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
             with(viewModel) {
                 getCities()
                 citiesChannel.asFlow().collect {
-                    citiesList = it
+                    initCitiesAndCitiesDropdownLists(
+                        citiesList,
+                        dropdownCitiesList,
+                        it as ArrayList<City>
+                    )
                     citiesAdapter.submitList(citiesList)
-                    initCitiesDropDownList(it)
+                    initCitiesDropDownList(dropdownCitiesList)
                     initLocationService()
                 }
             }
@@ -97,10 +103,13 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {
-                    val city = getCityFromLatLng(requireContext(), location.latitude, location.longitude)
-                    if (city.isNotEmpty()){
-                        viewModel.addCity(citiesList as ArrayList<City>,city,0)
-                        citiesAdapter.notifyItemChanged(0)
+                    val city =
+                        getCityFromLatLng(requireContext(), location.latitude, location.longitude)
+                    if (city.isNotEmpty()) {
+                        if (!citiesList.contains(City(city))) {
+                            viewModel.addCity(citiesList, city, 0)
+                            citiesAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }

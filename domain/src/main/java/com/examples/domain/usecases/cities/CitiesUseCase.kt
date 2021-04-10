@@ -43,7 +43,7 @@ class CitiesUseCase @Inject constructor(
         return appRepository.getCities()
     }
 
-    fun addCity(citiesList: ArrayList<City>,cityName: String,index: Int): List<City>{
+    fun addCity(citiesList: ArrayList<City>,cityName: String,index: Int): ArrayList<City>{
         citiesList.add(
             index,
             City(

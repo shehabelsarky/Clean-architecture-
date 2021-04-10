@@ -1529,6 +1529,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_remove
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
 drawable material_ic_edit_black_24dp
@@ -1738,6 +1739,7 @@ id invisible
 id italic
 id item_touch_helper_previous_elevation
 id ivImage
+id ivRemove
 id labeled
 id largeLabel
 id left
