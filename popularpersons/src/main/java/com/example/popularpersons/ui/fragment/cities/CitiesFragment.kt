@@ -12,19 +12,21 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.popularpersons.R
+import com.example.popularpersons.ui.dialog.AddCityDialog
 import com.example.popularpersons.ui.fragment.home.HomeViewModel
 import com.examples.core.base.fragment.BaseFragment
+import com.examples.core.utils.showToast
 import com.examples.entities.city.local.City
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_cities.*
 import kotlinx.android.synthetic.main.list_layout.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
+import kotlin.properties.Delegates
 
 /**
  * Created by Shehab Elsarky
@@ -40,19 +42,25 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var citiesList: ArrayList<City> = arrayListOf()
     private var dropdownCitiesList: ArrayList<City> = arrayListOf()
+    private var numberOfAddedCities: Int by Delegates.notNull()
+    private var coroutineScope = CoroutineScope(Dispatchers.Main)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        numberOfAddedCities = 0
         initCitiesList()
         collectCitiesList()
+        initFabAddCity()
     }
 
     private fun initCitiesList() {
         citiesAdapter = CitiesAdapter({ cityDetails ->
             navigateToWeatherFragment(cityDetails.cityName)
         }, { city, position ->
-            citiesList.removeAt(position)
-            citiesAdapter.notifyItemRemoved(position)
+            coroutineScope.launch {
+                citiesList.removeAt(position)
+                citiesAdapter.notifyItemRemoved(position)
+            }
         })
         rvList.adapter = citiesAdapter
     }
@@ -72,6 +80,22 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
                     initLocationService()
                 }
             }
+        }
+    }
+
+    private fun initFabAddCity() {
+        fabAddCity.setOnClickListener {
+            val addCityDialog = AddCityDialog { cityName ->
+                if (numberOfAddedCities < 5) {
+                    coroutineScope.launch {
+                        viewModel.addCity(citiesList, cityName, 0)
+                        citiesAdapter.notifyDataSetChanged()
+                        numberOfAddedCities++
+                    }
+                } else
+                    requireContext().showToast("Max number of added cities is 5")
+            }
+            addCityDialog.showDialog(requireContext())
         }
     }
 
@@ -107,9 +131,11 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
                     val city =
                         getCityFromLatLng(requireContext(), location.latitude, location.longitude)
                     if (city.isNotEmpty()) {
-                        if (!citiesList.contains(City(city))) {
-                            viewModel.addCity(citiesList, city, 0)
-                            citiesAdapter.notifyDataSetChanged()
+                        coroutineScope.launch {
+                            if (!citiesList.contains(City(city))) {
+                                viewModel.addCity(citiesList, city, 0)
+                                citiesAdapter.notifyDataSetChanged()
+                            }
                         }
                     }
                 }

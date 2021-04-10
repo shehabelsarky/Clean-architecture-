@@ -1481,6 +1481,7 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable back_arrow
+drawable bg_gradient_rounded_button
 drawable bg_toolbar
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
@@ -1518,6 +1519,7 @@ drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_account_circle_black_24dp
+drawable ic_add_city
 drawable ic_arrow_back_black_24dp
 drawable ic_baseline_keyboard_arrow_down_24
 drawable ic_baseline_keyboard_arrow_up_24
@@ -1530,6 +1532,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_remove
+drawable ic_round_add_24
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
 drawable material_ic_edit_black_24dp
@@ -1650,6 +1653,7 @@ id blocking
 id bottom
 id btnBack
 id btnTest
+id btn_ok
 id buttonPanel
 id cancel_action
 id cancel_button
@@ -1703,9 +1707,11 @@ id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id etCity
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fabAddCity
 id fade
 id fill
 id fill_horizontal
@@ -2023,6 +2029,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_add_city
 layout fragment_cities
 layout fragment_details
 layout fragment_home
