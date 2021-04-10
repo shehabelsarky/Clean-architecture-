@@ -7,19 +7,15 @@ import androidx.fragment.app.Fragment;
 import androidx.hilt.lifecycle.ViewModelAssistedFactory;
 import androidx.hilt.lifecycle.ViewModelFactoryModules_ActivityModule_ProvideFactoryFactory;
 import androidx.hilt.lifecycle.ViewModelFactoryModules_FragmentModule_ProvideFactoryFactory;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import com.architecture.clean.di.module.WeatherActivityModule_ProvideIsPermissionsGrantedFactory;
 import com.example.details.ui.activity.DetailsActivity;
 import com.example.details.ui.fragments.DetailsFragment;
 import com.example.details.ui.fragments.DetailsViewModel_AssistedFactory;
 import com.example.details.ui.fragments.DetailsViewModel_AssistedFactory_Factory;
 import com.example.popularpersons.ui.activity.MainActivity;
 import com.example.popularpersons.ui.activity.WeatherActivity;
-import com.example.popularpersons.ui.activity.WeatherActivity_MembersInjector;
 import com.example.popularpersons.ui.fragment.cities.CitiesFragment;
-import com.example.popularpersons.ui.fragment.cities.CitiesFragment_MembersInjector;
 import com.example.popularpersons.ui.fragment.home.HomeFragment;
 import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory;
 import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory_Factory;
@@ -304,8 +300,6 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
     private final class ActivityCImpl extends App_HiltComponents.ActivityC {
       private final Activity activity;
 
-      private volatile Object mutableLiveDataOfBoolean = new MemoizedSentinel();
-
       private volatile Provider<BaseViewModel_AssistedFactory> baseViewModel_AssistedFactoryProvider;
 
       private volatile Provider<DetailsViewModel_AssistedFactory> detailsViewModel_AssistedFactoryProvider;
@@ -328,20 +322,6 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private ActivityCImpl(Activity activityParam) {
         this.activity = activityParam;
-      }
-
-      private MutableLiveData<Boolean> getMutableLiveDataOfBoolean() {
-        Object local = mutableLiveDataOfBoolean;
-        if (local instanceof MemoizedSentinel) {
-          synchronized (local) {
-            local = mutableLiveDataOfBoolean;
-            if (local instanceof MemoizedSentinel) {
-              local = WeatherActivityModule_ProvideIsPermissionsGrantedFactory.provideIsPermissionsGranted();
-              mutableLiveDataOfBoolean = DoubleCheck.reentrantCheck(mutableLiveDataOfBoolean, local);
-            }
-          }
-        }
-        return (MutableLiveData<Boolean>) local;
       }
 
       private Provider<BaseViewModel_AssistedFactory> getBaseViewModel_AssistedFactoryProvider() {
@@ -491,7 +471,6 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       @Override
       public void injectWeatherActivity(WeatherActivity arg0) {
-        injectWeatherActivity2(arg0);
       }
 
       @Override
@@ -507,11 +486,6 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       @Override
       public ViewComponentBuilder viewComponentBuilder() {
         return new ViewCBuilder();
-      }
-
-      private WeatherActivity injectWeatherActivity2(WeatherActivity instance) {
-        WeatherActivity_MembersInjector.injectPermissionsState(instance, getMutableLiveDataOfBoolean());
-        return instance;
       }
 
       private final class FragmentCBuilder implements App_HiltComponents.FragmentC.Builder {
@@ -547,7 +521,6 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
         @Override
         public void injectCitiesFragment(CitiesFragment arg0) {
-          injectCitiesFragment2(arg0);
         }
 
         @Override
@@ -566,11 +539,6 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         @Override
         public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
           return new ViewWithFragmentCBuilder();
-        }
-
-        private CitiesFragment injectCitiesFragment2(CitiesFragment instance) {
-          CitiesFragment_MembersInjector.injectPermissionsState(instance, ActivityCImpl.this.getMutableLiveDataOfBoolean());
-          return instance;
         }
 
         private final class ViewWithFragmentCBuilder implements App_HiltComponents.ViewWithFragmentC.Builder {

@@ -90,6 +90,14 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
+    fun addCity(citiesList: ArrayList<City>,cityName: String,index: Int){
+        citiesUseCase.addCity(
+            citiesList,
+            cityName,
+            index
+        )
+    }
+
 
     private fun insertPopularPerson(popularPerson: PopularPersons) {
         viewModelScope.launch {

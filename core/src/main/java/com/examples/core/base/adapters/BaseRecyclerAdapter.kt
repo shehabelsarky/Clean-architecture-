@@ -71,6 +71,11 @@ abstract class BaseRecyclerAdapter<T>(
     fun clear() {
         submitList(emptyList())
     }
+
+    fun addElementToList(index: Int,element: T){
+        currentList.add(index,element)
+        notifyItemChanged(index)
+    }
 }
 
 class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view)

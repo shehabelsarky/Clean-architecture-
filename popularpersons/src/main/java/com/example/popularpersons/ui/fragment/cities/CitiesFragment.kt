@@ -9,7 +9,6 @@ import android.widget.AutoCompleteTextView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.popularpersons.R
@@ -40,9 +39,7 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
     override val viewModel by viewModels<HomeViewModel>()
     private lateinit var citiesAdapter: CitiesAdapter
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    @Inject
-    lateinit var permissionsState: MutableLiveData<Boolean>
+    private lateinit var citiesList: List<City>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,8 +59,10 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
             with(viewModel) {
                 getCities()
                 citiesChannel.asFlow().collect {
-                    citiesAdapter.submitList(it)
+                    citiesList = it
+                    citiesAdapter.submitList(citiesList)
                     initCitiesDropDownList(it)
+                    initLocationService()
                 }
             }
         }
@@ -98,22 +97,12 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {
-                    var city = getCityFromLatLng(requireContext(), location.latitude, location.longitude)
+                    val city = getCityFromLatLng(requireContext(), location.latitude, location.longitude)
                     if (city.isNotEmpty()){
-
+                        viewModel.addCity(citiesList as ArrayList<City>,city,0)
+                        citiesAdapter.notifyItemChanged(0)
                     }
                 }
             }
     }
-
-
-    /*private fun observePermissionsState() {
-          permissionsState.observe(viewLifecycleOwner, Observer {
-              if (it){
-
-              }else{
-
-              }
-          })
-    }*/
 }

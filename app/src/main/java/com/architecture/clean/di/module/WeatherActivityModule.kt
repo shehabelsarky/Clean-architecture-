@@ -15,5 +15,5 @@ object WeatherActivityModule {
 
     @Provides
     @ActivityScoped
-    fun provideIsPermissionsGranted() = MutableLiveData<Boolean>()
+    fun provideAddedCitiesNumber() = MutableLiveData<Int>()
 }

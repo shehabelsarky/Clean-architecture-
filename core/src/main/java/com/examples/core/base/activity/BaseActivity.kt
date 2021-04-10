@@ -1,17 +1,16 @@
 package com.examples.core.base.activity
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.examples.core.R
 import com.examples.core.utils.LoadingListener
 import kotlinx.android.synthetic.main.activity_common.*
-
+/**
+ * Created by Shehab Elsarky
+ */
 abstract class BaseActivity : AppCompatActivity(), View.OnClickListener, LoadingListener {
 
     private lateinit var navFragment: NavHostFragment

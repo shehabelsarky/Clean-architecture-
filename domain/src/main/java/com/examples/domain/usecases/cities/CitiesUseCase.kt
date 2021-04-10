@@ -42,4 +42,14 @@ class CitiesUseCase @Inject constructor(
     override suspend fun executeOnBackground(parameters: Unit): List<RemoteCity> {
         return appRepository.getCities()
     }
+
+    fun addCity(citiesList: ArrayList<City>,cityName: String,index: Int): List<City>{
+        citiesList.add(
+            index,
+            City(
+                cityName = cityName
+            )
+        )
+        return citiesList
+    }
 }

@@ -13,8 +13,8 @@ import java.util.*
 
 internal fun getCityFromLatLng(context: Context,lat: Double,lng: Double): String{
     return try {
-        val gcd = Geocoder(context, Locale.getDefault())
-        val addresses: List<Address> = gcd.getFromLocation(lat, lng, 1)
+        val geocoder = Geocoder(context, Locale.getDefault())
+        val addresses: List<Address> = geocoder.getFromLocation(lat, lng, 1)
         if (addresses.isNotEmpty()) {
             addresses[0].locality
         } else {
