@@ -1,10 +1,10 @@
 package com.examples.data.repository
 
 import com.examples.entities.PopularActorDetails
-import com.examples.entities.city.response.RemoteCitiesResponse
+import com.examples.entities.city.remote.RemoteCity
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
-import com.examples.entities.weather.response.RemoteWeatherResponse
+import com.examples.entities.weather.remote.RemoteWeather
 
 /**
  * Created by Shehab Elsarky
@@ -24,7 +24,7 @@ interface AppRepository{
 
     suspend fun getWeatherByCityName(
         cityName: String
-    ): RemoteWeatherResponse
+    ): RemoteWeather
 
-    suspend fun getCities(): RemoteCitiesResponse
+    suspend fun getCities(): List<RemoteCity>
 }

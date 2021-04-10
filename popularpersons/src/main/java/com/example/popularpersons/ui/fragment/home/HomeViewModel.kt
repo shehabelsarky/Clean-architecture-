@@ -63,8 +63,8 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
 
-    val weatherChannel: ConflatedBroadcastChannel<Weather> by lazy {
-        ConflatedBroadcastChannel<Weather>()
+    val weatherChannel: ConflatedBroadcastChannel<List<Weather>> by lazy {
+        ConflatedBroadcastChannel<List<Weather>>()
     }
 
     fun getWeather(cityName: String) {

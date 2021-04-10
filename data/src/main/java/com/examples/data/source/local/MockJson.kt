@@ -1,5 +1,6 @@
 package com.examples.data.source.local
 
+import com.examples.entities.city.remote.RemoteCity
 import com.examples.entities.city.response.RemoteCitiesResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -20,11 +21,11 @@ class MockJson @Inject constructor() {
         return String(bytes)
     }
 
-    fun getCityList(): RemoteCitiesResponse {
+    fun getCityList():List<RemoteCity> {
         val rawJson = getJson(CITY_LIST_FILENAME)
         return Gson().fromJson(
             rawJson,
-            object : TypeToken<RemoteCitiesResponse>() {}.type
+            object : TypeToken<List<RemoteCity>>() {}.type
         )
     }
 }

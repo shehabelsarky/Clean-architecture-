@@ -8,7 +8,7 @@ import com.appizona.yehiahd.fastsave.FastSave
 import com.example.popularpersons.ui.fragment.home.adapter.PopularPersonsAdapter
 import com.examples.core.utils.NavigationConstants
 import com.examples.entities.popular_person.local.PopularPersons
-import com.gaelmarhic.quadrant.QuadrantConstants
+//import com.gaelmarhic.quadrant.QuadrantConstants
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 
@@ -36,7 +36,7 @@ fun setGroupieAdapterData(context: Context,adapter: GroupAdapter<ViewHolder>,dat
             data,
             object : PopularPersonsAdapter.OnPopularPersonItemClickListener {
                 override fun onPopularPersonItemClickListener(data: PopularPersons) {
-                    context.startActivity(
+                   /* context.startActivity(
                         Intent()
                             .setClassName(
                                 context,
@@ -46,7 +46,7 @@ fun setGroupieAdapterData(context: Context,adapter: GroupAdapter<ViewHolder>,dat
                                 NavigationConstants.POPULAR_PERSONS_TO_DETAILS_DATA,
                                 data
                             )
-                    )
+                    )*/
                 }
             })
     )

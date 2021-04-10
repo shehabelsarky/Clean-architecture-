@@ -7,16 +7,23 @@ import androidx.fragment.app.Fragment;
 import androidx.hilt.lifecycle.ViewModelAssistedFactory;
 import androidx.hilt.lifecycle.ViewModelFactoryModules_ActivityModule_ProvideFactoryFactory;
 import androidx.hilt.lifecycle.ViewModelFactoryModules_FragmentModule_ProvideFactoryFactory;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import com.architecture.clean.di.module.WeatherActivityModule_ProvideIsPermissionsGrantedFactory;
 import com.example.details.ui.activity.DetailsActivity;
 import com.example.details.ui.fragments.DetailsFragment;
 import com.example.details.ui.fragments.DetailsViewModel_AssistedFactory;
 import com.example.details.ui.fragments.DetailsViewModel_AssistedFactory_Factory;
 import com.example.popularpersons.ui.activity.MainActivity;
+import com.example.popularpersons.ui.activity.WeatherActivity;
+import com.example.popularpersons.ui.activity.WeatherActivity_MembersInjector;
+import com.example.popularpersons.ui.fragment.cities.CitiesFragment;
+import com.example.popularpersons.ui.fragment.cities.CitiesFragment_MembersInjector;
 import com.example.popularpersons.ui.fragment.home.HomeFragment;
 import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory;
 import com.example.popularpersons.ui.fragment.home.HomeViewModel_AssistedFactory_Factory;
+import com.example.popularpersons.ui.fragment.weather.WeatherFragment;
 import com.examples.core.base.view_model.BaseViewModel_AssistedFactory;
 import com.examples.core.base.view_model.BaseViewModel_AssistedFactory_Factory;
 import com.examples.data.di.DataBaseModule;
@@ -34,12 +41,17 @@ import com.examples.data.repository.AppRepoImp;
 import com.examples.data.restful.ApiService;
 import com.examples.data.source.cloud.BaseCloudRepository;
 import com.examples.data.source.db.AppDatabase;
+import com.examples.data.source.local.MockJson;
+import com.examples.domain.mappers.cities.CitiesMapper;
 import com.examples.domain.mappers.popular_persons.PopularPersonsMapper;
+import com.examples.domain.mappers.weather.WeatherMapper;
 import com.examples.domain.popular_persons.DropPopularPersonsUseCase;
 import com.examples.domain.popular_persons.InsertPopularPersonUseCase;
 import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase;
 import com.examples.domain.popular_persons.SelectPopularPersonsUseCase;
 import com.examples.domain.search_popular_persons.SearchPopularPersonsRemoteUseCase;
+import com.examples.domain.usecases.cities.CitiesUseCase;
+import com.examples.domain.usecases.weather.WeatherUseCase;
 import com.google.gson.Gson;
 import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
 import dagger.hilt.android.internal.builders.ActivityRetainedComponentBuilder;
@@ -203,7 +215,7 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
   }
 
   private AppRepoImp getAppRepoImp() {
-    return new AppRepoImp(getBaseCloudRepository(), getAppDatabase());
+    return new AppRepoImp(getBaseCloudRepository(), getAppDatabase(), new MockJson());
   }
 
   @Override
@@ -292,6 +304,8 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
     private final class ActivityCImpl extends App_HiltComponents.ActivityC {
       private final Activity activity;
 
+      private volatile Object mutableLiveDataOfBoolean = new MemoizedSentinel();
+
       private volatile Provider<BaseViewModel_AssistedFactory> baseViewModel_AssistedFactoryProvider;
 
       private volatile Provider<DetailsViewModel_AssistedFactory> detailsViewModel_AssistedFactoryProvider;
@@ -306,10 +320,28 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
       private volatile Provider<DropPopularPersonsUseCase> dropPopularPersonsUseCaseProvider;
 
+      private volatile Provider<CitiesUseCase> citiesUseCaseProvider;
+
+      private volatile Provider<WeatherUseCase> weatherUseCaseProvider;
+
       private volatile Provider<HomeViewModel_AssistedFactory> homeViewModel_AssistedFactoryProvider;
 
       private ActivityCImpl(Activity activityParam) {
         this.activity = activityParam;
+      }
+
+      private MutableLiveData<Boolean> getMutableLiveDataOfBoolean() {
+        Object local = mutableLiveDataOfBoolean;
+        if (local instanceof MemoizedSentinel) {
+          synchronized (local) {
+            local = mutableLiveDataOfBoolean;
+            if (local instanceof MemoizedSentinel) {
+              local = WeatherActivityModule_ProvideIsPermissionsGrantedFactory.provideIsPermissionsGranted();
+              mutableLiveDataOfBoolean = DoubleCheck.reentrantCheck(mutableLiveDataOfBoolean, local);
+            }
+          }
+        }
+        return (MutableLiveData<Boolean>) local;
       }
 
       private Provider<BaseViewModel_AssistedFactory> getBaseViewModel_AssistedFactoryProvider() {
@@ -401,8 +433,34 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         return (Provider<DropPopularPersonsUseCase>) local;
       }
 
+      private CitiesUseCase getCitiesUseCase() {
+        return new CitiesUseCase(getCloudErrorMapper(), DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp(), new CitiesMapper());
+      }
+
+      private Provider<CitiesUseCase> getCitiesUseCaseProvider() {
+        Object local = citiesUseCaseProvider;
+        if (local == null) {
+          local = new SwitchingProvider<>(8);
+          citiesUseCaseProvider = (Provider<CitiesUseCase>) local;
+        }
+        return (Provider<CitiesUseCase>) local;
+      }
+
+      private WeatherUseCase getWeatherUseCase() {
+        return new WeatherUseCase(getCloudErrorMapper(), DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp(), new WeatherMapper());
+      }
+
+      private Provider<WeatherUseCase> getWeatherUseCaseProvider() {
+        Object local = weatherUseCaseProvider;
+        if (local == null) {
+          local = new SwitchingProvider<>(9);
+          weatherUseCaseProvider = (Provider<WeatherUseCase>) local;
+        }
+        return (Provider<WeatherUseCase>) local;
+      }
+
       private HomeViewModel_AssistedFactory getHomeViewModel_AssistedFactory() {
-        return HomeViewModel_AssistedFactory_Factory.newInstance(getPopularPersonsRemoteUseCaseProvider(), getSearchPopularPersonsRemoteUseCaseProvider(), getInsertPopularPersonUseCaseProvider(), getSelectPopularPersonsUseCaseProvider(), getDropPopularPersonsUseCaseProvider());
+        return HomeViewModel_AssistedFactory_Factory.newInstance(getPopularPersonsRemoteUseCaseProvider(), getSearchPopularPersonsRemoteUseCaseProvider(), getInsertPopularPersonUseCaseProvider(), getSelectPopularPersonsUseCaseProvider(), getDropPopularPersonsUseCaseProvider(), getCitiesUseCaseProvider(), getWeatherUseCaseProvider());
       }
 
       private Provider<HomeViewModel_AssistedFactory> getHomeViewModel_AssistedFactoryProvider() {
@@ -432,6 +490,11 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       }
 
       @Override
+      public void injectWeatherActivity(WeatherActivity arg0) {
+        injectWeatherActivity2(arg0);
+      }
+
+      @Override
       public Set<ViewModelProvider.Factory> getActivityViewModelFactory() {
         return Collections.<ViewModelProvider.Factory>singleton(getProvideFactory());
       }
@@ -444,6 +507,11 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       @Override
       public ViewComponentBuilder viewComponentBuilder() {
         return new ViewCBuilder();
+      }
+
+      private WeatherActivity injectWeatherActivity2(WeatherActivity instance) {
+        WeatherActivity_MembersInjector.injectPermissionsState(instance, getMutableLiveDataOfBoolean());
+        return instance;
       }
 
       private final class FragmentCBuilder implements App_HiltComponents.FragmentC.Builder {
@@ -478,7 +546,16 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         }
 
         @Override
+        public void injectCitiesFragment(CitiesFragment arg0) {
+          injectCitiesFragment2(arg0);
+        }
+
+        @Override
         public void injectHomeFragment(HomeFragment arg0) {
+        }
+
+        @Override
+        public void injectWeatherFragment(WeatherFragment arg0) {
         }
 
         @Override
@@ -489,6 +566,11 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         @Override
         public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
           return new ViewWithFragmentCBuilder();
+        }
+
+        private CitiesFragment injectCitiesFragment2(CitiesFragment instance) {
+          CitiesFragment_MembersInjector.injectPermissionsState(instance, ActivityCImpl.this.getMutableLiveDataOfBoolean());
+          return instance;
         }
 
         private final class ViewWithFragmentCBuilder implements App_HiltComponents.ViewWithFragmentC.Builder {
@@ -570,6 +652,12 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
             case 7: // com.examples.domain.popular_persons.DropPopularPersonsUseCase 
             return (T) ActivityCImpl.this.getDropPopularPersonsUseCase();
+
+            case 8: // com.examples.domain.usecases.cities.CitiesUseCase 
+            return (T) ActivityCImpl.this.getCitiesUseCase();
+
+            case 9: // com.examples.domain.usecases.weather.WeatherUseCase 
+            return (T) ActivityCImpl.this.getWeatherUseCase();
 
             default: throw new AssertionError(id);
           }

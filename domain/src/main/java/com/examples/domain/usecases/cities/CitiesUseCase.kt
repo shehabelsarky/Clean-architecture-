@@ -5,6 +5,7 @@ import com.examples.data.repository.AppRepository
 import com.examples.domain.base.RemoteUseCase
 import com.examples.domain.mappers.cities.CitiesMapper
 import com.examples.entities.city.local.City
+import com.examples.entities.city.remote.RemoteCity
 import com.examples.entities.city.response.RemoteCitiesResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -18,14 +19,14 @@ class CitiesUseCase @Inject constructor(
     errorUtil: CloudErrorMapper,
     private val appRepository: AppRepository,
     private val mapper: CitiesMapper
-) : RemoteUseCase<Unit, RemoteCitiesResponse, List<City>>(errorUtil) {
+) : RemoteUseCase<Unit, List<RemoteCity>, List<City>>(errorUtil) {
 
     @ExperimentalCoroutinesApi
     @FlowPreview
-    override suspend fun convert(dto: RemoteCitiesResponse): List<City> {
+    override suspend fun convert(dto: List<RemoteCity>): List<City> {
         val cities = arrayListOf<City>()
 
-        return flowOf(dto.response)
+        return flowOf(dto)
             .map {
                 it?.forEach { result ->
                     cities.add(mapper.convert(result))
@@ -38,7 +39,7 @@ class CitiesUseCase @Inject constructor(
             .toList()
     }
 
-    override suspend fun executeOnBackground(parameters: Unit): RemoteCitiesResponse {
+    override suspend fun executeOnBackground(parameters: Unit): List<RemoteCity> {
         return appRepository.getCities()
     }
 }

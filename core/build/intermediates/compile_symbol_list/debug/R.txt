@@ -652,7 +652,9 @@ int color background_floating_material_dark 0x0
 int color background_floating_material_light 0x0
 int color background_material_dark 0x0
 int color background_material_light 0x0
+int color beige_2 0x0
 int color bg 0x0
+int color blue_grey 0x0
 int color bright_foreground_disabled_material_dark 0x0
 int color bright_foreground_disabled_material_light 0x0
 int color bright_foreground_inverse_material_dark 0x0
@@ -753,6 +755,7 @@ int color switch_thumb_material_dark 0x0
 int color switch_thumb_material_light 0x0
 int color switch_thumb_normal_material_dark 0x0
 int color switch_thumb_normal_material_light 0x0
+int color textColor 0x0
 int color tooltip_background_dark 0x0
 int color tooltip_background_light 0x0
 int color warm_purple 0x0
@@ -1707,6 +1710,7 @@ int style Base_Widget_MaterialComponents_TextInputLayout 0x0
 int style CardView 0x0
 int style CardView_Dark 0x0
 int style CardView_Light 0x0
+int style MaterialAppTheme 0x0
 int style Platform_AppCompat 0x0
 int style Platform_AppCompat_Light 0x0
 int style Platform_MaterialComponents 0x0

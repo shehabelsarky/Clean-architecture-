@@ -2,7 +2,7 @@ package com.examples.data.restful
 
 
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
-import com.examples.entities.weather.response.RemoteWeatherResponse
+import com.examples.entities.weather.remote.RemoteWeather
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -33,5 +33,5 @@ interface ApiService {
     @GET(Config.WEATHER)
     suspend fun getWeatherByCityName(
         @Query("q") cityName: String
-    ): RemoteWeatherResponse
+    ): RemoteWeather
 }

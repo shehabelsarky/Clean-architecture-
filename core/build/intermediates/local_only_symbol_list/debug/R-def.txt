@@ -1,10 +1,13 @@
 R_DEF: Internal format may change without notice
 local
+color beige_2
 color bg
+color blue_grey
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
 color deep_lavender
+color textColor
 color warm_purple
 color white
 dimen app_bar_height
@@ -49,3 +52,4 @@ string title_activity_detail
 style AppTheme
 style AppTheme.AppBarOverlay
 style AppTheme.PopupOverlay
+style MaterialAppTheme

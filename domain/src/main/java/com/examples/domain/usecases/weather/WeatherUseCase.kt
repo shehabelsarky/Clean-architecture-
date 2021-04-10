@@ -5,10 +5,9 @@ import com.examples.data.repository.AppRepository
 import com.examples.domain.base.RemoteUseCase
 import com.examples.domain.mappers.weather.WeatherMapper
 import com.examples.entities.weather.local.Weather
-import com.examples.entities.weather.response.RemoteWeatherResponse
+import com.examples.entities.weather.remote.RemoteWeather
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 /**
@@ -20,16 +19,13 @@ class WeatherUseCase @Inject constructor(
     errorUtil: CloudErrorMapper,
     private val appRepository: AppRepository,
     private val mapper: WeatherMapper
-) : RemoteUseCase<String, RemoteWeatherResponse, Weather>(errorUtil) {
+) : RemoteUseCase<String, RemoteWeather, List<Weather>>(errorUtil) {
 
-    override suspend fun convert(dto: RemoteWeatherResponse): Weather {
-        return flowOf(dto.response)
-            .map {
-                mapper.convert(dto.response)
-            }.first()
+    override suspend fun convert(dto: RemoteWeather): List<Weather> {
+        return mapper.convert(dto)
     }
 
-    override suspend fun executeOnBackground(parameters: String): RemoteWeatherResponse {
+    override suspend fun executeOnBackground(parameters: String): RemoteWeather {
         return appRepository.getWeatherByCityName(parameters)
     }
 }

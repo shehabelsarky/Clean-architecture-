@@ -9,13 +9,21 @@ import javax.inject.Inject
  */
 class WeatherMapper @Inject constructor() {
 
-    fun convert(dtoItem: RemoteWeather?): Weather {
-        return Weather(
-            cityName = dtoItem?.name ?: "",
-            main = if (dtoItem?.weather.isNullOrEmpty()) "" else dtoItem?.weather!![0].main ?: "",
-            description = if (dtoItem?.weather.isNullOrEmpty()) "" else dtoItem?.weather!![0].description ?: "",
-            minTemperature = dtoItem?.main?.tempMin?.toString()?:"",
-            maxTemperature = dtoItem?.main?.tempMax?.toString()?:""
-        )
+    fun convert(dtoItem: RemoteWeather?): List<Weather> {
+        val weatherList = arrayListOf<Weather>()
+        if (!dtoItem?.weather.isNullOrEmpty())
+            for (i in dtoItem?.weather!!.indices)
+                weatherList.add(
+                    Weather(
+                        cityName = dtoItem.name ?: "",
+                        main = if (dtoItem.weather.isNullOrEmpty()) "" else dtoItem.weather!![i].main ?: "",
+                        description = if (dtoItem.weather.isNullOrEmpty()) "" else dtoItem.weather!![i].description
+                            ?: "",
+                        minTemperature = dtoItem.main?.tempMin?.toString() ?: "",
+                        maxTemperature = dtoItem.main?.tempMax?.toString() ?: ""
+                    )
+                )
+
+        return weatherList
     }
 }

@@ -1,7 +1,7 @@
 package com.examples.data.source.cloud
 
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
-import com.examples.entities.weather.response.RemoteWeatherResponse
+import com.examples.entities.weather.remote.RemoteWeather
 
 /**
  * Created by Shehab Elsarky
@@ -17,5 +17,5 @@ interface BaseCloudRepository {
 
     suspend fun getWeatherByCityName(
         cityName: String
-    ): RemoteWeatherResponse
+    ): RemoteWeather
 }

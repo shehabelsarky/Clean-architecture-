@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Android_Project\\MVVM Coroutines Clean arch sample\\android-clean-arc-coroutines\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "E:\\Android Projects\\Weather App\\Weather App\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\shehab\\.gradle\\caches\\transforms-2\\files-2.1\\98ced8ef29f0d7d756f0cc0278af9e99\\appcompat-1.1.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\FUTURE\\.gradle\\caches\\transforms-2\\files-2.1\\39954387899a0cdae250f27d83026306\\appcompat-1.1.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

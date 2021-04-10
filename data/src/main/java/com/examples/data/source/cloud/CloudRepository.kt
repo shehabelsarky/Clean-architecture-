@@ -1,9 +1,8 @@
 package com.examples.data.source.cloud
 
 import com.examples.data.restful.ApiService
-import com.examples.entities.PopularActorDetails
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
-import com.examples.entities.weather.response.RemoteWeatherResponse
+import com.examples.entities.weather.remote.RemoteWeather
 
 /**
  * Created by Shehab Elsarky
@@ -17,7 +16,7 @@ class CloudRepository(private val apIs: ApiService) : BaseCloudRepository {
         return apIs.searchPersons(page,actorName)
     }
 
-    override suspend fun getWeatherByCityName(cityName: String): RemoteWeatherResponse {
+    override suspend fun getWeatherByCityName(cityName: String): RemoteWeather {
         return apIs.getWeatherByCityName(cityName)
     }
 

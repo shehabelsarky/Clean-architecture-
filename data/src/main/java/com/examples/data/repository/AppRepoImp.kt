@@ -3,11 +3,10 @@ package com.examples.data.repository
 import com.examples.data.source.cloud.BaseCloudRepository
 import com.examples.data.source.db.AppDatabase
 import com.examples.data.source.local.MockJson
-import com.examples.entities.PopularActorDetails
-import com.examples.entities.city.response.RemoteCitiesResponse
+import com.examples.entities.city.remote.RemoteCity
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
-import com.examples.entities.weather.response.RemoteWeatherResponse
+import com.examples.entities.weather.remote.RemoteWeather
 import javax.inject.Inject
 
 /**
@@ -44,11 +43,11 @@ class AppRepoImp @Inject constructor(
 
     }
 
-    override suspend fun getWeatherByCityName(cityName: String): RemoteWeatherResponse {
+    override suspend fun getWeatherByCityName(cityName: String): RemoteWeather {
         return cloudRepository.getWeatherByCityName(cityName)
     }
 
-    override suspend fun getCities(): RemoteCitiesResponse {
+    override suspend fun getCities(): List<RemoteCity> {
         return mockJson.getCityList()
     }
 }

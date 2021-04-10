@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="beige_2">#f5f5f5</color>
     <color name="bg">#FAF8F8</color>
+    <color name="blue_grey">#868894</color>
     <color name="colorAccent">#712c40</color>
     <color name="colorPrimary">#712c81</color>
     <color name="colorPrimaryDark">#712c81</color>
     <color name="deep_lavender">#995db0</color>
+    <color name="textColor">#23292f</color>
     <color name="warm_purple">#712c81</color>
     <color name="white">#fff</color>
     <dimen name="app_bar_height">180dp</dimen>
@@ -47,4 +50,12 @@
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="MaterialAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColorHint">@color/blue_grey</item>
+    </style>
 </resources>

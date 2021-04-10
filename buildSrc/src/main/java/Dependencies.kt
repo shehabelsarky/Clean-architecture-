@@ -34,6 +34,7 @@ object Versions {
     val mockitoKotlinVersion = "1.5.0"
     val activityKtxVersion = "1.2.0-alpha05"
     val fragmentKtxVersion = "1.3.0-alpha05"
+    val googlePlayServices = "18.0.0"
 }
 
 
@@ -90,6 +91,7 @@ object Androidx {
 
     val activityKtx =  "androidx.activity:activity-ktx:${Versions.activityKtxVersion}"
     val fragmentKtx =  "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"
+    val googlePlayServicesLocation = "com.google.android.gms:play-services-location:${Versions.googlePlayServices}"
 }
 
 object Material {

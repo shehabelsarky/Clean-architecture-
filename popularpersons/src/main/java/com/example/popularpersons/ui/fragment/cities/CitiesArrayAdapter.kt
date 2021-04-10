@@ -11,8 +11,8 @@ import com.examples.entities.city.local.City
 /**
  * Created by Shehab Elsarky
  */
-class CitiesArrayAdapter(context: Context, services: List<City>) : ArrayAdapter<City>(
-    context, R.layout.item_simple_spinner_dropdown_item, android.R.id.text1, services
+class CitiesArrayAdapter(context: Context, cities: List<City>) : ArrayAdapter<City>(
+    context, R.layout.item_simple_spinner_dropdown_item, android.R.id.text1, cities
 ) {
 
     override fun setDropDownViewResource(resource: Int) {
