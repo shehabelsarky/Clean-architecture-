@@ -14,7 +14,7 @@ import com.examples.core.utils.LoadingListener
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
-abstract class BaseFragment<VM : BaseViewModel>  : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel>  : NetworkBaseFragment(){
 
     private val TAG = BaseFragment::class.java.simpleName
 

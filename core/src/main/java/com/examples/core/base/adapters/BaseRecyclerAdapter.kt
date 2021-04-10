@@ -81,10 +81,6 @@ abstract class BaseRecyclerAdapter<T>(
         notifyItemChanged(index)
     }
 
-    fun removeElement(item: T){
-        ArrayList(currentList).remove(item)
-        notifyDataSetChanged()
-    }
 }
 
 class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view)
