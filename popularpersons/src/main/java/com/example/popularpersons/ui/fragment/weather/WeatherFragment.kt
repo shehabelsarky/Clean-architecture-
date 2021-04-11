@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.popularpersons.R
 import com.example.popularpersons.ui.fragment.home.HomeViewModel
 import com.examples.core.base.fragment.BaseFragment
+import com.examples.core.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.list_layout.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -35,19 +36,22 @@ class WeatherFragment : BaseFragment<HomeViewModel>() {
         collectWeatherList()
     }
 
-    private fun initWeatherList(){
+    private fun initWeatherList() {
         weatherAdapter = WeatherAdapter()
         rvList.adapter = weatherAdapter
     }
 
     private fun collectWeatherList() {
-        lifecycleScope.launch {
-            with(viewModel) {
-                getWeather(args.cityName)
-                weatherChannel.asFlow().collect {
-                    weatherAdapter.submitList(it)
+        if (isNetworkConnected)
+            lifecycleScope.launch {
+                with(viewModel) {
+                    getWeather(args.cityName)
+                    weatherChannel.asFlow().collect {
+                        weatherAdapter.submitList(it)
+                    }
                 }
             }
-        }
+        else
+            requireContext().showToast("No internet connection")
     }
 }

@@ -19,6 +19,8 @@ import com.examples.domain.popular_persons.DropPopularPersonsUseCase
 import com.examples.domain.popular_persons.InsertPopularPersonUseCase
 import com.examples.domain.popular_persons.SelectPopularPersonsUseCase
 import com.examples.domain.usecases.cities.CitiesUseCase
+import com.examples.domain.usecases.cities.InsertCityUseCase
+import com.examples.domain.usecases.cities.SelectCitiesUseCase
 import com.examples.domain.usecases.weather.WeatherUseCase
 import com.examples.entities.city.local.City
 import com.examples.entities.weather.local.Weather
@@ -39,7 +41,9 @@ class HomeViewModel @ViewModelInject constructor(
     private val selectPopularPersonsUseCase: SelectPopularPersonsUseCase,
     private val dropPopularPersonsUseCase: DropPopularPersonsUseCase,
     private val citiesUseCase: CitiesUseCase,
-    private val weatherUseCase: WeatherUseCase
+    private val weatherUseCase: WeatherUseCase,
+    private val insertCityUseCase: InsertCityUseCase,
+    private val selectCitiesUseCase: SelectCitiesUseCase
 ) : BaseViewModel() {
     private val TAG = HomeViewModel::class.simpleName
 
@@ -86,7 +90,18 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun getCities() {
         callApi(citiesChannel) { callBack ->
-            citiesUseCase.execute(Unit,callBack)
+//            citiesUseCase.execute(Unit,callBack)
+            citiesUseCase.execute(Unit) {
+                onComplete {
+                    viewModelScope.launch {
+                        citiesChannel.offer(it)
+                    }
+                    it.map(::insertCity)
+                }
+                onError(::setErrorReason)
+                onCancel(::setCancellationReason)
+                isLoading(::setLoading)
+            }
         }
     }
 
@@ -98,6 +113,36 @@ class HomeViewModel @ViewModelInject constructor(
         )
     }
 
+    private fun insertCity(city: City) {
+        viewModelScope.launch {
+            insertCityUseCase.execute(city) {
+                onComplete {
+                    Log.d(TAG, "Inserting...Id= ${city.id} name= ${city.cityName}")
+                }
+                onCancel {
+                    Log.d(TAG, "Insert exception occurred...")
+                }
+            }
+        }
+    }
+
+    fun selectCities() {
+        viewModelScope.launch {
+            selectCitiesUseCase.execute(Unit) {
+                onComplete {
+                    it.map {
+                        Log.d(TAG, "Selected data...id:${it.id} name:${it.cityName}")
+                    }
+                    viewModelScope.launch {
+                        citiesChannel.offer(it)
+                    }
+                }
+                onCancel {
+                    Log.d(TAG, "Coroutine is cancelled")
+                }
+            }
+        }
+    }
 
     private fun insertPopularPerson(popularPerson: PopularPersons) {
         viewModelScope.launch {

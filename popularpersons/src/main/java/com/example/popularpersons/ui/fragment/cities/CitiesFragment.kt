@@ -6,7 +6,6 @@ import android.location.Location
 import android.os.Bundle
 import android.view.View
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +14,7 @@ import com.example.popularpersons.R
 import com.example.popularpersons.ui.dialog.AddCityDialog
 import com.example.popularpersons.ui.fragment.home.HomeViewModel
 import com.examples.core.base.fragment.BaseFragment
+import com.examples.core.utils.NetworkingUtils
 import com.examples.core.utils.showToast
 import com.examples.entities.city.local.City
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.list_layout.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
-import kotlin.coroutines.CoroutineContext
 import kotlin.properties.Delegates
 
 /**
@@ -44,6 +43,9 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
     private var dropdownCitiesList: ArrayList<City> = arrayListOf()
     private var numberOfAddedCities: Int by Delegates.notNull()
     private var coroutineScope = CoroutineScope(Dispatchers.Main)
+    private val permissionGranted = PackageManager.PERMISSION_GRANTED
+    private val permissionFineLocation = Manifest.permission.ACCESS_FINE_LOCATION
+    private val permissionCoarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,7 +70,11 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
     private fun collectCitiesList() {
         lifecycleScope.launch {
             with(viewModel) {
-                getCities()
+                if (NetworkingUtils.isNetworkConnected)
+                    getCities()
+                else
+                    selectCities()
+
                 citiesChannel.asFlow().collect {
                     initCitiesAndCitiesDropdownLists(
                         citiesList,
@@ -114,14 +120,8 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
     )
 
     private fun initLocationService() {
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
+        if (ActivityCompat.checkSelfPermission(requireContext(), permissionFineLocation) != permissionGranted
+            && ActivityCompat.checkSelfPermission(requireContext(), permissionCoarseLocation) != permissionGranted) {
             return
         }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
@@ -132,7 +132,7 @@ class CitiesFragment : BaseFragment<HomeViewModel>() {
                         getCityFromLatLng(requireContext(), location.latitude, location.longitude)
                     if (city.isNotEmpty()) {
                         coroutineScope.launch {
-                            if (!citiesList.contains(City(city))) {
+                            if (!citiesList.contains(City(cityName = city))) {
                                 viewModel.addCity(citiesList, city, 0)
                                 citiesAdapter.notifyDataSetChanged()
                             }

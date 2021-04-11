@@ -23,6 +23,7 @@ import com.example.popularpersons.ui.fragment.weather.WeatherFragment;
 import com.examples.core.base.view_model.BaseViewModel_AssistedFactory;
 import com.examples.core.base.view_model.BaseViewModel_AssistedFactory_Factory;
 import com.examples.data.di.DataBaseModule;
+import com.examples.data.di.DataBaseModule_ProvideRoomCitiesDatabaseFactory;
 import com.examples.data.di.DataBaseModule_ProvideRoomDatabaseFactory;
 import com.examples.data.di.NetworkModule;
 import com.examples.data.di.NetworkModule_LoggingInterceptorFactory;
@@ -36,6 +37,7 @@ import com.examples.data.mapper.CloudErrorMapper;
 import com.examples.data.repository.AppRepoImp;
 import com.examples.data.restful.ApiService;
 import com.examples.data.source.cloud.BaseCloudRepository;
+import com.examples.data.source.db.AppCitiesDatabase;
 import com.examples.data.source.db.AppDatabase;
 import com.examples.data.source.local.MockJson;
 import com.examples.domain.mappers.cities.CitiesMapper;
@@ -47,6 +49,8 @@ import com.examples.domain.popular_persons.PopularPersonsRemoteUseCase;
 import com.examples.domain.popular_persons.SelectPopularPersonsUseCase;
 import com.examples.domain.search_popular_persons.SearchPopularPersonsRemoteUseCase;
 import com.examples.domain.usecases.cities.CitiesUseCase;
+import com.examples.domain.usecases.cities.InsertCityUseCase;
+import com.examples.domain.usecases.cities.SelectCitiesUseCase;
 import com.examples.domain.usecases.weather.WeatherUseCase;
 import com.google.gson.Gson;
 import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
@@ -97,6 +101,8 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
   private volatile Object apiService = new MemoizedSentinel();
 
   private volatile Object appDatabase = new MemoizedSentinel();
+
+  private volatile Object appCitiesDatabase = new MemoizedSentinel();
 
   private DaggerApp_HiltComponents_ApplicationC(
       ApplicationContextModule applicationContextModuleParam, DataBaseModule dataBaseModuleParam) {
@@ -210,8 +216,22 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
     return (AppDatabase) local;
   }
 
+  private AppCitiesDatabase getAppCitiesDatabase() {
+    Object local = appCitiesDatabase;
+    if (local instanceof MemoizedSentinel) {
+      synchronized (local) {
+        local = appCitiesDatabase;
+        if (local instanceof MemoizedSentinel) {
+          local = DataBaseModule_ProvideRoomCitiesDatabaseFactory.provideRoomCitiesDatabase(dataBaseModule, ApplicationContextModule_ProvideApplicationFactory.provideApplication(applicationContextModule));
+          appCitiesDatabase = DoubleCheck.reentrantCheck(appCitiesDatabase, local);
+        }
+      }
+    }
+    return (AppCitiesDatabase) local;
+  }
+
   private AppRepoImp getAppRepoImp() {
-    return new AppRepoImp(getBaseCloudRepository(), getAppDatabase(), new MockJson());
+    return new AppRepoImp(getBaseCloudRepository(), getAppDatabase(), getAppCitiesDatabase(), new MockJson());
   }
 
   @Override
@@ -317,6 +337,10 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
       private volatile Provider<CitiesUseCase> citiesUseCaseProvider;
 
       private volatile Provider<WeatherUseCase> weatherUseCaseProvider;
+
+      private volatile Provider<InsertCityUseCase> insertCityUseCaseProvider;
+
+      private volatile Provider<SelectCitiesUseCase> selectCitiesUseCaseProvider;
 
       private volatile Provider<HomeViewModel_AssistedFactory> homeViewModel_AssistedFactoryProvider;
 
@@ -439,8 +463,34 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
         return (Provider<WeatherUseCase>) local;
       }
 
+      private InsertCityUseCase getInsertCityUseCase() {
+        return new InsertCityUseCase(DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp());
+      }
+
+      private Provider<InsertCityUseCase> getInsertCityUseCaseProvider() {
+        Object local = insertCityUseCaseProvider;
+        if (local == null) {
+          local = new SwitchingProvider<>(10);
+          insertCityUseCaseProvider = (Provider<InsertCityUseCase>) local;
+        }
+        return (Provider<InsertCityUseCase>) local;
+      }
+
+      private SelectCitiesUseCase getSelectCitiesUseCase() {
+        return new SelectCitiesUseCase(DaggerApp_HiltComponents_ApplicationC.this.getAppRepoImp());
+      }
+
+      private Provider<SelectCitiesUseCase> getSelectCitiesUseCaseProvider() {
+        Object local = selectCitiesUseCaseProvider;
+        if (local == null) {
+          local = new SwitchingProvider<>(11);
+          selectCitiesUseCaseProvider = (Provider<SelectCitiesUseCase>) local;
+        }
+        return (Provider<SelectCitiesUseCase>) local;
+      }
+
       private HomeViewModel_AssistedFactory getHomeViewModel_AssistedFactory() {
-        return HomeViewModel_AssistedFactory_Factory.newInstance(getPopularPersonsRemoteUseCaseProvider(), getSearchPopularPersonsRemoteUseCaseProvider(), getInsertPopularPersonUseCaseProvider(), getSelectPopularPersonsUseCaseProvider(), getDropPopularPersonsUseCaseProvider(), getCitiesUseCaseProvider(), getWeatherUseCaseProvider());
+        return HomeViewModel_AssistedFactory_Factory.newInstance(getPopularPersonsRemoteUseCaseProvider(), getSearchPopularPersonsRemoteUseCaseProvider(), getInsertPopularPersonUseCaseProvider(), getSelectPopularPersonsUseCaseProvider(), getDropPopularPersonsUseCaseProvider(), getCitiesUseCaseProvider(), getWeatherUseCaseProvider(), getInsertCityUseCaseProvider(), getSelectCitiesUseCaseProvider());
       }
 
       private Provider<HomeViewModel_AssistedFactory> getHomeViewModel_AssistedFactoryProvider() {
@@ -626,6 +676,12 @@ public final class DaggerApp_HiltComponents_ApplicationC extends App_HiltCompone
 
             case 9: // com.examples.domain.usecases.weather.WeatherUseCase 
             return (T) ActivityCImpl.this.getWeatherUseCase();
+
+            case 10: // com.examples.domain.usecases.cities.InsertCityUseCase 
+            return (T) ActivityCImpl.this.getInsertCityUseCase();
+
+            case 11: // com.examples.domain.usecases.cities.SelectCitiesUseCase 
+            return (T) ActivityCImpl.this.getSelectCitiesUseCase();
 
             default: throw new AssertionError(id);
           }

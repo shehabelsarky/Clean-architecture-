@@ -1,6 +1,7 @@
 package com.examples.data.repository
 
 import com.examples.entities.PopularActorDetails
+import com.examples.entities.city.local.City
 import com.examples.entities.city.remote.RemoteCity
 import com.examples.entities.popular_person.local.PopularPersons
 import com.examples.entities.popular_person.remote.PopularPersonsResponse
@@ -27,4 +28,7 @@ interface AppRepository{
     ): RemoteWeather
 
     suspend fun getCities(): List<RemoteCity>
+
+    suspend fun insertCity(city: City)
+    suspend fun selectAllCities(): MutableList<City>
 }
